@@ -1,45 +1,31 @@
 {
   "description": {
     "spec-version": {
-      "Left": [
-        2,
-        4
-      ]
+      "Right": ">=1.10"
     },
     "package": {
-      "name": "hw-ip",
+      "name": "alfred-margaret",
       "version": [
         2,
-        4,
-        2,
-        1
+        1,
+        0,
+        0
       ]
     },
     "license": {
-      "Left": {
-        "license-expression": {
-          "expression": {
-            "id": "BSD_3_Clause"
-          },
-          "exception-id": null
-        }
-      }
+      "Right": "BSD3"
     },
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "2018-2022 John Ky\n2019-2020 David Turnbull\n2019-2020 Jian Wan",
-    "maintainer": "newhoggy@gmail.com",
-    "author": "John Ky, David Turnbull, Jian Wan",
+    "copyright": "2020 Channable",
+    "maintainer": "Ruud van Asseldonk <ruud@channable.com>, Fabian Thorand <fabian@channable.com>",
+    "author": "The Alfred-Margaret authors",
     "stability": "",
     "tested-with": [
       {
         "compiler": "GHC",
-        "versionRange": "==9.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.0.2"
+        "versionRange": "==8.8.4"
       },
       {
         "compiler": "GHC",
@@ -47,36 +33,27 @@
       },
       {
         "compiler": "GHC",
-        "versionRange": "==8.8.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
+        "versionRange": "==9.0.2"
       }
     ],
-    "homepage": "https://github.com/haskell-works/hw-ip#readme",
+    "homepage": "https://github.com/channable/alfred-margaret",
     "pkg-url": "",
-    "bug-reports": "https://github.com/haskell-works/hw-ip/issues",
+    "bug-reports": "",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/haskell-works/hw-ip",
+        "location": "https://github.com/channable/alfred-margaret",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "Library for manipulating IP addresses and CIDR blocks",
-    "description": "Library for manipulating IP addresses and CIDR blocks. Please see README.md",
-    "category": "Network",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "synopsis": "Fast Aho-Corasick string searching",
+    "description": "An efficient implementation of the Aho-Corasick\nstring searching algorithm.",
+    "category": "Data, Text",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -88,71 +65,109 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
-      "README.md"
+      "README.md",
+      "performance.png"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
   },
+  "package-flags": [
+    {
+      "name": "aeson",
+      "description": "Enable aeson support",
+      "default": true,
+      "manual": false
+    },
+    {
+      "name": "llvm",
+      "description": "Compile with LLVM",
+      "default": false,
+      "manual": true
+    }
+  ],
   "library": {
     "condTreeData": {
       "name": {},
       "exposed-modules": [
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "Internal",
-          "Appar"
+          "Text",
+          "CaseSensitivity"
         ],
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "Ip"
+          "Text",
+          "Utf8"
         ],
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "Ipv4"
+          "Text",
+          "Utf8",
+          "Unlower"
         ],
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "Ipv6"
+          "Text",
+          "AhoCorasick",
+          "Automaton"
         ],
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "Range"
+          "Text",
+          "AhoCorasick",
+          "Replacer"
         ],
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "SafeEnum"
+          "Text",
+          "AhoCorasick",
+          "Searcher"
         ],
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "Validity"
+          "Text",
+          "AhoCorasick",
+          "Splitter"
         ],
         [
-          "HaskellWorks",
           "Data",
-          "Network",
-          "Ip",
-          "Word128"
+          "Text",
+          "BoyerMoore",
+          "Automaton"
+        ],
+        [
+          "Data",
+          "Text",
+          "BoyerMoore",
+          "Replacer"
+        ],
+        [
+          "Data",
+          "Text",
+          "BoyerMoore",
+          "Searcher"
+        ],
+        [
+          "Data",
+          "Text",
+          "BoyerMooreCI",
+          "Automaton"
+        ],
+        [
+          "Data",
+          "Text",
+          "BoyerMooreCI",
+          "Replacer"
+        ],
+        [
+          "Data",
+          "Text",
+          "BoyerMooreCI",
+          "Searcher"
+        ],
+        [
+          "Data",
+          "TypedByteArray"
         ]
       ],
       "re-exported-modules": [],
@@ -180,17 +195,9 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [
-          [
-            "Paths_hw_ip"
-          ]
-        ],
+        "otherModules": [],
         "virtualModules": [],
-        "autogenModules": [
-          [
-            "Paths_hw_ip"
-          ]
-        ],
+        "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [],
@@ -209,10 +216,9 @@
         "options": [
           [
             "-Wall",
-            "-Wcompat",
             "-Wincomplete-record-updates",
             "-Wincomplete-uni-patterns",
-            "-Wredundant-constraints"
+            "-O2"
           ],
           []
         ],
@@ -232,49 +238,56 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.11 && <5",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "appar",
-            "version-range": ">=0.1.8 && <0.2",
+            "version-range": ">=4.7 && <5",
             "library": [
               {}
             ]
           },
           {
             "package-name": "containers",
-            "version-range": ">=0.5 && <0.7",
+            "version-range": ">=0.6 && <0.7",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "generic-lens",
-            "version-range": ">=2.2 && <2.3",
+            "package-name": "deepseq",
+            "version-range": ">=1.4 && <1.5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "hw-bits",
-            "version-range": ">=0.7 && <0.8",
+            "package-name": "hashable",
+            "version-range": ">=1.4.0.2 && <1.5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "iproute",
-            "version-range": ">=1.7.3 && <1.8",
+            "package-name": "primitive",
+            "version-range": ">=0.6.4 && <0.8",
             "library": [
               {}
             ]
           },
           {
             "package-name": "text",
-            "version-range": ">=1.2.3.1 && <3",
+            "version-range": ">=2.0 && <2.1",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "unordered-containers",
+            "version-range": ">=0.2.9 && <0.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "vector",
+            "version-range": ">=0.12 && <0.13",
             "library": [
               {}
             ]
@@ -286,220 +299,242 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.11 && <5",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "appar",
-        "version-range": ">=0.1.8 && <0.2",
+        "version-range": ">=4.7 && <5",
         "library": [
           {}
         ]
       },
       {
         "package-name": "containers",
-        "version-range": ">=0.5 && <0.7",
+        "version-range": ">=0.6 && <0.7",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "generic-lens",
-        "version-range": ">=2.2 && <2.3",
+        "package-name": "deepseq",
+        "version-range": ">=1.4 && <1.5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "hw-bits",
-        "version-range": ">=0.7 && <0.8",
+        "package-name": "hashable",
+        "version-range": ">=1.4.0.2 && <1.5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "iproute",
-        "version-range": ">=1.7.3 && <1.8",
+        "package-name": "primitive",
+        "version-range": ">=0.6.4 && <0.8",
         "library": [
           {}
         ]
       },
       {
         "package-name": "text",
-        "version-range": ">=1.2.3.1 && <3",
+        "version-range": ">=2.0 && <2.1",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "unordered-containers",
+        "version-range": ">=0.2.9 && <0.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "vector",
+        "version-range": ">=0.12 && <0.13",
         "library": [
           {}
         ]
       }
     ],
-    "condTreeComponents": []
-  },
-  "sublibraries": {
-    "hw-ip-gen": {
-      "condTreeData": {
-        "name": {
-          "sub-lib-name": "hw-ip-gen"
+    "condTreeComponents": [
+      {
+        "condBranchCondition": {
+          "v": {
+            "flag": "aeson"
+          }
         },
-        "exposed-modules": [
-          [
-            "HaskellWorks",
-            "Data",
-            "Network",
-            "Gen"
-          ]
-        ],
-        "re-exported-modules": [],
-        "signatures": [],
-        "exposed": true,
-        "visibility": "LibraryVisibilityPrivate",
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "gen"
-          ],
-          "otherModules": [],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [
-              "-Wall",
-              "-Wcompat",
-              "-Wincomplete-record-updates",
-              "-Wincomplete-uni-patterns",
-              "-Wredundant-constraints"
-            ],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
+        "condBranchIfTrue": {
+          "condTreeData": {
+            "name": {},
+            "exposed-modules": [],
+            "re-exported-modules": [],
+            "signatures": [],
+            "exposed": true,
+            "visibility": "LibraryVisibilityPublic",
+            "build-info": {
+              "buildable": true,
+              "buildTools": [],
+              "buildToolDepends": [],
+              "cppOptions": [
+                "-DHAS_AESON"
+              ],
+              "asmOptions": [],
+              "cmmOptions": [],
+              "ccOptions": [],
+              "cxxOptions": [],
+              "ldOptions": [],
+              "pkgconfigDepends": [],
+              "frameworks": [],
+              "extraFrameworkDirs": [],
+              "asmSources": [],
+              "cmmSources": [],
+              "cSources": [],
+              "cxxSources": [],
+              "jsSources": [],
+              "hsSourceDirs": [],
+              "otherModules": [],
+              "virtualModules": [],
+              "autogenModules": [],
+              "defaultLanguage": null,
+              "otherLanguages": [],
+              "defaultExtensions": [],
+              "otherExtensions": [],
+              "oldExtensions": [],
+              "extraLibs": [],
+              "extraGHCiLibs": [],
+              "extraBundledLibs": [],
+              "extraLibFlavours": [],
+              "extraDynLibFlavours": [],
+              "extraLibDirs": [],
+              "includeDirs": [],
+              "includes": [],
+              "autogenIncludes": [],
+              "installIncludes": [],
+              "options": [
+                [],
+                []
+              ],
+              "profOptions": [
+                [],
+                []
+              ],
+              "sharedOptions": [
+                [],
+                []
+              ],
+              "staticOptions": [
+                [],
+                []
+              ],
+              "customFieldsBI": [],
+              "targetBuildDepends": [
+                {
+                  "package-name": "aeson",
+                  "version-range": ">=1.4.2 && <3",
+                  "library": [
+                    {}
+                  ]
+                }
+              ],
+              "mixins": []
+            }
+          },
+          "condTreeConstraints": [
             {
-              "package-name": "base",
-              "version-range": ">=4.11 && <5",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hedgehog",
-              "version-range": ">=0.6 && <1.3",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hw-bits",
-              "version-range": ">=0.7 && <0.8",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hw-ip",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "text",
-              "version-range": ">=1.2.3.1 && <3",
+              "package-name": "aeson",
+              "version-range": ">=1.4.2 && <3",
               "library": [
                 {}
               ]
             }
           ],
-          "mixins": []
+          "condTreeComponents": []
         }
       },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": ">=4.11 && <5",
-          "library": [
-            {}
-          ]
+      {
+        "condBranchCondition": {
+          "v": {
+            "flag": "llvm"
+          }
         },
-        {
-          "package-name": "hedgehog",
-          "version-range": ">=0.6 && <1.3",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hw-bits",
-          "version-range": ">=0.7 && <0.8",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hw-ip",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "text",
-          "version-range": ">=1.2.3.1 && <3",
-          "library": [
-            {}
-          ]
+        "condBranchIfTrue": {
+          "condTreeData": {
+            "name": {},
+            "exposed-modules": [],
+            "re-exported-modules": [],
+            "signatures": [],
+            "exposed": true,
+            "visibility": "LibraryVisibilityPublic",
+            "build-info": {
+              "buildable": true,
+              "buildTools": [],
+              "buildToolDepends": [],
+              "cppOptions": [],
+              "asmOptions": [],
+              "cmmOptions": [],
+              "ccOptions": [],
+              "cxxOptions": [],
+              "ldOptions": [],
+              "pkgconfigDepends": [],
+              "frameworks": [],
+              "extraFrameworkDirs": [],
+              "asmSources": [],
+              "cmmSources": [],
+              "cSources": [],
+              "cxxSources": [],
+              "jsSources": [],
+              "hsSourceDirs": [],
+              "otherModules": [],
+              "virtualModules": [],
+              "autogenModules": [],
+              "defaultLanguage": null,
+              "otherLanguages": [],
+              "defaultExtensions": [],
+              "otherExtensions": [],
+              "oldExtensions": [],
+              "extraLibs": [],
+              "extraGHCiLibs": [],
+              "extraBundledLibs": [],
+              "extraLibFlavours": [],
+              "extraDynLibFlavours": [],
+              "extraLibDirs": [],
+              "includeDirs": [],
+              "includes": [],
+              "autogenIncludes": [],
+              "installIncludes": [],
+              "options": [
+                [
+                  "-fllvm",
+                  "-optlo=-O3",
+                  "-optlo=-tailcallelim"
+                ],
+                []
+              ],
+              "profOptions": [
+                [],
+                []
+              ],
+              "sharedOptions": [
+                [],
+                []
+              ],
+              "staticOptions": [
+                [],
+                []
+              ],
+              "customFieldsBI": [],
+              "targetBuildDepends": [],
+              "mixins": []
+            }
+          },
+          "condTreeConstraints": [],
+          "condTreeComponents": []
         }
-      ],
-      "condTreeComponents": []
-    }
+      }
+    ]
   },
   "executables": {
-    "hw-ip": {
+    "dump-automaton": {
       "condTreeData": {
-        "name": "hw-ip",
+        "name": "dump-automaton",
         "module-path": "Main.hs",
         "scope": "public",
         "build-info": {
@@ -521,29 +556,9 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "app"
+            "app/dump-automaton"
           ],
-          "otherModules": [
-            [
-              "App",
-              "Commands"
-            ],
-            [
-              "App",
-              "Commands",
-              "RangeStats"
-            ],
-            [
-              "App",
-              "Commands",
-              "TextToWord"
-            ],
-            [
-              "App",
-              "Commands",
-              "Types"
-            ]
-          ],
+          "otherModules": [],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
@@ -562,16 +577,7 @@
           "autogenIncludes": [],
           "installIncludes": [],
           "options": [
-            [
-              "-Wall",
-              "-Wcompat",
-              "-Wincomplete-record-updates",
-              "-Wincomplete-uni-patterns",
-              "-Wredundant-constraints",
-              "-threaded",
-              "-rtsopts",
-              "-with-rtsopts=-N"
-            ],
+            [],
             []
           ],
           "profOptions": [
@@ -590,63 +596,14 @@
           "targetBuildDepends": [
             {
               "package-name": "base",
-              "version-range": ">=4.11 && <5",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "appar",
-              "version-range": ">=0.1.8 && <0.2",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "binary",
-              "version-range": ">=0.8 && <0.9",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "bytestring",
-              "version-range": ">=0.10.6 && <0.12",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "generic-lens",
-              "version-range": ">=2.2 && <2.3",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hw-ip",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "lens",
-              "version-range": ">=4 && <6",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "optparse-applicative",
-              "version-range": ">=0.14 && <0.18",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "text",
-              "version-range": ">=1.2.3.1 && <3",
+              "package-name": "alfred-margaret",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -658,63 +615,14 @@
       "condTreeConstraints": [
         {
           "package-name": "base",
-          "version-range": ">=4.11 && <5",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "appar",
-          "version-range": ">=0.1.8 && <0.2",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "binary",
-          "version-range": ">=0.8 && <0.9",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "bytestring",
-          "version-range": ">=0.10.6 && <0.12",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "generic-lens",
-          "version-range": ">=2.2 && <2.3",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hw-ip",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "lens",
-          "version-range": ">=4 && <6",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "optparse-applicative",
-          "version-range": ">=0.14 && <0.18",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "text",
-          "version-range": ">=1.2.3.1 && <3",
+          "package-name": "alfred-margaret",
+          "version-range": "-any",
           "library": [
             {}
           ]
@@ -724,7 +632,7 @@
     }
   },
   "test-suites": {
-    "hw-ip-test": {
+    "test-suite": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -732,18 +640,12 @@
             1,
             0
           ],
-          "filepath": "Spec.hs"
+          "filepath": "Main.hs"
         },
         "build-info": {
           "buildable": true,
           "buildTools": [],
-          "buildToolDepends": [
-            {
-              "package-name": "hspec-discover",
-              "executable-component-name": "hspec-discover",
-              "version-range": "-any"
-            }
-          ],
+          "buildToolDepends": [],
           "cppOptions": [],
           "asmOptions": [],
           "cmmOptions": [],
@@ -759,57 +661,33 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "test",
-            "gen"
+            "tests"
           ],
           "otherModules": [
             [
-              "HaskellWorks",
               "Data",
-              "Network",
-              "IpBlockSpec"
+              "Text",
+              "AhoCorasickSpec"
             ],
             [
-              "HaskellWorks",
               "Data",
-              "Network",
-              "IpSpec"
+              "Text",
+              "BoyerMooreSpec"
             ],
             [
-              "HaskellWorks",
               "Data",
-              "Network",
-              "Ipv4Spec"
+              "Text",
+              "BoyerMooreCISpec"
             ],
             [
-              "HaskellWorks",
               "Data",
-              "Network",
-              "Ipv6Spec"
+              "Text",
+              "Utf8Spec"
             ],
             [
-              "HaskellWorks",
               "Data",
-              "Network",
-              "RangeSpec"
-            ],
-            [
-              "HaskellWorks",
-              "Data",
-              "Network",
-              "Unsafe"
-            ],
-            [
-              "HaskellWorks",
-              "Data",
-              "Network",
-              "Word128Spec"
-            ],
-            [
-              "HaskellWorks",
-              "Data",
-              "Network",
-              "Gen"
+              "Text",
+              "TestInstances"
             ]
           ],
           "virtualModules": [],
@@ -832,13 +710,8 @@
           "options": [
             [
               "-Wall",
-              "-Wcompat",
               "-Wincomplete-record-updates",
-              "-Wincomplete-uni-patterns",
-              "-Wredundant-constraints",
-              "-threaded",
-              "-rtsopts",
-              "-with-rtsopts=-N"
+              "-Wno-orphans"
             ],
             []
           ],
@@ -858,55 +731,55 @@
           "targetBuildDepends": [
             {
               "package-name": "base",
-              "version-range": ">=4.11 && <5",
+              "version-range": ">=4.7 && <5",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "appar",
-              "version-range": ">=0.1.8 && <0.2",
+              "package-name": "QuickCheck",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "generic-lens",
-              "version-range": ">=2.2 && <2.3",
+              "package-name": "alfred-margaret",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hedgehog",
-              "version-range": ">=0.6 && <1.3",
+              "package-name": "deepseq",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
               "package-name": "hspec",
-              "version-range": ">=2.4.4 && <3",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hw-bits",
-              "version-range": ">=0.7 && <0.8",
+              "package-name": "hspec-expectations",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hw-hspec-hedgehog",
-              "version-range": ">=0.1.0.2 && <0.2",
+              "package-name": "primitive",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hw-ip",
+              "package-name": "quickcheck-instances",
               "version-range": "-any",
               "library": [
                 {}
@@ -914,7 +787,7 @@
             },
             {
               "package-name": "text",
-              "version-range": ">=1.2.3.1 && <3",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -926,55 +799,55 @@
       "condTreeConstraints": [
         {
           "package-name": "base",
-          "version-range": ">=4.11 && <5",
+          "version-range": ">=4.7 && <5",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "appar",
-          "version-range": ">=0.1.8 && <0.2",
+          "package-name": "QuickCheck",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "generic-lens",
-          "version-range": ">=2.2 && <2.3",
+          "package-name": "alfred-margaret",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hedgehog",
-          "version-range": ">=0.6 && <1.3",
+          "package-name": "deepseq",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
           "package-name": "hspec",
-          "version-range": ">=2.4.4 && <3",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hw-bits",
-          "version-range": ">=0.7 && <0.8",
+          "package-name": "hspec-expectations",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hw-hspec-hedgehog",
-          "version-range": ">=0.1.0.2 && <0.2",
+          "package-name": "primitive",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hw-ip",
+          "package-name": "quickcheck-instances",
           "version-range": "-any",
           "library": [
             {}
@@ -982,15 +855,17 @@
         },
         {
           "package-name": "text",
-          "version-range": ">=1.2.3.1 && <3",
+          "version-range": "-any",
           "library": [
             {}
           ]
         }
       ],
       "condTreeComponents": []
-    },
-    "doctest": {
+    }
+  },
+  "benchmarks": {
+    "uvector-vs-tba": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -998,18 +873,12 @@
             1,
             0
           ],
-          "filepath": "DoctestDriver.hs"
+          "filepath": "Main.hs"
         },
         "build-info": {
           "buildable": true,
           "buildTools": [],
-          "buildToolDepends": [
-            {
-              "package-name": "doctest-discover",
-              "executable-component-name": "doctest-discover",
-              "version-range": "-any"
-            }
-          ],
+          "buildToolDepends": [],
           "cppOptions": [],
           "asmOptions": [],
           "cmmOptions": [],
@@ -1025,7 +894,7 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "doctest"
+            "bench/uvector-vs-tba"
           ],
           "otherModules": [],
           "virtualModules": [],
@@ -1048,13 +917,8 @@
           "options": [
             [
               "-Wall",
-              "-Wcompat",
               "-Wincomplete-record-updates",
-              "-Wincomplete-uni-patterns",
-              "-Wredundant-constraints",
-              "-threaded",
-              "-rtsopts",
-              "-with-rtsopts=-N"
+              "-Wno-orphans"
             ],
             []
           ],
@@ -1074,27 +938,34 @@
           "targetBuildDepends": [
             {
               "package-name": "base",
-              "version-range": ">=4.11 && <5",
+              "version-range": ">=4.7 && <5",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "doctest",
-              "version-range": ">=0.16.2 && <0.21",
+              "package-name": "alfred-margaret",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "doctest-discover",
-              "version-range": ">=0.2 && <0.3",
+              "package-name": "vector",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hw-ip",
+              "package-name": "deepseq",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "criterion",
               "version-range": "-any",
               "library": [
                 {}
@@ -1107,27 +978,183 @@
       "condTreeConstraints": [
         {
           "package-name": "base",
-          "version-range": ">=4.11 && <5",
+          "version-range": ">=4.7 && <5",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "doctest",
-          "version-range": ">=0.16.2 && <0.21",
+          "package-name": "alfred-margaret",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "doctest-discover",
-          "version-range": ">=0.2 && <0.3",
+          "package-name": "vector",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hw-ip",
+          "package-name": "deepseq",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "criterion",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    },
+    "bm": {
+      "condTreeData": {
+        "name": "",
+        "interface": {
+          "version": [
+            1,
+            0
+          ],
+          "filepath": "Main.hs"
+        },
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "bench/bm"
+          ],
+          "otherModules": [],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-Wall",
+              "-Wincomplete-record-updates",
+              "-Wno-orphans"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": ">=4.7 && <5",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "alfred-margaret",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "deepseq",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "criterion",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "text",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": ">=4.7 && <5",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "alfred-margaret",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "deepseq",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "criterion",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "text",
           "version-range": "-any",
           "library": [
             {}

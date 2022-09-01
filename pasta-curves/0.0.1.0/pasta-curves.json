@@ -3,23 +3,23 @@
     "spec-version": {
       "Left": [
         2,
-        2
+        4
       ]
     },
     "package": {
-      "name": "hw-mquery",
+      "name": "pasta-curves",
       "version": [
         0,
-        2,
+        0,
         1,
-        1
+        0
       ]
     },
     "license": {
       "Left": {
         "license-expression": {
           "expression": {
-            "id": "BSD_3_Clause"
+            "id": "MIT"
           },
           "exception-id": null
         }
@@ -28,55 +28,34 @@
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "2018-2021 John Ky",
-    "maintainer": "newhoggy@gmail.com",
-    "author": "John Ky",
+    "copyright": "2022 Eric Schorn",
+    "maintainer": "Eric Schorn <eric.schorn@nccgroup.com>",
+    "author": "Eric Schorn",
     "stability": "",
     "tested-with": [
       {
         "compiler": "GHC",
-        "versionRange": "==9.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.0.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.7"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
+        "versionRange": "==8.6.5 || ==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.2"
       }
     ],
-    "homepage": "http://github.com/haskell-works/hw-mquery#readme",
+    "homepage": "https://github.com/nccgroup/pasta-curves",
     "pkg-url": "",
-    "bug-reports": "https://github.com/haskell-works/hw-mquery/issues",
+    "bug-reports": "https://github.com/nccgroup/pasta-curves/issues",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/haskell-works/hw-mquery",
+        "location": "https://github.com/nccgroup/pasta-curves.git",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "Monadic query DSL",
-    "description": "Please see README.md",
-    "category": "Data",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "synopsis": "Provides the Pasta curves: Pallas, Vesta and their field elements Fp and Fq.",
+    "description": "Provides the Pasta curves: Pallas, Vesta and their field elements Fp and Fq.\nSee the PastaCurves module below and/or the GitHub repository README.md for more details.",
+    "category": "Cryptography, Elliptic Curves",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -87,62 +66,19 @@
     "benchmarks": [],
     "data-files": [],
     "data-dir": ".",
-    "extra-source-files": [
-      "README.md"
-    ],
+    "extra-source-files": [],
     "extra-tmp-files": [],
-    "extra-doc-files": []
+    "extra-doc-files": [
+      "README.md",
+      "CHANGELOG.md"
+    ]
   },
   "library": {
     "condTreeData": {
       "name": {},
       "exposed-modules": [
         [
-          "HaskellWorks",
-          "Data",
-          "MQuery"
-        ],
-        [
-          "HaskellWorks",
-          "Data",
-          "MQuery",
-          "AtLeastSize"
-        ],
-        [
-          "HaskellWorks",
-          "Data",
-          "MQuery",
-          "Entry"
-        ],
-        [
-          "HaskellWorks",
-          "Data",
-          "MQuery",
-          "Micro"
-        ],
-        [
-          "HaskellWorks",
-          "Data",
-          "MQuery",
-          "Mini"
-        ],
-        [
-          "HaskellWorks",
-          "Data",
-          "MQuery",
-          "Row"
-        ],
-        [
-          "HaskellWorks",
-          "Data",
-          "MQuery",
-          "Shows"
-        ],
-        [
-          "HaskellWorks",
-          "Data",
-          "MQuery",
-          "ToBool"
+          "PastaCurves"
         ]
       ],
       "re-exported-modules": [],
@@ -168,19 +104,21 @@
         "cxxSources": [],
         "jsSources": [],
         "hsSourceDirs": [
-          "src"
+          "src/Crypto/ECC"
         ],
         "otherModules": [
           [
-            "Paths_hw_mquery"
+            "Curves"
+          ],
+          [
+            "Fields"
+          ],
+          [
+            "Pasta"
           ]
         ],
         "virtualModules": [],
-        "autogenModules": [
-          [
-            "Paths_hw_mquery"
-          ]
-        ],
+        "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [],
@@ -198,7 +136,10 @@
         "installIncludes": [],
         "options": [
           [
-            "-Wall"
+            "-Weverything",
+            "-Wno-missing-import-lists",
+            "-Wno-unsafe",
+            "-Wno-all-missed-specialisations"
           ],
           []
         ],
@@ -218,28 +159,42 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.11 && <5",
+            "version-range": ">=4.12 && <4.17",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "ansi-wl-pprint",
-            "version-range": ">=0.6.8 && <0.7",
+            "package-name": "utf8-string",
+            "version-range": ">=1 && <1.0.3",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "dlist",
-            "version-range": ">=0.8.0 && <1.1",
+            "package-name": "cryptonite",
+            "version-range": ">=0.29 && <0.31",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "lens",
-            "version-range": ">=4.17 && <6",
+            "package-name": "memory",
+            "version-range": ">=0.16 && <0.18",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "bytestring",
+            "version-range": ">=0.10 && <0.11.4",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "random",
+            "version-range": ">=1.1 && <1.3",
             "library": [
               {}
             ]
@@ -251,28 +206,42 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.11 && <5",
+        "version-range": ">=4.12 && <4.17",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "ansi-wl-pprint",
-        "version-range": ">=0.6.8 && <0.7",
+        "package-name": "utf8-string",
+        "version-range": ">=1 && <1.0.3",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "dlist",
-        "version-range": ">=0.8.0 && <1.1",
+        "package-name": "cryptonite",
+        "version-range": ">=0.29 && <0.31",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "lens",
-        "version-range": ">=4.17 && <6",
+        "package-name": "memory",
+        "version-range": ">=0.16 && <0.18",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "bytestring",
+        "version-range": ">=0.10 && <0.11.4",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "random",
+        "version-range": ">=1.1 && <1.3",
         "library": [
           {}
         ]
@@ -281,9 +250,9 @@
     "condTreeComponents": []
   },
   "executables": {
-    "hw-mquery-example": {
+    "pasta-curves": {
       "condTreeData": {
-        "name": "hw-mquery-example",
+        "name": "pasta-curves",
         "module-path": "Main.hs",
         "scope": "public",
         "build-info": {
@@ -305,289 +274,21 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "app"
-          ],
-          "otherModules": [],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [
-              "-Wall",
-              "-threaded",
-              "-rtsopts",
-              "-with-rtsopts=-N"
-            ],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "base",
-              "version-range": ">=4.11 && <5",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hw-mquery",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": ">=4.11 && <5",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hw-mquery",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": []
-    }
-  },
-  "test-suites": {
-    "doctest": {
-      "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "DoctestDriver.hs"
-        },
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [
-            {
-              "package-name": "doctest-discover",
-              "executable-component-name": "doctest-discover",
-              "version-range": "-any"
-            }
-          ],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "doctest"
-          ],
-          "otherModules": [],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [
-              "-Wall",
-              "-threaded",
-              "-rtsopts",
-              "-with-rtsopts=-N"
-            ],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "base",
-              "version-range": ">=4.11 && <5",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "doctest",
-              "version-range": ">=0.16.2 && <0.21",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "doctest-discover",
-              "version-range": ">=0.2 && <0.3",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hw-mquery",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": ">=4.11 && <5",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "doctest",
-          "version-range": ">=0.16.2 && <0.21",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "doctest-discover",
-          "version-range": ">=0.2 && <0.3",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hw-mquery",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": []
-    },
-    "hw-mquery-test": {
-      "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "Spec.hs"
-        },
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [
-            {
-              "package-name": "hspec-discover",
-              "executable-component-name": "hspec-discover",
-              "version-range": "-any"
-            }
-          ],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "test"
+            "app",
+            "src/Crypto/ECC"
           ],
           "otherModules": [
             [
-              "HaskellWorks",
-              "Data",
-              "Model",
-              "Example"
+              "Curves"
             ],
             [
-              "HaskellWorks",
-              "Data",
-              "Model",
-              "Lens"
+              "Fields"
             ],
             [
-              "HaskellWorks",
-              "Data",
-              "Model",
-              "Type"
+              "Pasta"
             ],
             [
-              "HaskellWorks",
-              "Data",
-              "MQuerySpec"
+              "PastaCurves"
             ]
           ],
           "virtualModules": [],
@@ -609,7 +310,10 @@
           "installIncludes": [],
           "options": [
             [
-              "-Wall",
+              "-Weverything",
+              "-Wno-missing-import-lists",
+              "-Wno-unsafe",
+              "-Wno-all-missed-specialisations",
               "-threaded",
               "-rtsopts",
               "-with-rtsopts=-N"
@@ -632,49 +336,42 @@
           "targetBuildDepends": [
             {
               "package-name": "base",
-              "version-range": ">=4.11 && <5",
+              "version-range": ">=4.12 && <4.17",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "dlist",
-              "version-range": ">=0.8.0 && <1.1",
+              "package-name": "utf8-string",
+              "version-range": ">=1 && <1.0.3",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hedgehog",
-              "version-range": ">=0.6.1 && <1.3",
+              "package-name": "cryptonite",
+              "version-range": ">=0.29 && <0.31",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hspec",
-              "version-range": ">=2.6.0 && <3",
+              "package-name": "memory",
+              "version-range": ">=0.16 && <0.18",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hw-hspec-hedgehog",
-              "version-range": ">=0.1.0.5 && <0.2",
+              "package-name": "bytestring",
+              "version-range": ">=0.10 && <0.11.4",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "lens",
-              "version-range": ">=4.17 && <6",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hw-mquery",
-              "version-range": "-any",
+              "package-name": "random",
+              "version-range": ">=1.1 && <1.3",
               "library": [
                 {}
               ]
@@ -686,49 +383,470 @@
       "condTreeConstraints": [
         {
           "package-name": "base",
-          "version-range": ">=4.11 && <5",
+          "version-range": ">=4.12 && <4.17",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "dlist",
-          "version-range": ">=0.8.0 && <1.1",
+          "package-name": "utf8-string",
+          "version-range": ">=1 && <1.0.3",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hedgehog",
-          "version-range": ">=0.6.1 && <1.3",
+          "package-name": "cryptonite",
+          "version-range": ">=0.29 && <0.31",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hspec",
-          "version-range": ">=2.6.0 && <3",
+          "package-name": "memory",
+          "version-range": ">=0.16 && <0.18",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hw-hspec-hedgehog",
-          "version-range": ">=0.1.0.5 && <0.2",
+          "package-name": "bytestring",
+          "version-range": ">=0.10 && <0.11.4",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "lens",
-          "version-range": ">=4.17 && <6",
+          "package-name": "random",
+          "version-range": ">=1.1 && <1.3",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    }
+  },
+  "test-suites": {
+    "pasta-curves-test": {
+      "condTreeData": {
+        "name": "",
+        "interface": {
+          "version": [
+            1,
+            0
+          ],
+          "filepath": "Spec.hs"
+        },
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "test",
+            "src/Crypto/ECC"
+          ],
+          "otherModules": [
+            [
+              "Curves"
+            ],
+            [
+              "Fields"
+            ],
+            [
+              "Pasta"
+            ],
+            [
+              "PastaCurves"
+            ],
+            [
+              "TestFields"
+            ],
+            [
+              "TestCurves"
+            ]
+          ],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-Weverything",
+              "-Wno-missing-import-lists",
+              "-Wno-unsafe",
+              "-Wno-all-missed-specialisations",
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": ">=4.12 && <4.17",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "utf8-string",
+              "version-range": ">=1 && <1.0.3",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "cryptonite",
+              "version-range": ">=0.29 && <0.31",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "memory",
+              "version-range": ">=0.16 && <0.18",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "bytestring",
+              "version-range": ">=0.10 && <0.11.4",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "random",
+              "version-range": ">=1.1 && <1.3",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "tasty",
+              "version-range": ">=1.4 && <1.5",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "tasty-hunit",
+              "version-range": ">=0.10 && <0.11",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "tasty-quickcheck",
+              "version-range": ">=0.10 && <0.11",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": ">=4.12 && <4.17",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hw-mquery",
-          "version-range": "-any",
+          "package-name": "utf8-string",
+          "version-range": ">=1 && <1.0.3",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "cryptonite",
+          "version-range": ">=0.29 && <0.31",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "memory",
+          "version-range": ">=0.16 && <0.18",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "bytestring",
+          "version-range": ">=0.10 && <0.11.4",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "random",
+          "version-range": ">=1.1 && <1.3",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "tasty",
+          "version-range": ">=1.4 && <1.5",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "tasty-hunit",
+          "version-range": ">=0.10 && <0.11",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "tasty-quickcheck",
+          "version-range": ">=0.10 && <0.11",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    }
+  },
+  "benchmarks": {
+    "pasta-curves-benchmark": {
+      "condTreeData": {
+        "name": "",
+        "interface": {
+          "version": [
+            1,
+            0
+          ],
+          "filepath": "Main.hs"
+        },
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "benchmark",
+            "src/Crypto/ECC"
+          ],
+          "otherModules": [
+            [
+              "Curves"
+            ],
+            [
+              "Fields"
+            ],
+            [
+              "Pasta"
+            ],
+            [
+              "PastaCurves"
+            ]
+          ],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-Weverything",
+              "-Wno-missing-import-lists",
+              "-Wno-unsafe",
+              "-Wno-all-missed-specialisations",
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": ">=4.12 && <4.17",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "utf8-string",
+              "version-range": ">=1 && <1.0.3",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "cryptonite",
+              "version-range": ">=0.29 && <0.31",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "memory",
+              "version-range": ">=0.16 && <0.18",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "bytestring",
+              "version-range": ">=0.10 && <0.11.4",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "random",
+              "version-range": ">=1.1 && <1.3",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "criterion",
+              "version-range": ">=1.5 && <1.6",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": ">=4.12 && <4.17",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "utf8-string",
+          "version-range": ">=1 && <1.0.3",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "cryptonite",
+          "version-range": ">=0.29 && <0.31",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "memory",
+          "version-range": ">=0.16 && <0.18",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "bytestring",
+          "version-range": ">=0.10 && <0.11.4",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "random",
+          "version-range": ">=1.1 && <1.3",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "criterion",
+          "version-range": ">=1.5 && <1.6",
           "library": [
             {}
           ]
