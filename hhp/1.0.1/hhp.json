@@ -1,74 +1,45 @@
 {
   "description": {
     "spec-version": {
-      "Left": [
-        2,
-        0
-      ]
+      "Right": ">=1.10"
     },
     "package": {
-      "name": "tidal",
+      "name": "hhp",
       "version": [
         1,
-        8,
+        0,
         1
       ]
     },
     "license": {
-      "Right": "OtherLicense"
+      "Right": "BSD3"
     },
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "(c) Alex McLean and other contributors, 2021",
-    "maintainer": "Alex McLean <alex@slab.org>, Mike Hodnick <mike.hodnick@gmail.com>",
-    "author": "Alex McLean",
-    "stability": "Experimental",
-    "tested-with": [
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.4.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.3"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.1"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.0.1"
-      }
-    ],
-    "homepage": "http://tidalcycles.org/",
+    "copyright": "",
+    "maintainer": "Kazu Yamamoto <kazu@iij.ad.jp>",
+    "author": "Kazu Yamamoto <kazu@iij.ad.jp>",
+    "stability": "",
+    "tested-with": [],
+    "homepage": "https://github.com/kazu-yamamoto/hhp",
     "pkg-url": "",
     "bug-reports": "",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/tidalcycles/Tidal",
+        "location": "git://github.com/kazu-yamamoto/hhp.git",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "Pattern language for improvised music",
-    "description": "Tidal is a domain specific language for live coding patterns.",
-    "category": "Sound",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "synopsis": "Happy Haskell Programming",
+    "description": "The hhp command is a backend command to enrich\nHaskell programming on editors.\nThe hhpc/hhpi commands are based on HHP library\nwhich is a wrapper of GHC API and Cabal API.\nThis package includes the hhpc command,\nthe hhpi command,\nthe HHP library, and Emacs front-end.\nFor more information, please see its home page.\nVersion 0.x.x supports GHC 8.x only whereas version\n1.x.x suports GHC 9.x only.",
+    "category": "Development",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -78,13 +49,39 @@
     "test-suites": [],
     "benchmarks": [],
     "data-files": [
-      "BootTidal.hs"
+      "Makefile",
+      "hhp.el",
+      "hhp-func.el",
+      "hhp-doc.el",
+      "hhp-comp.el",
+      "hhp-check.el",
+      "hhp-process.el",
+      "hhp-command.el",
+      "hhp-info.el",
+      "hhp-ins-mod.el",
+      "hhp-indent.el",
+      "hhp-pkg.el"
     ],
-    "data-dir": ".",
+    "data-dir": "elisp",
     "extra-source-files": [
-      "README.md",
-      "CHANGELOG.md",
-      "tidal.el"
+      "ChangeLog.md",
+      "test/data/*.cabal",
+      "test/data/*.hs",
+      "test/data/cabal.sandbox.config.in",
+      "test/data/.cabal-sandbox/i386-osx-ghc-7.6.3-packages.conf.d/Cabal-1.18.1.3-2b161c6bf77657aa17e1681d83cb051b.conf",
+      "test/data/broken-cabal/*.cabal",
+      "test/data/broken-sandbox/*.cabal",
+      "test/data/broken-sandbox/cabal.sandbox.config",
+      "test/data/check-test-subdir/*.cabal",
+      "test/data/check-test-subdir/src/Check/Test/*.hs",
+      "test/data/check-test-subdir/test/*.hs",
+      "test/data/check-test-subdir/test/Bar/*.hs",
+      "test/data/check-packageid/cabal.sandbox.config.in",
+      "test/data/check-packageid/.cabal-sandbox/i386-osx-ghc-7.6.3-packages.conf.d/template-haskell-2.8.0.0-32d4f24abdbb6bf41272b183b2e23e9c.conf",
+      "test/data/hhp-check/*.cabal",
+      "test/data/hhp-check/*.hs",
+      "test/data/hhp-check/Data/*.hs",
+      "test/data/subdir1/subdir2/dummy"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -94,129 +91,15 @@
       "name": {},
       "exposed-modules": [
         [
-          "Sound",
-          "Tidal",
-          "Bjorklund"
+          "Hhp"
         ],
         [
-          "Sound",
-          "Tidal",
-          "Carabiner"
+          "Hhp",
+          "Ghc"
         ],
         [
-          "Sound",
-          "Tidal",
-          "Chords"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Config"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Control"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Context"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Core"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "EspGrid"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "ID"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Params"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "ParseBP"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Pattern"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Scales"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Safe",
-          "Context"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Safe",
-          "Boot"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Show"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Simple"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Stream"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Tempo"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Time"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Transition"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "UI"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Utils"
-        ],
-        [
-          "Sound",
-          "Tidal",
-          "Version"
-        ],
-        [
-          "Paths_tidal"
+          "Hhp",
+          "Internal"
         ]
       ],
       "re-exported-modules": [],
@@ -242,15 +125,96 @@
         "cxxSources": [],
         "jsSources": [],
         "hsSourceDirs": [
-          "src"
+          "lib"
         ],
-        "otherModules": [],
-        "virtualModules": [],
-        "autogenModules": [
+        "otherModules": [
           [
-            "Paths_tidal"
+            "Hhp",
+            "Boot"
+          ],
+          [
+            "Hhp",
+            "Browse"
+          ],
+          [
+            "Hhp",
+            "CabalApi"
+          ],
+          [
+            "Hhp",
+            "Check"
+          ],
+          [
+            "Hhp",
+            "Cradle"
+          ],
+          [
+            "Hhp",
+            "Debug"
+          ],
+          [
+            "Hhp",
+            "Doc"
+          ],
+          [
+            "Hhp",
+            "Find"
+          ],
+          [
+            "Hhp",
+            "Flag"
+          ],
+          [
+            "Hhp",
+            "Gap"
+          ],
+          [
+            "Hhp",
+            "GHCApi"
+          ],
+          [
+            "Hhp",
+            "GhcPkg"
+          ],
+          [
+            "Hhp",
+            "Logger"
+          ],
+          [
+            "Hhp",
+            "Info"
+          ],
+          [
+            "Hhp",
+            "Lang"
+          ],
+          [
+            "Hhp",
+            "Lint"
+          ],
+          [
+            "Hhp",
+            "List"
+          ],
+          [
+            "Hhp",
+            "PkgDoc"
+          ],
+          [
+            "Hhp",
+            "Syb"
+          ],
+          [
+            "Hhp",
+            "Types"
+          ],
+          [
+            "Hhp",
+            "Things"
           ]
         ],
+        "virtualModules": [],
+        "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [],
@@ -288,112 +252,84 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.8 && <5",
+            "version-range": ">=4.9 && <5",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "Cabal",
+            "version-range": ">=1.24",
             "library": [
               {}
             ]
           },
           {
             "package-name": "containers",
-            "version-range": "<0.7",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "colour",
-            "version-range": "<2.4",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "hosc",
-            "version-range": ">=0.17 && <0.20",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "text",
-            "version-range": "<2.1",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "parsec",
-            "version-range": ">=3.1.12 && <3.2",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "network",
-            "version-range": "<3.2",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "bifunctors",
-            "version-range": "<5.6",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "transformers",
-            "version-range": ">=0.5 && <0.5.7",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "bytestring",
-            "version-range": "<0.12",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "clock",
-            "version-range": "<0.9",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
             "package-name": "deepseq",
-            "version-range": ">=1.1.0.0",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "primitive",
-            "version-range": "<0.8",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "random",
-            "version-range": "<1.3",
+            "package-name": "directory",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
             "package-name": "exceptions",
-            "version-range": "<0.11",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "mtl",
-            "version-range": ">=2.2",
+            "package-name": "filepath",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "ghc",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "hlint",
+            "version-range": ">=1.8.61",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "process",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "syb",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "ghc-boot",
+            "version-range": "-any",
             "library": [
               {}
             ]
@@ -405,112 +341,84 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.8 && <5",
+        "version-range": ">=4.9 && <5",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "Cabal",
+        "version-range": ">=1.24",
         "library": [
           {}
         ]
       },
       {
         "package-name": "containers",
-        "version-range": "<0.7",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "colour",
-        "version-range": "<2.4",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "hosc",
-        "version-range": ">=0.17 && <0.20",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "text",
-        "version-range": "<2.1",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "parsec",
-        "version-range": ">=3.1.12 && <3.2",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "network",
-        "version-range": "<3.2",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "bifunctors",
-        "version-range": "<5.6",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "transformers",
-        "version-range": ">=0.5 && <0.5.7",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "bytestring",
-        "version-range": "<0.12",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "clock",
-        "version-range": "<0.9",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
         "package-name": "deepseq",
-        "version-range": ">=1.1.0.0",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "primitive",
-        "version-range": "<0.8",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "random",
-        "version-range": "<1.3",
+        "package-name": "directory",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
         "package-name": "exceptions",
-        "version-range": "<0.11",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "mtl",
-        "version-range": ">=2.2",
+        "package-name": "filepath",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "ghc",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "hlint",
+        "version-range": ">=1.8.61",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "process",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "syb",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "ghc-boot",
+        "version-range": "-any",
         "library": [
           {}
         ]
@@ -518,8 +426,288 @@
     ],
     "condTreeComponents": []
   },
+  "executables": {
+    "hhpc": {
+      "condTreeData": {
+        "name": "hhpc",
+        "module-path": "hhpc.hs",
+        "scope": "public",
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "src"
+          ],
+          "otherModules": [
+            [
+              "Paths_hhp"
+            ]
+          ],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-Wall"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": ">=4.9 && <5",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "directory",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "filepath",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "hhp",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": ">=4.9 && <5",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "directory",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "filepath",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "hhp",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    },
+    "hhpi": {
+      "condTreeData": {
+        "name": "hhpi",
+        "module-path": "hhpi.hs",
+        "scope": "public",
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "src"
+          ],
+          "otherModules": [
+            [
+              "Paths_hhp"
+            ]
+          ],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-Wall"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": ">=4.9 && <5",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "containers",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "directory",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "filepath",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "hhp",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": ">=4.9 && <5",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "containers",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "directory",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "filepath",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "hhp",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    }
+  },
   "test-suites": {
-    "dontcrash": {
+    "spec": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -527,7 +715,405 @@
             1,
             0
           ],
-          "filepath": "dontcrash.hs"
+          "filepath": "Spec.hs"
+        },
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [
+            {
+              "package-name": "hspec-discover",
+              "executable-component-name": "hspec-discover",
+              "version-range": "==2.*"
+            }
+          ],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "test",
+            "lib"
+          ],
+          "otherModules": [
+            [
+              "Dir"
+            ],
+            [
+              "BrowseSpec"
+            ],
+            [
+              "CabalApiSpec"
+            ],
+            [
+              "CheckSpec"
+            ],
+            [
+              "FlagSpec"
+            ],
+            [
+              "InfoSpec"
+            ],
+            [
+              "LangSpec"
+            ],
+            [
+              "LintSpec"
+            ],
+            [
+              "ListSpec"
+            ],
+            [
+              "GhcPkgSpec"
+            ],
+            [
+              "Hhp"
+            ],
+            [
+              "Hhp",
+              "Boot"
+            ],
+            [
+              "Hhp",
+              "Browse"
+            ],
+            [
+              "Hhp",
+              "CabalApi"
+            ],
+            [
+              "Hhp",
+              "Check"
+            ],
+            [
+              "Hhp",
+              "Cradle"
+            ],
+            [
+              "Hhp",
+              "Debug"
+            ],
+            [
+              "Hhp",
+              "Doc"
+            ],
+            [
+              "Hhp",
+              "Find"
+            ],
+            [
+              "Hhp",
+              "Flag"
+            ],
+            [
+              "Hhp",
+              "Gap"
+            ],
+            [
+              "Hhp",
+              "GHCApi"
+            ],
+            [
+              "Hhp",
+              "GhcPkg"
+            ],
+            [
+              "Hhp",
+              "Info"
+            ],
+            [
+              "Hhp",
+              "Lang"
+            ],
+            [
+              "Hhp",
+              "Lint"
+            ],
+            [
+              "Hhp",
+              "List"
+            ],
+            [
+              "Hhp",
+              "Logger"
+            ],
+            [
+              "Hhp",
+              "PkgDoc"
+            ],
+            [
+              "Hhp",
+              "Syb"
+            ],
+            [
+              "Hhp",
+              "Types"
+            ],
+            [
+              "Hhp",
+              "Things"
+            ]
+          ],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-Wall"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": ">=4.9 && <5",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "Cabal",
+              "version-range": ">=1.24",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "containers",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "deepseq",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "directory",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "exceptions",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "extra",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "filepath",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "ghc",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "hspec",
+              "version-range": ">=1.7.1",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "process",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "syb",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "hlint",
+              "version-range": ">=1.7.1",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "ghc-boot",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": ">=4.9 && <5",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "Cabal",
+          "version-range": ">=1.24",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "containers",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "deepseq",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "directory",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "exceptions",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "extra",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "filepath",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "ghc",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "hspec",
+          "version-range": ">=1.7.1",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "process",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "syb",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "hlint",
+          "version-range": ">=1.7.1",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "ghc-boot",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    },
+    "doctest": {
+      "condTreeData": {
+        "name": "",
+        "interface": {
+          "version": [
+            1,
+            0
+          ],
+          "filepath": "doctests.hs"
         },
         "build-info": {
           "buildable": true,
@@ -569,168 +1155,6 @@
           "autogenIncludes": [],
           "installIncludes": [],
           "options": [
-            [],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "base",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "tidal",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "tidal",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": []
-    },
-    "tests": {
-      "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "Test.hs"
-        },
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "test"
-          ],
-          "otherModules": [
-            [
-              "Sound",
-              "Tidal",
-              "ControlTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "CoreTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "ParamsTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "ParseTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "PatternTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "ScalesTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "ChordsTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "StreamTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "UITest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "UtilsTest"
-            ],
-            [
-              "Sound",
-              "Tidal",
-              "ExceptionsTest"
-            ],
-            [
-              "TestUtils"
-            ]
-          ],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
             [
               "-Wall"
             ],
@@ -752,48 +1176,20 @@
           "targetBuildDepends": [
             {
               "package-name": "base",
-              "version-range": "==4.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "microspec",
-              "version-range": ">=0.2.0.1",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hosc",
-              "version-range": ">=0.17 && <0.20",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "containers",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "parsec",
-              "version-range": "-any",
+              "package-name": "doctest",
+              "version-range": ">=0.9.3",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "tidal",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "deepseq",
+              "package-name": "hlint",
               "version-range": "-any",
               "library": [
                 {}
@@ -806,314 +1202,20 @@
       "condTreeConstraints": [
         {
           "package-name": "base",
-          "version-range": "==4.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "microspec",
-          "version-range": ">=0.2.0.1",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hosc",
-          "version-range": ">=0.17 && <0.20",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "containers",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "parsec",
-          "version-range": "-any",
+          "package-name": "doctest",
+          "version-range": ">=0.9.3",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "tidal",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "deepseq",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": []
-    }
-  },
-  "benchmarks": {
-    "bench-speed": {
-      "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "Main.hs"
-        },
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "bench/Speed"
-          ],
-          "otherModules": [
-            [
-              "Tidal",
-              "PatternB"
-            ],
-            [
-              "Tidal",
-              "CoreB"
-            ],
-            [
-              "Tidal",
-              "UIB"
-            ],
-            [
-              "Tidal",
-              "Inputs"
-            ]
-          ],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [
-              "-Wall"
-            ],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "base",
-              "version-range": "==4.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "criterion",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "tidal",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": "==4.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "criterion",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "tidal",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": []
-    },
-    "bench-memory": {
-      "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "Main.hs"
-        },
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "bench/Memory"
-          ],
-          "otherModules": [
-            [
-              "Tidal",
-              "UIB"
-            ],
-            [
-              "Tidal",
-              "Inputs"
-            ]
-          ],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [
-              "-Wall"
-            ],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "base",
-              "version-range": "==4.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "weigh",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "tidal",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": "==4.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "weigh",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "tidal",
+          "package-name": "hlint",
           "version-range": "-any",
           "library": [
             {}
