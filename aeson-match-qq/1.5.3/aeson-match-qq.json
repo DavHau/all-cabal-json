@@ -7,48 +7,42 @@
       ]
     },
     "package": {
-      "name": "ten-unordered-containers",
+      "name": "aeson-match-qq",
       "version": [
-        0,
         1,
-        0,
+        5,
         3
       ]
     },
     "license": {
-      "Right": "OtherLicense"
+      "Right": "BSD2"
     },
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "2020-2021 Google LLC",
-    "maintainer": "Andrew Pritchard <awpritchard@gmail.com>",
-    "author": "Andrew Pritchard <awpritchard@gmail.com>",
+    "copyright": "Matvey Aksenov 2022",
+    "maintainer": "matvey.aksenov@gmail.com",
+    "author": "",
     "stability": "",
     "tested-with": [],
-    "homepage": "https://github.com/google/hs-ten#readme",
+    "homepage": "https://github.com/supki/aeson-match-qq#readme",
     "pkg-url": "",
-    "bug-reports": "https://github.com/google/hs-ten/issues",
+    "bug-reports": "https://github.com/supki/aeson-match-qq/issues",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/google/hs-ten",
+        "location": "https://github.com/supki/aeson-match-qq",
         "module": null,
         "branch": null,
         "tag": null,
-        "subdir": "ten-unordered-containers"
+        "subdir": null
       }
     ],
-    "synopsis": "Higher-kinded hash containers",
-    "description": "This provides unordered (hash-based) containers of kind @(k -> Type) -> Type@\nbased on\n<https://hackage.haskell.org/package/unordered-containers unordered-containers>.\nCurrently only @HashMap10@ is implemented.",
-    "category": "Data",
-    "custom-fields": [
-      [
-        "x-revision",
-        "2"
-      ]
-    ],
+    "synopsis": "Declarative JSON matchers.",
+    "description": "See README.markdown",
+    "category": "Web",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -60,7 +54,8 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
-      "CHANGELOG.md"
+      "README.markdown",
+      "CHANGELOG.markdown"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -70,9 +65,30 @@
       "name": {},
       "exposed-modules": [
         [
-          "Data",
-          "Ten",
-          "HashMap"
+          "Aeson",
+          "Match",
+          "QQ"
+        ],
+        [
+          "Aeson",
+          "Match",
+          "QQ",
+          "Internal",
+          "Match"
+        ],
+        [
+          "Aeson",
+          "Match",
+          "QQ",
+          "Internal",
+          "Parse"
+        ],
+        [
+          "Aeson",
+          "Match",
+          "QQ",
+          "Internal",
+          "Value"
         ]
       ],
       "re-exported-modules": [],
@@ -100,7 +116,11 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [],
+        "otherModules": [
+          [
+            "Paths_aeson_match_qq"
+          ]
+        ],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
@@ -119,7 +139,10 @@
         "autogenIncludes": [],
         "installIncludes": [],
         "options": [
-          [],
+          [
+            "-funbox-strict-fields",
+            "-Wall"
+          ],
           []
         ],
         "profOptions": [
@@ -137,57 +160,99 @@
         "customFieldsBI": [],
         "targetBuildDepends": [
           {
+            "package-name": "aeson",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "attoparsec",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
             "package-name": "base",
-            "version-range": ">=4.12 && <4.17",
+            "version-range": ">=4.14 && <5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "hashable",
-            "version-range": ">=1.0 && <1.4",
+            "package-name": "bytestring",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "portray",
-            "version-range": ">=0.1.1 && <0.4",
+            "package-name": "case-insensitive",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "portray-diff",
-            "version-range": "==0.1.*",
+            "package-name": "containers",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "some",
-            "version-range": "==1.0.*",
+            "package-name": "either",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "ten",
-            "version-range": "==0.1.*",
+            "package-name": "haskell-src-meta",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "pretty",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "scientific",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "template-haskell",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "text",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
             "package-name": "unordered-containers",
-            "version-range": ">=0.1 && <0.3",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "wrapped",
-            "version-range": "==0.1.*",
+            "package-name": "vector",
+            "version-range": "-any",
             "library": [
               {}
             ]
@@ -198,57 +263,99 @@
     },
     "condTreeConstraints": [
       {
+        "package-name": "aeson",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "attoparsec",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
         "package-name": "base",
-        "version-range": ">=4.12 && <4.17",
+        "version-range": ">=4.14 && <5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "hashable",
-        "version-range": ">=1.0 && <1.4",
+        "package-name": "bytestring",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "portray",
-        "version-range": ">=0.1.1 && <0.4",
+        "package-name": "case-insensitive",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "portray-diff",
-        "version-range": "==0.1.*",
+        "package-name": "containers",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "some",
-        "version-range": "==1.0.*",
+        "package-name": "either",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "ten",
-        "version-range": "==0.1.*",
+        "package-name": "haskell-src-meta",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "pretty",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "scientific",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "template-haskell",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "text",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
         "package-name": "unordered-containers",
-        "version-range": ">=0.1 && <0.3",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "wrapped",
-        "version-range": "==0.1.*",
+        "package-name": "vector",
+        "version-range": "-any",
         "library": [
           {}
         ]
@@ -257,7 +364,7 @@
     "condTreeComponents": []
   },
   "test-suites": {
-    "HashMap-test": {
+    "spec": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -265,7 +372,7 @@
             1,
             0
           ],
-          "filepath": "Main.hs"
+          "filepath": "Spec.hs"
         },
         "build-info": {
           "buildable": true,
@@ -288,7 +395,16 @@
           "hsSourceDirs": [
             "test"
           ],
-          "otherModules": [],
+          "otherModules": [
+            [
+              "Aeson",
+              "Match",
+              "QQSpec"
+            ],
+            [
+              "Paths_aeson_match_qq"
+            ]
+          ],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
@@ -307,7 +423,11 @@
           "autogenIncludes": [],
           "installIncludes": [],
           "options": [
-            [],
+            [
+              "-Wall",
+              "-threaded",
+              "-with-rtsopts=-N"
+            ],
             []
           ],
           "profOptions": [
@@ -325,7 +445,21 @@
           "customFieldsBI": [],
           "targetBuildDepends": [
             {
-              "package-name": "HUnit",
+              "package-name": "aeson",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "aeson-match-qq",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "aeson-qq",
               "version-range": "-any",
               "library": [
                 {}
@@ -333,104 +467,13 @@
             },
             {
               "package-name": "base",
-              "version-range": ">=4.12 && <4.17",
+              "version-range": ">=4.14 && <5",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "hashable",
-              "version-range": ">=1.0 && <1.4",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "lens",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "portray",
-              "version-range": ">=0.1.1 && <0.4",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "portray-diff",
-              "version-range": "==0.1.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "portray-diff-hunit",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "portray-pretty",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "some",
-              "version-range": "==1.0.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "ten",
-              "version-range": "==0.1.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "ten-lens",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "ten-unordered-containers",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "test-framework",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "test-framework-hunit",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "text",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "transformers",
+              "package-name": "hspec",
               "version-range": "-any",
               "library": [
                 {}
@@ -438,14 +481,7 @@
             },
             {
               "package-name": "unordered-containers",
-              "version-range": ">=0.1 && <0.3",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "wrapped",
-              "version-range": "==0.1.*",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -456,7 +492,21 @@
       },
       "condTreeConstraints": [
         {
-          "package-name": "HUnit",
+          "package-name": "aeson",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "aeson-match-qq",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "aeson-qq",
           "version-range": "-any",
           "library": [
             {}
@@ -464,104 +514,13 @@
         },
         {
           "package-name": "base",
-          "version-range": ">=4.12 && <4.17",
+          "version-range": ">=4.14 && <5",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "hashable",
-          "version-range": ">=1.0 && <1.4",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "lens",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "portray",
-          "version-range": ">=0.1.1 && <0.4",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "portray-diff",
-          "version-range": "==0.1.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "portray-diff-hunit",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "portray-pretty",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "some",
-          "version-range": "==1.0.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "ten",
-          "version-range": "==0.1.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "ten-lens",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "ten-unordered-containers",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "test-framework",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "test-framework-hunit",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "text",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "transformers",
+          "package-name": "hspec",
           "version-range": "-any",
           "library": [
             {}
@@ -569,14 +528,7 @@
         },
         {
           "package-name": "unordered-containers",
-          "version-range": ">=0.1 && <0.3",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "wrapped",
-          "version-range": "==0.1.*",
+          "version-range": "-any",
           "library": [
             {}
           ]
