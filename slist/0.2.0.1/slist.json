@@ -2,52 +2,84 @@
   "description": {
     "spec-version": {
       "Left": [
-        1,
-        12
+        2,
+        4
       ]
     },
     "package": {
-      "name": "gearhash",
+      "name": "slist",
       "version": [
-        1,
         0,
-        0
+        2,
+        0,
+        1
       ]
     },
     "license": {
-      "Right": "BSD3"
+      "Left": {
+        "license-expression": {
+          "expression": {
+            "id": "MPL_2_0"
+          },
+          "exception-id": null
+        }
+      }
     },
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "2022 Gregor Kleen",
-    "maintainer": "aethoago@141.li",
-    "author": "Gregor Kleen",
+    "copyright": "2019-2020 Veronika Romashkina\n2020-2022 Kowainik",
+    "maintainer": "Kowainik <xrom.xkov@gmail.com>",
+    "author": "Veronika Romashkina",
     "stability": "",
-    "tested-with": [],
-    "homepage": "https://github.com/gkleen/fastcdc#readme",
+    "tested-with": [
+      {
+        "compiler": "GHC",
+        "versionRange": "==8.2.2"
+      },
+      {
+        "compiler": "GHC",
+        "versionRange": "==8.4.4"
+      },
+      {
+        "compiler": "GHC",
+        "versionRange": "==8.6.5"
+      },
+      {
+        "compiler": "GHC",
+        "versionRange": "==8.8.4"
+      },
+      {
+        "compiler": "GHC",
+        "versionRange": "==8.10.7"
+      },
+      {
+        "compiler": "GHC",
+        "versionRange": "==9.0.2"
+      },
+      {
+        "compiler": "GHC",
+        "versionRange": "==9.2.4"
+      }
+    ],
+    "homepage": "https://github.com/kowainik/slist",
     "pkg-url": "",
-    "bug-reports": "https://github.com/gkleen/fastcdc/issues",
+    "bug-reports": "https://github.com/kowainik/slist/issues",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/gkleen/fastcdc",
+        "location": "https://github.com/kowainik/slist.git",
         "module": null,
         "branch": null,
         "tag": null,
-        "subdir": "gearhash"
+        "subdir": null
       }
     ],
-    "synopsis": "An implementation of Gear hash, a fast rolling hash algorithm",
-    "description": "",
-    "category": "",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "synopsis": "Sized list",
+    "description": "This package implements @Slist@ data structure that stores the size\nof the list along with the list itself.",
+    "category": "Data Structures, List",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -60,30 +92,33 @@
     "data-dir": ".",
     "extra-source-files": [],
     "extra-tmp-files": [],
-    "extra-doc-files": []
+    "extra-doc-files": [
+      "README.md",
+      "CHANGELOG.md"
+    ]
   },
-  "package-flags": [
-    {
-      "name": "pedantic",
-      "description": "",
-      "default": false,
-      "manual": true
-    }
-  ],
   "library": {
     "condTreeData": {
       "name": {},
       "exposed-modules": [
         [
-          "Data",
-          "Digest",
-          "GearHash"
+          "Slist"
         ],
         [
-          "Data",
-          "Digest",
-          "GearHash",
-          "Conduit"
+          "Slist",
+          "Containers"
+        ],
+        [
+          "Slist",
+          "Maybe"
+        ],
+        [
+          "Slist",
+          "Size"
+        ],
+        [
+          "Slist",
+          "Type"
         ]
       ],
       "re-exported-modules": [],
@@ -111,52 +146,56 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [
-          [
-            "Data",
-            "Digest",
-            "GearHash",
-            "Types"
-          ],
-          [
-            "Paths_gearhash"
-          ]
-        ],
+        "otherModules": [],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [
           {
-            "disable-extension": "ImplicitPrelude"
-          }
-        ],
-        "otherExtensions": [
+            "enable-extension": "ConstraintKinds"
+          },
           {
             "enable-extension": "DeriveGeneric"
           },
           {
-            "enable-extension": "DeriveDataTypeable"
+            "enable-extension": "DerivingStrategies"
+          },
+          {
+            "enable-extension": "GeneralizedNewtypeDeriving"
+          },
+          {
+            "enable-extension": "InstanceSigs"
+          },
+          {
+            "enable-extension": "KindSignatures"
+          },
+          {
+            "enable-extension": "LambdaCase"
+          },
+          {
+            "enable-extension": "OverloadedStrings"
           },
           {
             "enable-extension": "RecordWildCards"
           },
           {
-            "enable-extension": "TemplateHaskell"
+            "enable-extension": "ScopedTypeVariables"
+          },
+          {
+            "enable-extension": "StandaloneDeriving"
           },
           {
             "enable-extension": "TupleSections"
           },
           {
-            "enable-extension": "ExplicitForAll"
+            "enable-extension": "TypeApplications"
           },
           {
-            "enable-extension": "TypeFamilies"
-          },
-          {
-            "enable-extension": "BangPatterns"
+            "enable-extension": "ViewPatterns"
           }
         ],
+        "otherExtensions": [],
         "oldExtensions": [],
         "extraLibs": [],
         "extraGHCiLibs": [],
@@ -170,7 +209,13 @@
         "installIncludes": [],
         "options": [
           [
-            "-Wall"
+            "-Wall",
+            "-Wincomplete-uni-patterns",
+            "-Wincomplete-record-updates",
+            "-Wcompat",
+            "-Widentities",
+            "-Wredundant-constraints",
+            "-fhide-source-paths"
           ],
           []
         ],
@@ -189,64 +234,15 @@
         "customFieldsBI": [],
         "targetBuildDepends": [
           {
-            "package-name": "array",
-            "version-range": ">=0.5.4 && <0.6",
-            "library": [
-              {}
-            ]
-          },
-          {
             "package-name": "base",
-            "version-range": ">=4.7 && <5",
+            "version-range": ">=4.10.1.0 && <4.17",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "bv-little",
-            "version-range": ">=1.1 && <2",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "bytestring",
-            "version-range": ">=0.10 && <0.12",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "conduit",
-            "version-range": "==1.3.*",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "cryptonite",
-            "version-range": ">=0.24 && <0.30",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "mtl",
-            "version-range": ">=2.2 && <3",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "template-haskell",
-            "version-range": ">=2.16 && <2.20",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "th-lift-instances",
-            "version-range": ">=0.1.16 && <0.2",
+            "package-name": "containers",
+            "version-range": ">=0.5 && <=0.7",
             "library": [
               {}
             ]
@@ -257,64 +253,15 @@
     },
     "condTreeConstraints": [
       {
-        "package-name": "array",
-        "version-range": ">=0.5.4 && <0.6",
-        "library": [
-          {}
-        ]
-      },
-      {
         "package-name": "base",
-        "version-range": ">=4.7 && <5",
+        "version-range": ">=4.10.1.0 && <4.17",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "bv-little",
-        "version-range": ">=1.1 && <2",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "bytestring",
-        "version-range": ">=0.10 && <0.12",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "conduit",
-        "version-range": "==1.3.*",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "cryptonite",
-        "version-range": ">=0.24 && <0.30",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "mtl",
-        "version-range": ">=2.2 && <3",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "template-haskell",
-        "version-range": ">=2.16 && <2.20",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "th-lift-instances",
-        "version-range": ">=0.1.16 && <0.2",
+        "package-name": "containers",
+        "version-range": ">=0.5 && <=0.7",
         "library": [
           {}
         ]
@@ -324,7 +271,8 @@
       {
         "condBranchCondition": {
           "v": {
-            "flag": "pedantic"
+            "compiler": "GHC",
+            "version": ">=8.8.1"
           }
         },
         "condBranchIfTrue": {
@@ -374,7 +322,87 @@
               "installIncludes": [],
               "options": [
                 [
-                  "-Werror"
+                  "-Wmissing-deriving-strategies",
+                  "-Werror=missing-deriving-strategies"
+                ],
+                []
+              ],
+              "profOptions": [
+                [],
+                []
+              ],
+              "sharedOptions": [
+                [],
+                []
+              ],
+              "staticOptions": [
+                [],
+                []
+              ],
+              "customFieldsBI": [],
+              "targetBuildDepends": [],
+              "mixins": []
+            }
+          },
+          "condTreeConstraints": [],
+          "condTreeComponents": []
+        }
+      },
+      {
+        "condBranchCondition": {
+          "v": {
+            "compiler": "GHC",
+            "version": ">=8.10.1"
+          }
+        },
+        "condBranchIfTrue": {
+          "condTreeData": {
+            "name": {},
+            "exposed-modules": [],
+            "re-exported-modules": [],
+            "signatures": [],
+            "exposed": true,
+            "visibility": "LibraryVisibilityPublic",
+            "build-info": {
+              "buildable": true,
+              "buildTools": [],
+              "buildToolDepends": [],
+              "cppOptions": [],
+              "asmOptions": [],
+              "cmmOptions": [],
+              "ccOptions": [],
+              "cxxOptions": [],
+              "ldOptions": [],
+              "pkgconfigDepends": [],
+              "frameworks": [],
+              "extraFrameworkDirs": [],
+              "asmSources": [],
+              "cmmSources": [],
+              "cSources": [],
+              "cxxSources": [],
+              "jsSources": [],
+              "hsSourceDirs": [],
+              "otherModules": [],
+              "virtualModules": [],
+              "autogenModules": [],
+              "defaultLanguage": null,
+              "otherLanguages": [],
+              "defaultExtensions": [],
+              "otherExtensions": [],
+              "oldExtensions": [],
+              "extraLibs": [],
+              "extraGHCiLibs": [],
+              "extraBundledLibs": [],
+              "extraLibFlavours": [],
+              "extraDynLibFlavours": [],
+              "extraLibDirs": [],
+              "includeDirs": [],
+              "includes": [],
+              "autogenIncludes": [],
+              "installIncludes": [],
+              "options": [
+                [
+                  "-Wunused-packages"
                 ],
                 []
               ],
@@ -401,12 +429,17 @@
       }
     ]
   },
-  "executables": {
-    "count": {
+  "test-suites": {
+    "slist-test": {
       "condTreeData": {
-        "name": "count",
-        "module-path": "Count.hs",
-        "scope": "public",
+        "name": "",
+        "interface": {
+          "version": [
+            1,
+            0
+          ],
+          "filepath": "Spec.hs"
+        },
         "build-info": {
           "buildable": true,
           "buildTools": [],
@@ -426,44 +459,64 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "gearhash"
+            "test"
           ],
-          "otherModules": [],
+          "otherModules": [
+            [
+              "Test",
+              "Slist",
+              "Size"
+            ]
+          ],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
           "otherLanguages": [],
           "defaultExtensions": [
             {
-              "disable-extension": "ImplicitPrelude"
-            }
-          ],
-          "otherExtensions": [
+              "enable-extension": "ConstraintKinds"
+            },
             {
               "enable-extension": "DeriveGeneric"
             },
             {
-              "enable-extension": "DeriveDataTypeable"
+              "enable-extension": "DerivingStrategies"
+            },
+            {
+              "enable-extension": "GeneralizedNewtypeDeriving"
+            },
+            {
+              "enable-extension": "InstanceSigs"
+            },
+            {
+              "enable-extension": "KindSignatures"
+            },
+            {
+              "enable-extension": "LambdaCase"
+            },
+            {
+              "enable-extension": "OverloadedStrings"
             },
             {
               "enable-extension": "RecordWildCards"
             },
             {
-              "enable-extension": "TemplateHaskell"
+              "enable-extension": "ScopedTypeVariables"
+            },
+            {
+              "enable-extension": "StandaloneDeriving"
             },
             {
               "enable-extension": "TupleSections"
             },
             {
-              "enable-extension": "ExplicitForAll"
+              "enable-extension": "TypeApplications"
             },
             {
-              "enable-extension": "TypeFamilies"
-            },
-            {
-              "enable-extension": "BangPatterns"
+              "enable-extension": "ViewPatterns"
             }
           ],
+          "otherExtensions": [],
           "oldExtensions": [],
           "extraLibs": [],
           "extraGHCiLibs": [],
@@ -477,7 +530,16 @@
           "installIncludes": [],
           "options": [
             [
-              "-Wall"
+              "-Wall",
+              "-Wincomplete-uni-patterns",
+              "-Wincomplete-record-updates",
+              "-Wcompat",
+              "-Widentities",
+              "-Wredundant-constraints",
+              "-fhide-source-paths",
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N"
             ],
             []
           ],
@@ -496,64 +558,36 @@
           "customFieldsBI": [],
           "targetBuildDepends": [
             {
-              "package-name": "array",
-              "version-range": ">=0.5.4 && <0.6",
-              "library": [
-                {}
-              ]
-            },
-            {
               "package-name": "base",
-              "version-range": ">=4.7 && <5",
+              "version-range": ">=4.10.1.0 && <4.17",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "bv-little",
-              "version-range": ">=1.1 && <2",
+              "package-name": "slist",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "bytestring",
-              "version-range": ">=0.10 && <0.12",
+              "package-name": "hedgehog",
+              "version-range": ">=1.0 && <1.3",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "conduit",
-              "version-range": "==1.3.*",
+              "package-name": "hspec",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "cryptonite",
-              "version-range": ">=0.24 && <0.30",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "mtl",
-              "version-range": ">=2.2 && <3",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "template-haskell",
-              "version-range": ">=2.16 && <2.20",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "th-lift-instances",
-              "version-range": ">=0.1.16 && <0.2",
+              "package-name": "hspec-hedgehog",
+              "version-range": "^>=0.0.1",
               "library": [
                 {}
               ]
@@ -564,64 +598,36 @@
       },
       "condTreeConstraints": [
         {
-          "package-name": "array",
-          "version-range": ">=0.5.4 && <0.6",
-          "library": [
-            {}
-          ]
-        },
-        {
           "package-name": "base",
-          "version-range": ">=4.7 && <5",
+          "version-range": ">=4.10.1.0 && <4.17",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "bv-little",
-          "version-range": ">=1.1 && <2",
+          "package-name": "slist",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "bytestring",
-          "version-range": ">=0.10 && <0.12",
+          "package-name": "hedgehog",
+          "version-range": ">=1.0 && <1.3",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "conduit",
-          "version-range": "==1.3.*",
+          "package-name": "hspec",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "cryptonite",
-          "version-range": ">=0.24 && <0.30",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "mtl",
-          "version-range": ">=2.2 && <3",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "template-haskell",
-          "version-range": ">=2.16 && <2.20",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "th-lift-instances",
-          "version-range": ">=0.1.16 && <0.2",
+          "package-name": "hspec-hedgehog",
+          "version-range": "^>=0.0.1",
           "library": [
             {}
           ]
@@ -631,14 +637,19 @@
         {
           "condBranchCondition": {
             "v": {
-              "flag": "pedantic"
+              "compiler": "GHC",
+              "version": ">=8.8.1"
             }
           },
           "condBranchIfTrue": {
             "condTreeData": {
-              "name": "count",
-              "module-path": "",
-              "scope": "public",
+              "name": "",
+              "interface": {
+                "type": {
+                  "name": "",
+                  "version": []
+                }
+              },
               "build-info": {
                 "buildable": true,
                 "buildTools": [],
@@ -678,7 +689,88 @@
                 "installIncludes": [],
                 "options": [
                   [
-                    "-Werror"
+                    "-Wmissing-deriving-strategies",
+                    "-Werror=missing-deriving-strategies"
+                  ],
+                  []
+                ],
+                "profOptions": [
+                  [],
+                  []
+                ],
+                "sharedOptions": [
+                  [],
+                  []
+                ],
+                "staticOptions": [
+                  [],
+                  []
+                ],
+                "customFieldsBI": [],
+                "targetBuildDepends": [],
+                "mixins": []
+              }
+            },
+            "condTreeConstraints": [],
+            "condTreeComponents": []
+          }
+        },
+        {
+          "condBranchCondition": {
+            "v": {
+              "compiler": "GHC",
+              "version": ">=8.10.1"
+            }
+          },
+          "condBranchIfTrue": {
+            "condTreeData": {
+              "name": "",
+              "interface": {
+                "type": {
+                  "name": "",
+                  "version": []
+                }
+              },
+              "build-info": {
+                "buildable": true,
+                "buildTools": [],
+                "buildToolDepends": [],
+                "cppOptions": [],
+                "asmOptions": [],
+                "cmmOptions": [],
+                "ccOptions": [],
+                "cxxOptions": [],
+                "ldOptions": [],
+                "pkgconfigDepends": [],
+                "frameworks": [],
+                "extraFrameworkDirs": [],
+                "asmSources": [],
+                "cmmSources": [],
+                "cSources": [],
+                "cxxSources": [],
+                "jsSources": [],
+                "hsSourceDirs": [],
+                "otherModules": [],
+                "virtualModules": [],
+                "autogenModules": [],
+                "defaultLanguage": null,
+                "otherLanguages": [],
+                "defaultExtensions": [],
+                "otherExtensions": [],
+                "oldExtensions": [],
+                "extraLibs": [],
+                "extraGHCiLibs": [],
+                "extraBundledLibs": [],
+                "extraLibFlavours": [],
+                "extraDynLibFlavours": [],
+                "extraLibDirs": [],
+                "includeDirs": [],
+                "includes": [],
+                "autogenIncludes": [],
+                "installIncludes": [],
+                "options": [
+                  [
+                    "-Wunused-packages"
                   ],
                   []
                 ],
@@ -705,11 +797,16 @@
         }
       ]
     },
-    "gearhash": {
+    "slist-doctest": {
       "condTreeData": {
-        "name": "gearhash",
-        "module-path": "Direct.hs",
-        "scope": "public",
+        "name": "",
+        "interface": {
+          "version": [
+            1,
+            0
+          ],
+          "filepath": "Doctest.hs"
+        },
         "build-info": {
           "buildable": true,
           "buildTools": [],
@@ -729,7 +826,7 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "gearhash"
+            "test"
           ],
           "otherModules": [],
           "virtualModules": [],
@@ -738,35 +835,49 @@
           "otherLanguages": [],
           "defaultExtensions": [
             {
-              "disable-extension": "ImplicitPrelude"
-            }
-          ],
-          "otherExtensions": [
+              "enable-extension": "ConstraintKinds"
+            },
             {
               "enable-extension": "DeriveGeneric"
             },
             {
-              "enable-extension": "DeriveDataTypeable"
+              "enable-extension": "DerivingStrategies"
+            },
+            {
+              "enable-extension": "GeneralizedNewtypeDeriving"
+            },
+            {
+              "enable-extension": "InstanceSigs"
+            },
+            {
+              "enable-extension": "KindSignatures"
+            },
+            {
+              "enable-extension": "LambdaCase"
+            },
+            {
+              "enable-extension": "OverloadedStrings"
             },
             {
               "enable-extension": "RecordWildCards"
             },
             {
-              "enable-extension": "TemplateHaskell"
+              "enable-extension": "ScopedTypeVariables"
+            },
+            {
+              "enable-extension": "StandaloneDeriving"
             },
             {
               "enable-extension": "TupleSections"
             },
             {
-              "enable-extension": "ExplicitForAll"
+              "enable-extension": "TypeApplications"
             },
             {
-              "enable-extension": "TypeFamilies"
-            },
-            {
-              "enable-extension": "BangPatterns"
+              "enable-extension": "ViewPatterns"
             }
           ],
+          "otherExtensions": [],
           "oldExtensions": [],
           "extraLibs": [],
           "extraGHCiLibs": [],
@@ -780,7 +891,14 @@
           "installIncludes": [],
           "options": [
             [
-              "-Wall"
+              "-Wall",
+              "-Wincomplete-uni-patterns",
+              "-Wincomplete-record-updates",
+              "-Wcompat",
+              "-Widentities",
+              "-Wredundant-constraints",
+              "-fhide-source-paths",
+              "-threaded"
             ],
             []
           ],
@@ -799,71 +917,22 @@
           "customFieldsBI": [],
           "targetBuildDepends": [
             {
-              "package-name": "array",
-              "version-range": ">=0.5.4 && <0.6",
-              "library": [
-                {}
-              ]
-            },
-            {
               "package-name": "base",
-              "version-range": ">=4.7 && <5",
+              "version-range": ">=4.10.1.0 && <4.17",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "bv-little",
-              "version-range": ">=1.1 && <2",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "bytestring",
-              "version-range": ">=0.10 && <0.12",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "conduit",
-              "version-range": "==1.3.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "cryptonite",
-              "version-range": ">=0.24 && <0.30",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "gearhash",
+              "package-name": "doctest",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "mtl",
-              "version-range": ">=2.2 && <3",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "template-haskell",
-              "version-range": ">=2.16 && <2.20",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "th-lift-instances",
-              "version-range": ">=0.1.16 && <0.2",
+              "package-name": "Glob",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -874,71 +943,22 @@
       },
       "condTreeConstraints": [
         {
-          "package-name": "array",
-          "version-range": ">=0.5.4 && <0.6",
-          "library": [
-            {}
-          ]
-        },
-        {
           "package-name": "base",
-          "version-range": ">=4.7 && <5",
+          "version-range": ">=4.10.1.0 && <4.17",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "bv-little",
-          "version-range": ">=1.1 && <2",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "bytestring",
-          "version-range": ">=0.10 && <0.12",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "conduit",
-          "version-range": "==1.3.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "cryptonite",
-          "version-range": ">=0.24 && <0.30",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "gearhash",
+          "package-name": "doctest",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "mtl",
-          "version-range": ">=2.2 && <3",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "template-haskell",
-          "version-range": ">=2.16 && <2.20",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "th-lift-instances",
-          "version-range": ">=0.1.16 && <0.2",
+          "package-name": "Glob",
+          "version-range": "-any",
           "library": [
             {}
           ]
@@ -948,14 +968,19 @@
         {
           "condBranchCondition": {
             "v": {
-              "flag": "pedantic"
+              "compiler": "GHC",
+              "version": ">=8.8.1"
             }
           },
           "condBranchIfTrue": {
             "condTreeData": {
-              "name": "gearhash",
-              "module-path": "",
-              "scope": "public",
+              "name": "",
+              "interface": {
+                "type": {
+                  "name": "",
+                  "version": []
+                }
+              },
               "build-info": {
                 "buildable": true,
                 "buildTools": [],
@@ -995,7 +1020,8 @@
                 "installIncludes": [],
                 "options": [
                   [
-                    "-Werror"
+                    "-Wmissing-deriving-strategies",
+                    "-Werror=missing-deriving-strategies"
                   ],
                   []
                 ],
@@ -1019,260 +1045,23 @@
             "condTreeConstraints": [],
             "condTreeComponents": []
           }
-        }
-      ]
-    },
-    "gearhash-conduit": {
-      "condTreeData": {
-        "name": "gearhash-conduit",
-        "module-path": "Conduit.hs",
-        "scope": "public",
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "gearhash"
-          ],
-          "otherModules": [],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [
-            {
-              "disable-extension": "ImplicitPrelude"
-            }
-          ],
-          "otherExtensions": [
-            {
-              "enable-extension": "DeriveGeneric"
-            },
-            {
-              "enable-extension": "DeriveDataTypeable"
-            },
-            {
-              "enable-extension": "RecordWildCards"
-            },
-            {
-              "enable-extension": "TemplateHaskell"
-            },
-            {
-              "enable-extension": "TupleSections"
-            },
-            {
-              "enable-extension": "ExplicitForAll"
-            },
-            {
-              "enable-extension": "TypeFamilies"
-            },
-            {
-              "enable-extension": "BangPatterns"
-            }
-          ],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [
-              "-Wall"
-            ],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "array",
-              "version-range": ">=0.5.4 && <0.6",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "base",
-              "version-range": ">=4.7 && <5",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "bv-little",
-              "version-range": ">=1.1 && <2",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "bytestring",
-              "version-range": ">=0.10 && <0.12",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "conduit",
-              "version-range": "==1.3.*",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "cryptonite",
-              "version-range": ">=0.24 && <0.30",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "gearhash",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "mtl",
-              "version-range": ">=2.2 && <3",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "template-haskell",
-              "version-range": ">=2.16 && <2.20",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "th-lift-instances",
-              "version-range": ">=0.1.16 && <0.2",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "array",
-          "version-range": ">=0.5.4 && <0.6",
-          "library": [
-            {}
-          ]
         },
-        {
-          "package-name": "base",
-          "version-range": ">=4.7 && <5",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "bv-little",
-          "version-range": ">=1.1 && <2",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "bytestring",
-          "version-range": ">=0.10 && <0.12",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "conduit",
-          "version-range": "==1.3.*",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "cryptonite",
-          "version-range": ">=0.24 && <0.30",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "gearhash",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "mtl",
-          "version-range": ">=2.2 && <3",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "template-haskell",
-          "version-range": ">=2.16 && <2.20",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "th-lift-instances",
-          "version-range": ">=0.1.16 && <0.2",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": [
         {
           "condBranchCondition": {
             "v": {
-              "flag": "pedantic"
+              "compiler": "GHC",
+              "version": ">=8.10.1"
             }
           },
           "condBranchIfTrue": {
             "condTreeData": {
-              "name": "gearhash-conduit",
-              "module-path": "",
-              "scope": "public",
+              "name": "",
+              "interface": {
+                "type": {
+                  "name": "",
+                  "version": []
+                }
+              },
               "build-info": {
                 "buildable": true,
                 "buildTools": [],
@@ -1312,7 +1101,7 @@
                 "installIncludes": [],
                 "options": [
                   [
-                    "-Werror"
+                    "-Wunused-packages"
                   ],
                   []
                 ],
