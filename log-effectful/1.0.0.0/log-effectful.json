@@ -1,55 +1,61 @@
 {
   "description": {
     "spec-version": {
-      "Right": ">=1.10"
+      "Left": [
+        2,
+        4
+      ]
     },
     "package": {
-      "name": "distribution-nixpkgs",
+      "name": "log-effectful",
       "version": [
         1,
-        7,
+        0,
+        0,
         0
       ]
     },
     "license": {
-      "Right": "BSD3"
+      "Left": {
+        "license-expression": {
+          "expression": {
+            "id": "BSD_3_Clause"
+          },
+          "exception-id": null
+        }
+      }
     },
     "license-files": [
       "LICENSE"
     ],
     "copyright": "",
-    "maintainer": "sternenseemann <sternenseemann@systemli.org>",
-    "author": "Peter Simons <simons@cryp.to>",
+    "maintainer": "andrzej@rybczak.net",
+    "author": "Andrzej Rybczak, Dominik Peteler",
     "stability": "",
     "tested-with": [
       {
         "compiler": "GHC",
-        "versionRange": "==8.6.5 || ==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.2"
+        "versionRange": "==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.4 || ==9.4.2"
       }
     ],
-    "homepage": "https://github.com/NixOS/cabal2nix/tree/master/distribution-nixpkgs#readme",
+    "homepage": "",
     "pkg-url": "",
-    "bug-reports": "https://github.com/NixOS/cabal2nix/issues",
+    "bug-reports": "https://github.com/haskell-effectful/log-effectful/issues",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/NixOS/cabal2nix",
+        "location": "https://github.com/haskell-effectful/log-effectful",
         "module": null,
         "branch": null,
         "tag": null,
-        "subdir": "distribution-nixpkgs"
+        "subdir": null
       }
     ],
-    "synopsis": "Types and functions to manipulate the Nixpkgs distribution",
-    "description": "Types and functions to represent, query, and manipulate the Nixpkgs distribution.",
-    "category": "Distribution, Nix",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "synopsis": "Adaptation of the log library for the effectful ecosystem.",
+    "description": "Adaptation of the @<https://hackage.haskell.org/package/log-base log-base>@ library for the @<https://hackage.haskell.org/package/effectful effectful>@ ecosystem.",
+    "category": "System",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -58,14 +64,11 @@
     "foreign-libs": [],
     "test-suites": [],
     "benchmarks": [],
-    "data-files": [
-      "derivation-attr-paths.nix"
-    ],
+    "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
       "CHANGELOG.md",
-      "README.md",
-      "test/data/all-system-tuples.json"
+      "README.md"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -75,29 +78,8 @@
       "name": {},
       "exposed-modules": [
         [
-          "Distribution",
-          "Nixpkgs",
-          "Hashes"
-        ],
-        [
-          "Distribution",
-          "Nixpkgs",
-          "License"
-        ],
-        [
-          "Distribution",
-          "Nixpkgs",
-          "Meta"
-        ],
-        [
-          "Distribution",
-          "Nixpkgs",
-          "PackageMap"
-        ],
-        [
-          "Language",
-          "Nix",
-          "PrettyPrinting"
+          "Effectful",
+          "Log"
         ]
       ],
       "re-exported-modules": [],
@@ -125,33 +107,77 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [
-          [
-            "Paths_distribution_nixpkgs"
-          ]
-        ],
+        "otherModules": [],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
-        "defaultExtensions": [],
-        "otherExtensions": [
+        "defaultExtensions": [
           {
-            "enable-extension": "CPP"
+            "enable-extension": "BangPatterns"
           },
           {
-            "enable-extension": "TemplateHaskell"
+            "enable-extension": "ConstraintKinds"
           },
           {
-            "enable-extension": "RecordWildCards"
+            "enable-extension": "DataKinds"
+          },
+          {
+            "enable-extension": "DeriveFunctor"
           },
           {
             "enable-extension": "DeriveGeneric"
           },
           {
-            "enable-extension": "PackageImports"
+            "enable-extension": "DerivingStrategies"
+          },
+          {
+            "enable-extension": "FlexibleContexts"
+          },
+          {
+            "enable-extension": "FlexibleInstances"
+          },
+          {
+            "enable-extension": "GADTs"
+          },
+          {
+            "enable-extension": "GeneralizedNewtypeDeriving"
+          },
+          {
+            "enable-extension": "LambdaCase"
+          },
+          {
+            "enable-extension": "MultiParamTypeClasses"
+          },
+          {
+            "disable-extension": "StarIsType"
+          },
+          {
+            "enable-extension": "RankNTypes"
+          },
+          {
+            "enable-extension": "RoleAnnotations"
+          },
+          {
+            "enable-extension": "ScopedTypeVariables"
+          },
+          {
+            "enable-extension": "StandaloneDeriving"
+          },
+          {
+            "enable-extension": "TupleSections"
+          },
+          {
+            "enable-extension": "TypeApplications"
+          },
+          {
+            "enable-extension": "TypeFamilies"
+          },
+          {
+            "enable-extension": "TypeOperators"
           }
         ],
+        "otherExtensions": [],
         "oldExtensions": [],
         "extraLibs": [],
         "extraGHCiLibs": [],
@@ -167,9 +193,7 @@
           [
             "-Wall",
             "-Wcompat",
-            "-Wincomplete-uni-patterns",
-            "-Wincomplete-record-updates",
-            "-Wredundant-constraints"
+            "-Wno-unticked-promoted-constructors"
           ],
           []
         ],
@@ -189,69 +213,34 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">4.2 && <5",
+            "version-range": "<5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "Cabal",
-            "version-range": ">=2.4",
+            "package-name": "effectful-core",
+            "version-range": ">=1.0.0.0 && <3.0.0.0",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "aeson",
+            "package-name": "log-base",
+            "version-range": ">=0.12.0.0",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "text",
             "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "bytestring",
-            "version-range": "-any",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "containers",
-            "version-range": "-any",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "deepseq",
-            "version-range": ">=1.4",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "language-nix",
-            "version-range": ">2",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "lens",
-            "version-range": "-any",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "pretty",
-            "version-range": ">=1.1.2",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "process",
+            "package-name": "time",
             "version-range": "-any",
             "library": [
               {}
@@ -264,69 +253,34 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">4.2 && <5",
+        "version-range": "<5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "Cabal",
-        "version-range": ">=2.4",
+        "package-name": "effectful-core",
+        "version-range": ">=1.0.0.0 && <3.0.0.0",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "aeson",
+        "package-name": "log-base",
+        "version-range": ">=0.12.0.0",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "text",
         "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "bytestring",
-        "version-range": "-any",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "containers",
-        "version-range": "-any",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "deepseq",
-        "version-range": ">=1.4",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "language-nix",
-        "version-range": ">2",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "lens",
-        "version-range": "-any",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "pretty",
-        "version-range": ">=1.1.2",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "process",
+        "package-name": "time",
         "version-range": "-any",
         "library": [
           {}
@@ -336,7 +290,7 @@
     "condTreeComponents": []
   },
   "test-suites": {
-    "hspec": {
+    "test": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -344,7 +298,7 @@
             1,
             0
           ],
-          "filepath": "hspec.hs"
+          "filepath": "Main.hs"
         },
         "build-info": {
           "buildable": true,
@@ -365,14 +319,78 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "test"
+            "tests"
           ],
           "otherModules": [],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
           "otherLanguages": [],
-          "defaultExtensions": [],
+          "defaultExtensions": [
+            {
+              "enable-extension": "BangPatterns"
+            },
+            {
+              "enable-extension": "ConstraintKinds"
+            },
+            {
+              "enable-extension": "DataKinds"
+            },
+            {
+              "enable-extension": "DeriveFunctor"
+            },
+            {
+              "enable-extension": "DeriveGeneric"
+            },
+            {
+              "enable-extension": "DerivingStrategies"
+            },
+            {
+              "enable-extension": "FlexibleContexts"
+            },
+            {
+              "enable-extension": "FlexibleInstances"
+            },
+            {
+              "enable-extension": "GADTs"
+            },
+            {
+              "enable-extension": "GeneralizedNewtypeDeriving"
+            },
+            {
+              "enable-extension": "LambdaCase"
+            },
+            {
+              "enable-extension": "MultiParamTypeClasses"
+            },
+            {
+              "disable-extension": "StarIsType"
+            },
+            {
+              "enable-extension": "RankNTypes"
+            },
+            {
+              "enable-extension": "RoleAnnotations"
+            },
+            {
+              "enable-extension": "ScopedTypeVariables"
+            },
+            {
+              "enable-extension": "StandaloneDeriving"
+            },
+            {
+              "enable-extension": "TupleSections"
+            },
+            {
+              "enable-extension": "TypeApplications"
+            },
+            {
+              "enable-extension": "TypeFamilies"
+            },
+            {
+              "enable-extension": "TypeOperators"
+            }
+          ],
           "otherExtensions": [],
           "oldExtensions": [],
           "extraLibs": [],
@@ -389,9 +407,10 @@
             [
               "-Wall",
               "-Wcompat",
-              "-Wincomplete-uni-patterns",
-              "-Wincomplete-record-updates",
-              "-Wredundant-constraints"
+              "-Wno-unticked-promoted-constructors",
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N4"
             ],
             []
           ],
@@ -417,48 +436,6 @@
               ]
             },
             {
-              "package-name": "deepseq",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "distribution-nixpkgs",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "language-nix",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hspec",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "lens",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "Cabal",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
               "package-name": "aeson",
               "version-range": "-any",
               "library": [
@@ -466,7 +443,28 @@
               ]
             },
             {
-              "package-name": "directory",
+              "package-name": "effectful-core",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "log-base",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "log-effectful",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "text",
               "version-range": "-any",
               "library": [
                 {}
@@ -485,48 +483,6 @@
           ]
         },
         {
-          "package-name": "deepseq",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "distribution-nixpkgs",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "language-nix",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hspec",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "lens",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "Cabal",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
           "package-name": "aeson",
           "version-range": "-any",
           "library": [
@@ -534,7 +490,28 @@
           ]
         },
         {
-          "package-name": "directory",
+          "package-name": "effectful-core",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "log-base",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "log-effectful",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "text",
           "version-range": "-any",
           "library": [
             {}

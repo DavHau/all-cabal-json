@@ -1,18 +1,15 @@
 {
   "description": {
     "spec-version": {
-      "Left": [
-        1,
-        12
-      ]
+      "Right": ">=1.10"
     },
     "package": {
-      "name": "hackage-security-HTTP",
+      "name": "monoidal-containers",
       "version": [
         0,
-        1,
-        1,
-        1
+        6,
+        3,
+        0
       ]
     },
     "license": {
@@ -21,87 +18,34 @@
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "Copyright 2015-2016 Well-Typed LLP",
-    "maintainer": "cabal-devel@haskell.org",
-    "author": "Edsko de Vries",
+    "copyright": "(c) 2014 Ben Gamari",
+    "maintainer": "ben@smart-cactus.org",
+    "author": "Ben Gamari",
     "stability": "",
     "tested-with": [
       {
         "compiler": "GHC",
-        "versionRange": "==9.4.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.2.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.0.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.7"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.4.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.0.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.10.3"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.8.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.6.3"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.4.2"
+        "versionRange": "==8.2.2 || ==8.4.4 || ==8.6.5 || ==8.8.4 || ==8.10.2 || ==9.0.2 || ==9.2.1 || ==9.4.1"
       }
     ],
-    "homepage": "https://github.com/haskell/hackage-security",
+    "homepage": "http://github.com/bgamari/monoidal-containers",
     "pkg-url": "",
-    "bug-reports": "https://github.com/haskell/hackage-security/issues",
+    "bug-reports": "",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/haskell/hackage-security.git",
+        "location": "git://github.com/bgamari/monoidal-containers",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "Hackage security bindings against the HTTP library",
-    "description": "The hackage security library provides a 'HttpLib'\nabstraction to allow to bind against different HTTP\nlibraries. This library implements this abstraction using\nthe @HTTP@ library.",
-    "category": "Distribution",
-    "custom-fields": [
-      [
-        "x-revision",
-        "3"
-      ]
-    ],
+    "synopsis": "Containers with monoidal accumulation",
+    "description": "Containers with merging via monoidal accumulation. The 'Monoid' instances\nprovided by the @containers@ and @unordered-containers@ packages merge\nstructures in a left-biased manner instead of using the underlying monoidal\nstructure of the value.\n\nThis package wraps the types provided by these packages, but provides @Monoid@\ninstances implemented in terms of the value type's 'mappend'. For instance,\nthe @Monoid@ @Map@ instance looks like,\n\n@\ninstance (Ord k, Semigroup a) => Monoid (MonoidalMap k a)\n@",
+    "category": "Data",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -113,15 +57,15 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
-      "ChangeLog.md"
+      "Changelog.md"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
   },
   "package-flags": [
     {
-      "name": "use-network-uri",
-      "description": "Are we using network-uri?",
+      "name": "split-these",
+      "description": "Use split these/semialign packages",
       "default": true,
       "manual": false
     }
@@ -131,12 +75,31 @@
       "name": {},
       "exposed-modules": [
         [
-          "Hackage",
-          "Security",
-          "Client",
-          "Repository",
-          "HttpLib",
-          "HTTP"
+          "Data",
+          "HashMap",
+          "Monoidal"
+        ],
+        [
+          "Data",
+          "IntMap",
+          "Monoidal"
+        ],
+        [
+          "Data",
+          "IntMap",
+          "Monoidal",
+          "Strict"
+        ],
+        [
+          "Data",
+          "Map",
+          "Monoidal"
+        ],
+        [
+          "Data",
+          "Map",
+          "Monoidal",
+          "Strict"
         ]
       ],
       "re-exported-modules": [],
@@ -169,29 +132,22 @@
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
-        "defaultExtensions": [
+        "defaultExtensions": [],
+        "otherExtensions": [
+          {
+            "enable-extension": "CPP"
+          },
           {
             "enable-extension": "DeriveDataTypeable"
           },
           {
-            "enable-extension": "FlexibleContexts"
+            "enable-extension": "DeriveTraversable"
           },
           {
-            "enable-extension": "RankNTypes"
+            "enable-extension": "GeneralizedNewtypeDeriving"
           },
           {
-            "enable-extension": "RecordWildCards"
-          },
-          {
-            "enable-extension": "ScopedTypeVariables"
-          },
-          {
-            "enable-extension": "StandaloneDeriving"
-          }
-        ],
-        "otherExtensions": [
-          {
-            "enable-extension": "CPP"
+            "enable-extension": "MultiParamTypeClasses"
           }
         ],
         "oldExtensions": [],
@@ -206,9 +162,7 @@
         "autogenIncludes": [],
         "installIncludes": [],
         "options": [
-          [
-            "-Wall"
-          ],
+          [],
           []
         ],
         "profOptions": [
@@ -226,43 +180,64 @@
         "customFieldsBI": [],
         "targetBuildDepends": [
           {
+            "package-name": "aeson",
+            "version-range": ">=1.0 && <2.2",
+            "library": [
+              {}
+            ]
+          },
+          {
             "package-name": "base",
-            "version-range": ">=4.5 && <4.18",
+            "version-range": ">=4.7 && <4.18",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "bytestring",
-            "version-range": ">=0.9 && <0.12",
+            "package-name": "containers",
+            "version-range": ">=0.5.9 && <0.7",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "HTTP",
-            "version-range": ">=4000.2.19 && <4000.5",
+            "package-name": "deepseq",
+            "version-range": ">=1.3 && <1.5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "mtl",
-            "version-range": ">=2.1 && <2.3",
+            "package-name": "hashable",
+            "version-range": ">=1.2 && <1.5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "zlib",
-            "version-range": ">=0.5 && <0.7",
+            "package-name": "lens",
+            "version-range": ">=4.4 && <5.3",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "hackage-security",
-            "version-range": ">=0.5 && <0.7",
+            "package-name": "newtype",
+            "version-range": ">=0.2 && <0.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "unordered-containers",
+            "version-range": ">=0.2 && <0.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "witherable",
+            "version-range": ">=0.4 && <0.5",
             "library": [
               {}
             ]
@@ -273,43 +248,64 @@
     },
     "condTreeConstraints": [
       {
+        "package-name": "aeson",
+        "version-range": ">=1.0 && <2.2",
+        "library": [
+          {}
+        ]
+      },
+      {
         "package-name": "base",
-        "version-range": ">=4.5 && <4.18",
+        "version-range": ">=4.7 && <4.18",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "bytestring",
-        "version-range": ">=0.9 && <0.12",
+        "package-name": "containers",
+        "version-range": ">=0.5.9 && <0.7",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "HTTP",
-        "version-range": ">=4000.2.19 && <4000.5",
+        "package-name": "deepseq",
+        "version-range": ">=1.3 && <1.5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "mtl",
-        "version-range": ">=2.1 && <2.3",
+        "package-name": "hashable",
+        "version-range": ">=1.2 && <1.5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "zlib",
-        "version-range": ">=0.5 && <0.7",
+        "package-name": "lens",
+        "version-range": ">=4.4 && <5.3",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "hackage-security",
-        "version-range": ">=0.5 && <0.7",
+        "package-name": "newtype",
+        "version-range": ">=0.2 && <0.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "unordered-containers",
+        "version-range": ">=0.2 && <0.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "witherable",
+        "version-range": ">=0.4 && <0.5",
         "library": [
           {}
         ]
@@ -319,7 +315,7 @@
       {
         "condBranchCondition": {
           "v": {
-            "flag": "use-network-uri"
+            "flag": "split-these"
           }
         },
         "condBranchIfTrue": {
@@ -386,15 +382,15 @@
               "customFieldsBI": [],
               "targetBuildDepends": [
                 {
-                  "package-name": "network-uri",
-                  "version-range": ">=2.6 && <2.7",
+                  "package-name": "semialign",
+                  "version-range": ">=1 && <1.3",
                   "library": [
                     {}
                   ]
                 },
                 {
-                  "package-name": "network",
-                  "version-range": ">=2.6 && <2.9 || >=3.0 && <3.2",
+                  "package-name": "these",
+                  "version-range": ">=1 && <1.2",
                   "library": [
                     {}
                   ]
@@ -405,15 +401,15 @@
           },
           "condTreeConstraints": [
             {
-              "package-name": "network-uri",
-              "version-range": ">=2.6 && <2.7",
+              "package-name": "semialign",
+              "version-range": ">=1 && <1.3",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "network",
-              "version-range": ">=2.6 && <2.9 || >=3.0 && <3.2",
+              "package-name": "these",
+              "version-range": ">=1 && <1.2",
               "library": [
                 {}
               ]
@@ -485,8 +481,8 @@
               "customFieldsBI": [],
               "targetBuildDepends": [
                 {
-                  "package-name": "network",
-                  "version-range": ">=2.5 && <2.6",
+                  "package-name": "these",
+                  "version-range": ">=0.7 && <0.9",
                   "library": [
                     {}
                   ]
@@ -497,8 +493,8 @@
           },
           "condTreeConstraints": [
             {
-              "package-name": "network",
-              "version-range": ">=2.5 && <2.6",
+              "package-name": "these",
+              "version-range": ">=0.7 && <0.9",
               "library": [
                 {}
               ]

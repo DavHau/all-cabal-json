@@ -1,67 +1,46 @@
 {
   "description": {
     "spec-version": {
-      "Right": ">=1.10"
-    },
-    "package": {
-      "name": "language-nix",
-      "version": [
-        2,
-        2,
+      "Left": [
+        3,
         0
       ]
     },
+    "package": {
+      "name": "om-logging",
+      "version": [
+        1,
+        1,
+        0,
+        4
+      ]
+    },
     "license": {
-      "Right": "BSD3"
+      "Left": {
+        "license-expression": {
+          "expression": {
+            "id": "MIT"
+          },
+          "exception-id": null
+        }
+      }
     },
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "",
-    "maintainer": "simons@cryp.to",
-    "author": "Peter Simons",
+    "copyright": "2021 Owens Murray, LLC.",
+    "maintainer": "rick@owensmurray.com",
+    "author": "Rick Owens",
     "stability": "",
-    "tested-with": [
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.4.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.1"
-      }
-    ],
-    "homepage": "https://github.com/NixOS/cabal2nix/tree/master/language-nix#readme",
+    "tested-with": [],
+    "homepage": "https://github.com/owensmurray/om-logging",
     "pkg-url": "",
-    "bug-reports": "https://github.com/NixOS/cabal2nix/issues",
-    "source-repos": [
-      {
-        "kind": {},
-        "type": "Git",
-        "location": "https://github.com/NixOS/cabal2nix",
-        "module": null,
-        "branch": null,
-        "tag": null,
-        "subdir": "language-nix"
-      }
-    ],
-    "synopsis": "Data types and functions to represent the Nix language",
-    "description": "Data types and useful functions to represent and manipulate the Nix\nlanguage.",
-    "category": "Distribution, Language, Nix",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "bug-reports": "",
+    "source-repos": [],
+    "synopsis": "Opinionated logging utilities.",
+    "description": "A set of logging combinators for use with monad-logger.",
+    "category": "logging",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -72,7 +51,10 @@
     "benchmarks": [],
     "data-files": [],
     "data-dir": ".",
-    "extra-source-files": [],
+    "extra-source-files": [
+      "README.md",
+      "LICENSE"
+    ],
     "extra-tmp-files": [],
     "extra-doc-files": []
   },
@@ -81,23 +63,8 @@
       "name": {},
       "exposed-modules": [
         [
-          "Language",
-          "Nix"
-        ],
-        [
-          "Language",
-          "Nix",
-          "Binding"
-        ],
-        [
-          "Language",
-          "Nix",
-          "Identifier"
-        ],
-        [
-          "Language",
-          "Nix",
-          "Path"
+          "OM",
+          "Logging"
         ]
       ],
       "re-exported-modules": [],
@@ -125,30 +92,13 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [
-          [
-            "Paths_language_nix"
-          ]
-        ],
+        "otherModules": [],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [],
-        "otherExtensions": [
-          {
-            "enable-extension": "FlexibleContexts"
-          },
-          {
-            "enable-extension": "TemplateHaskell"
-          },
-          {
-            "enable-extension": "GeneralizedNewtypeDeriving"
-          },
-          {
-            "enable-extension": "DeriveGeneric"
-          }
-        ],
+        "otherExtensions": [],
         "oldExtensions": [],
         "extraLibs": [],
         "extraGHCiLibs": [],
@@ -161,7 +111,13 @@
         "autogenIncludes": [],
         "installIncludes": [],
         "options": [
-          [],
+          [
+            "-Wmissing-deriving-strategies",
+            "-Wmissing-export-lists",
+            "-Wmissing-import-lists",
+            "-Wredundant-constraints",
+            "-Wall"
+          ],
           []
         ],
         "profOptions": [
@@ -179,43 +135,64 @@
         "customFieldsBI": [],
         "targetBuildDepends": [
           {
+            "package-name": "aeson",
+            "version-range": ">=2.0.3.0 && <2.1",
+            "library": [
+              {}
+            ]
+          },
+          {
             "package-name": "base",
-            "version-range": "<5",
+            "version-range": ">=4.15.0.0 && <4.16",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "QuickCheck",
-            "version-range": "-any",
+            "package-name": "bytestring",
+            "version-range": ">=0.10.12.1 && <0.11",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "deepseq",
-            "version-range": "-any",
+            "package-name": "fast-logger",
+            "version-range": ">=3.1.1 && <3.2",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "lens",
-            "version-range": "-any",
+            "package-name": "monad-logger",
+            "version-range": ">=0.3.36 && <0.4",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "parsec-class",
-            "version-range": "-any",
+            "package-name": "om-show",
+            "version-range": ">=0.1.2.0 && <0.2",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "pretty",
-            "version-range": "-any",
+            "package-name": "split",
+            "version-range": ">=0.2.3.4 && <0.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "text",
+            "version-range": ">=1.2.5.0 && <1.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "time",
+            "version-range": ">=1.9.3 && <1.10",
             "library": [
               {}
             ]
@@ -226,43 +203,64 @@
     },
     "condTreeConstraints": [
       {
+        "package-name": "aeson",
+        "version-range": ">=2.0.3.0 && <2.1",
+        "library": [
+          {}
+        ]
+      },
+      {
         "package-name": "base",
-        "version-range": "<5",
+        "version-range": ">=4.15.0.0 && <4.16",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "QuickCheck",
-        "version-range": "-any",
+        "package-name": "bytestring",
+        "version-range": ">=0.10.12.1 && <0.11",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "deepseq",
-        "version-range": "-any",
+        "package-name": "fast-logger",
+        "version-range": ">=3.1.1 && <3.2",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "lens",
-        "version-range": "-any",
+        "package-name": "monad-logger",
+        "version-range": ">=0.3.36 && <0.4",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "parsec-class",
-        "version-range": "-any",
+        "package-name": "om-show",
+        "version-range": ">=0.1.2.0 && <0.2",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "pretty",
-        "version-range": "-any",
+        "package-name": "split",
+        "version-range": ">=0.2.3.4 && <0.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "text",
+        "version-range": ">=1.2.5.0 && <1.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "time",
+        "version-range": ">=1.9.3 && <1.10",
         "library": [
           {}
         ]
