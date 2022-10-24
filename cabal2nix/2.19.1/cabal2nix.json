@@ -1,14 +1,17 @@
 {
   "description": {
     "spec-version": {
-      "Right": ">=1.10"
+      "Left": [
+        1,
+        24
+      ]
     },
     "package": {
-      "name": "openapi3",
+      "name": "cabal2nix",
       "version": [
-        3,
         2,
-        2
+        19,
+        1
       ]
     },
     "license": {
@@ -17,66 +20,36 @@
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "(c) 2015-2016, GetShopTV, (c) 2020, Biocad",
-    "maintainer": "nickolay@getshoptv.com, kolmax94@gmail.com",
-    "author": "Nickolay Kudasov, Maxim Koltsov",
-    "stability": "",
+    "copyright": "",
+    "maintainer": "sternenseemann <sternenseemann@systemli.org>",
+    "author": "Peter Simons <simons@cryp.to>",
+    "stability": "stable",
     "tested-with": [
       {
         "compiler": "GHC",
-        "versionRange": "==8.4.4 || ==8.6.5 || ==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.2"
+        "versionRange": "==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.2"
       }
     ],
-    "homepage": "https://github.com/biocad/openapi3",
+    "homepage": "https://github.com/nixos/cabal2nix#readme",
     "pkg-url": "",
-    "bug-reports": "https://github.com/biocad/openapi3/issues",
+    "bug-reports": "https://github.com/nixos/cabal2nix/issues",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/biocad/openapi3.git",
+        "location": "https://github.com/nixos/cabal2nix",
         "module": null,
         "branch": null,
         "tag": null,
-        "subdir": null
+        "subdir": "cabal2nix"
       }
     ],
-    "synopsis": "OpenAPI 3.0 data model",
-    "description": "This library is intended to be used for decoding and encoding OpenAPI 3.0 API\nspecifications as well as manipulating them.\n\nThe original OpenAPI 3.0 specification is available at http://swagger.io/specification/.",
-    "category": "Web, Swagger, OpenApi",
-    "custom-fields": [
-      [
-        "x-revision",
-        "2"
-      ]
-    ],
-    "build-type-raw": "Custom",
-    "custom-setup": {
-      "setup-depends": [
-        {
-          "package-name": "base",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "Cabal",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "cabal-doctest",
-          "version-range": ">=1.0.6 && <1.1",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "__defaultSetupDepends": false
-    },
+    "synopsis": "Convert Cabal files into Nix build instructions.",
+    "description": "Convert Cabal files into Nix build instructions. Users of Nix can install the latest\nversion by running:\n\n> nix-env -i cabal2nix",
+    "category": "Distribution, Nix",
+    "custom-fields": [],
+    "build-type-raw": "Simple",
+    "custom-setup": null,
     "library": null,
     "sublibraries": [],
     "executables": [],
@@ -88,7 +61,8 @@
     "extra-source-files": [
       "README.md",
       "CHANGELOG.md",
-      "examples/*.hs"
+      "test/golden-test-cases/*.cabal",
+      "test/golden-test-cases/*.nix.golden"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -98,103 +72,107 @@
       "name": {},
       "exposed-modules": [
         [
-          "Data",
-          "OpenApi"
+          "Cabal2nix"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Declare"
+          "Distribution",
+          "Nixpkgs",
+          "Fetch"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Lens"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Operation"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "BuildInfo"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Optics"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "Constraint"
         ],
         [
-          "Data",
-          "OpenApi",
-          "ParamSchema"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "Derivation"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Schema"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "FromCabal"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Schema",
-          "Generator"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "FromCabal",
+          "Configuration"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Schema",
-          "Validation"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "FromCabal",
+          "Flags"
         ],
         [
-          "Data",
-          "OpenApi",
-          "SchemaOptions"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "FromCabal",
+          "License"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Internal"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "FromCabal",
+          "Name"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Internal",
-          "Schema"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "FromCabal",
+          "Normalize"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Internal",
-          "Schema",
-          "Validation"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "FromCabal",
+          "PostProcess"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Internal",
-          "ParamSchema"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "Hackage"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Internal",
-          "Utils"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "OrphanInstances"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Internal",
-          "AesonUtils"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "PackageSourceSpec"
         ],
         [
-          "Data",
-          "OpenApi",
-          "Internal",
-          "TypeShape"
-        ],
-        [
-          "Data",
-          "OpenApi",
-          "Aeson",
-          "Compat"
+          "Distribution",
+          "Nixpkgs",
+          "Haskell",
+          "Platform"
         ]
       ],
       "re-exported-modules": [],
@@ -222,13 +200,45 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [],
+        "otherModules": [
+          [
+            "Paths_cabal2nix"
+          ]
+        ],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [],
-        "otherExtensions": [],
+        "otherExtensions": [
+          {
+            "enable-extension": "MultiParamTypeClasses"
+          },
+          {
+            "enable-extension": "ScopedTypeVariables"
+          },
+          {
+            "enable-extension": "FlexibleInstances"
+          },
+          {
+            "enable-extension": "CPP"
+          },
+          {
+            "enable-extension": "TemplateHaskell"
+          },
+          {
+            "enable-extension": "StandaloneDeriving"
+          },
+          {
+            "enable-extension": "RecordWildCards"
+          },
+          {
+            "enable-extension": "OverloadedStrings"
+          },
+          {
+            "enable-extension": "DeriveGeneric"
+          }
+        ],
         "oldExtensions": [],
         "extraLibs": [],
         "extraGHCiLibs": [],
@@ -260,175 +270,161 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.11.1.0 && <4.18",
+            "version-range": ">4.11",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "bytestring",
-            "version-range": ">=0.10.8.2 && <0.12",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "containers",
-            "version-range": ">=0.5.11.0 && <0.7",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "template-haskell",
-            "version-range": ">=2.13.0.0 && <2.20",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "time",
-            "version-range": ">=1.8.0.2 && <1.14",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "transformers",
-            "version-range": ">=0.5.5.0 && <0.6",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "mtl",
-            "version-range": ">=2.2.2 && <2.3",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "text",
-            "version-range": ">=1.2.3.1 && <2.1",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "base-compat-batteries",
-            "version-range": ">=0.11.1 && <0.13",
+            "package-name": "Cabal",
+            "version-range": ">=3.0",
             "library": [
               {}
             ]
           },
           {
             "package-name": "aeson",
-            "version-range": ">=1.4.2.0 && <1.6 || >=2.0.1.0 && <2.2",
+            "version-range": ">1",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "aeson-pretty",
-            "version-range": ">=0.8.7 && <0.9",
+            "package-name": "ansi-wl-pprint",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "cookie",
-            "version-range": ">=0.4.3 && <0.5",
+            "package-name": "bytestring",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "generics-sop",
-            "version-range": ">=0.5.1.0 && <0.6",
+            "package-name": "containers",
+            "version-range": ">=0.5.9",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "hashable",
-            "version-range": ">=1.2.7.0 && <1.5",
+            "package-name": "deepseq",
+            "version-range": ">=1.4",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "http-media",
-            "version-range": ">=0.8.0.0 && <0.9",
+            "package-name": "directory",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "insert-ordered-containers",
-            "version-range": ">=0.2.3 && <0.3",
+            "package-name": "distribution-nixpkgs",
+            "version-range": ">=1.7 && <1.8",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "filepath",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "hackage-db",
+            "version-range": ">=2.0.1",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "hopenssl",
+            "version-range": ">=2",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "hpack",
+            "version-range": ">=0.29.6",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "language-nix",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
             "package-name": "lens",
-            "version-range": ">=4.16.1 && <5.3",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "network",
-            "version-range": ">=2.6.3.5 && <3.2",
+            "package-name": "optparse-applicative",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "optics-core",
-            "version-range": ">=0.2 && <0.5",
+            "package-name": "pretty",
+            "version-range": ">=1.1.2",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "optics-th",
-            "version-range": ">=0.2 && <0.5",
+            "package-name": "process",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "scientific",
-            "version-range": ">=0.3.6.2 && <0.4",
+            "package-name": "split",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "unordered-containers",
-            "version-range": ">=0.2.9.0 && <0.3",
+            "package-name": "text",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "uuid-types",
-            "version-range": ">=1.0.3 && <1.1",
+            "package-name": "time",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "vector",
-            "version-range": ">=0.12.0.1 && <0.14",
+            "package-name": "transformers",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "QuickCheck",
-            "version-range": ">=2.10.1 && <2.15",
+            "package-name": "yaml",
+            "version-range": "-any",
             "library": [
               {}
             ]
@@ -440,175 +436,161 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.11.1.0 && <4.18",
+        "version-range": ">4.11",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "bytestring",
-        "version-range": ">=0.10.8.2 && <0.12",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "containers",
-        "version-range": ">=0.5.11.0 && <0.7",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "template-haskell",
-        "version-range": ">=2.13.0.0 && <2.20",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "time",
-        "version-range": ">=1.8.0.2 && <1.14",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "transformers",
-        "version-range": ">=0.5.5.0 && <0.6",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "mtl",
-        "version-range": ">=2.2.2 && <2.3",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "text",
-        "version-range": ">=1.2.3.1 && <2.1",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "base-compat-batteries",
-        "version-range": ">=0.11.1 && <0.13",
+        "package-name": "Cabal",
+        "version-range": ">=3.0",
         "library": [
           {}
         ]
       },
       {
         "package-name": "aeson",
-        "version-range": ">=1.4.2.0 && <1.6 || >=2.0.1.0 && <2.2",
+        "version-range": ">1",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "aeson-pretty",
-        "version-range": ">=0.8.7 && <0.9",
+        "package-name": "ansi-wl-pprint",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "cookie",
-        "version-range": ">=0.4.3 && <0.5",
+        "package-name": "bytestring",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "generics-sop",
-        "version-range": ">=0.5.1.0 && <0.6",
+        "package-name": "containers",
+        "version-range": ">=0.5.9",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "hashable",
-        "version-range": ">=1.2.7.0 && <1.5",
+        "package-name": "deepseq",
+        "version-range": ">=1.4",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "http-media",
-        "version-range": ">=0.8.0.0 && <0.9",
+        "package-name": "directory",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "insert-ordered-containers",
-        "version-range": ">=0.2.3 && <0.3",
+        "package-name": "distribution-nixpkgs",
+        "version-range": ">=1.7 && <1.8",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "filepath",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "hackage-db",
+        "version-range": ">=2.0.1",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "hopenssl",
+        "version-range": ">=2",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "hpack",
+        "version-range": ">=0.29.6",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "language-nix",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
         "package-name": "lens",
-        "version-range": ">=4.16.1 && <5.3",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "network",
-        "version-range": ">=2.6.3.5 && <3.2",
+        "package-name": "optparse-applicative",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "optics-core",
-        "version-range": ">=0.2 && <0.5",
+        "package-name": "pretty",
+        "version-range": ">=1.1.2",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "optics-th",
-        "version-range": ">=0.2 && <0.5",
+        "package-name": "process",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "scientific",
-        "version-range": ">=0.3.6.2 && <0.4",
+        "package-name": "split",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "unordered-containers",
-        "version-range": ">=0.2.9.0 && <0.3",
+        "package-name": "text",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "uuid-types",
-        "version-range": ">=1.0.3 && <1.1",
+        "package-name": "time",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "vector",
-        "version-range": ">=0.12.0.1 && <0.14",
+        "package-name": "transformers",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "QuickCheck",
-        "version-range": ">=2.10.1 && <2.15",
+        "package-name": "yaml",
+        "version-range": "-any",
         "library": [
           {}
         ]
@@ -617,10 +599,10 @@
     "condTreeComponents": []
   },
   "executables": {
-    "example": {
+    "hackage2nix": {
       "condTreeData": {
-        "name": "example",
-        "module-path": "hackage.hs",
+        "name": "hackage2nix",
+        "module-path": "Main.hs",
         "scope": "public",
         "build-info": {
           "buildable": true,
@@ -641,7 +623,326 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "examples"
+            "hackage2nix"
+          ],
+          "otherModules": [
+            [
+              "HackageGit"
+            ],
+            [
+              "Paths_cabal2nix"
+            ]
+          ],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-maxN16"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": "<5",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "Cabal",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "aeson",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "bytestring",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "cabal2nix",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "containers",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "directory",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "distribution-nixpkgs",
+              "version-range": ">=1.7 && <1.8",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "filepath",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "hopenssl",
+              "version-range": ">=2",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "language-nix",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "lens",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "monad-par",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "monad-par-extras",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "mtl",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "optparse-applicative",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "pretty",
+              "version-range": ">=1.1.2",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": "<5",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "Cabal",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "aeson",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "bytestring",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "cabal2nix",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "containers",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "directory",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "distribution-nixpkgs",
+          "version-range": ">=1.7 && <1.8",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "filepath",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "hopenssl",
+          "version-range": ">=2",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "language-nix",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "lens",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "monad-par",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "monad-par-extras",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "mtl",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "optparse-applicative",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "pretty",
+          "version-range": ">=1.1.2",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    },
+    "cabal2nix": {
+      "condTreeData": {
+        "name": "cabal2nix",
+        "module-path": "Main.hs",
+        "scope": "public",
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "cabal2nix"
           ],
           "otherModules": [],
           "virtualModules": [],
@@ -687,28 +988,7 @@
               ]
             },
             {
-              "package-name": "aeson",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "lens",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "openapi3",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "text",
+              "package-name": "cabal2nix",
               "version-range": "-any",
               "library": [
                 {}
@@ -727,28 +1007,7 @@
           ]
         },
         {
-          "package-name": "aeson",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "lens",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "openapi3",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "text",
+          "package-name": "cabal2nix",
           "version-range": "-any",
           "library": [
             {}
@@ -759,7 +1018,7 @@
     }
   },
   "test-suites": {
-    "doctests": {
+    "regression-test": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -767,11 +1026,16 @@
             1,
             0
           ],
-          "filepath": "doctests.hs"
+          "filepath": "Main.hs"
         },
         "build-info": {
           "buildable": true,
-          "buildTools": [],
+          "buildTools": [
+            {
+              "package-name": "cabal2nix",
+              "include-renaming": "-any"
+            }
+          ],
           "buildToolDepends": [],
           "cppOptions": [],
           "asmOptions": [],
@@ -809,7 +1073,10 @@
           "autogenIncludes": [],
           "installIncludes": [],
           "options": [
-            [],
+            [
+              "-threaded",
+              "-with-rtsopts=-K64K"
+            ],
             []
           ],
           "profOptions": [
@@ -834,200 +1101,14 @@
               ]
             },
             {
-              "package-name": "doctest",
+              "package-name": "Cabal",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "Glob",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "QuickCheck",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "doctest",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "Glob",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "QuickCheck",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": []
-    },
-    "spec": {
-      "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "Spec.hs"
-        },
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [
-            {
-              "package-name": "hspec-discover",
-              "executable-component-name": "hspec-discover",
-              "version-range": ">=2.5.5 && <2.11"
-            }
-          ],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "test"
-          ],
-          "otherModules": [
-            [
-              "SpecCommon"
-            ],
-            [
-              "Data",
-              "OpenApiSpec"
-            ],
-            [
-              "Data",
-              "OpenApi",
-              "CommonTestTypes"
-            ],
-            [
-              "Data",
-              "OpenApi",
-              "ParamSchemaSpec"
-            ],
-            [
-              "Data",
-              "OpenApi",
-              "SchemaSpec"
-            ],
-            [
-              "Data",
-              "OpenApi",
-              "Schema",
-              "ValidationSpec"
-            ],
-            [
-              "Data",
-              "OpenApi",
-              "Schema",
-              "GeneratorSpec"
-            ]
-          ],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "base",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "QuickCheck",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "aeson",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "base-compat-batteries",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "bytestring",
+              "package-name": "cabal2nix",
               "version-range": "-any",
               "library": [
                 {}
@@ -1041,14 +1122,21 @@
               ]
             },
             {
-              "package-name": "hashable",
+              "package-name": "directory",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "insert-ordered-containers",
+              "package-name": "filepath",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "language-nix",
               "version-range": "-any",
               "library": [
                 {}
@@ -1062,78 +1150,29 @@
               ]
             },
             {
-              "package-name": "mtl",
+              "package-name": "pretty",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "openapi3",
+              "package-name": "process",
+              "version-range": ">1.2",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "tasty",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "template-haskell",
+              "package-name": "tasty-golden",
               "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "text",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "time",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "unordered-containers",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "vector",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hspec",
-              "version-range": ">=2.5.5 && <2.11",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "HUnit",
-              "version-range": ">=1.6.0.0 && <1.7",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "quickcheck-instances",
-              "version-range": ">=0.3.19 && <0.14",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "utf8-string",
-              "version-range": ">=1.0.1.1 && <1.1",
               "library": [
                 {}
               ]
@@ -1151,28 +1190,14 @@
           ]
         },
         {
-          "package-name": "QuickCheck",
+          "package-name": "Cabal",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "aeson",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "base-compat-batteries",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "bytestring",
+          "package-name": "cabal2nix",
           "version-range": "-any",
           "library": [
             {}
@@ -1186,14 +1211,21 @@
           ]
         },
         {
-          "package-name": "hashable",
+          "package-name": "directory",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "insert-ordered-containers",
+          "package-name": "filepath",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "language-nix",
           "version-range": "-any",
           "library": [
             {}
@@ -1207,78 +1239,29 @@
           ]
         },
         {
-          "package-name": "mtl",
+          "package-name": "pretty",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "openapi3",
+          "package-name": "process",
+          "version-range": ">1.2",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "tasty",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "template-haskell",
+          "package-name": "tasty-golden",
           "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "text",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "time",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "unordered-containers",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "vector",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hspec",
-          "version-range": ">=2.5.5 && <2.11",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "HUnit",
-          "version-range": ">=1.6.0.0 && <1.7",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "quickcheck-instances",
-          "version-range": ">=0.3.19 && <0.14",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "utf8-string",
-          "version-range": ">=1.0.1.1 && <1.1",
           "library": [
             {}
           ]

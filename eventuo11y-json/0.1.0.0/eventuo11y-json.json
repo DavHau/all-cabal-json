@@ -1,51 +1,62 @@
 {
   "description": {
     "spec-version": {
-      "Right": ">=1.8"
+      "Left": [
+        3,
+        0
+      ]
     },
     "package": {
-      "name": "hspec-webdriver",
+      "name": "eventuo11y-json",
       "version": [
+        0,
         1,
-        2,
+        0,
         0
       ]
     },
     "license": {
-      "Right": "MIT"
+      "Left": {
+        "license-expression": {
+          "expression": {
+            "id": "Apache_2_0"
+          },
+          "exception-id": null
+        }
+      }
     },
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "",
-    "maintainer": "John Lenz <lenz@math.uic.edu>",
-    "author": "John Lenz <lenz@math.uic.edu>",
-    "stability": "Experimental",
-    "tested-with": [],
-    "homepage": "https://bitbucket.org/wuzzeb/webdriver-utils",
+    "copyright": "Copyright 2022 Shea Levy.",
+    "maintainer": "shea@shealevy.com",
+    "author": "Shea Levy",
+    "stability": "",
+    "tested-with": [
+      {
+        "compiler": "GHC",
+        "versionRange": "==8.10.7 || ==9.2.4"
+      }
+    ],
+    "homepage": "",
     "pkg-url": "",
-    "bug-reports": "",
+    "bug-reports": "https://github.com/shlevy/eventuo11y/issues",
     "source-repos": [
       {
         "kind": {},
-        "type": "Mercurial",
-        "location": "https://bitbucket.org/wuzzeb/webdriver-utils",
+        "type": "Git",
+        "location": "https://github.com/shlevy/eventuo11y",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "Write end2end web application tests using webdriver and hspec",
-    "description": "For end to end testing of web applications from Haskell, the\n<https://hackage.haskell.org/package/webdriver webdriver> package is a great tool but just\ncontains the code to communicate with the browser.  This package integrates webdriver\nwith <http://hspec.github.io hspec>.",
-    "category": "Web",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
-    "build-type-raw": "Simple",
+    "synopsis": "aeson-based rendering for eventuo11y",
+    "description": "Render [eventuo11y](https://hackage.haskell.org/package/eventuo11y) 'Observe.Event.Event's\nto JSON.\n\nSee \"Observe.Event.Dynamic\" for 'Observe.Event.Event' selectors that don't require\ngenerating domain-specific types and renderers.\n\nSee \"Observe.Event.Render.JSON\" for renderer types.\n\nSee \"Observe.Event.Render.JSON.DSL.Compile\" to compile the \"Observe.Event.DSL\" DSL\nin a way that generates \"Observe.Event.Render.JSON\" renderers.\n\nSee \"Observe.Event.Render.JSON.Handle\" for rendering 'Observe.Event.Event's as\nJSON to a 'System.IO.Handle', and in particular to 'System.IO.stderr'.",
+    "category": "Observability",
+    "custom-fields": [],
+    "build-type-raw": null,
     "custom-setup": null,
     "library": null,
     "sublibraries": [],
@@ -56,8 +67,7 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
-      "README.md",
-      "Changelog.md"
+      "CHANGELOG.md"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -67,9 +77,30 @@
       "name": {},
       "exposed-modules": [
         [
-          "Test",
-          "Hspec",
-          "WebDriver"
+          "Observe",
+          "Event",
+          "Dynamic"
+        ],
+        [
+          "Observe",
+          "Event",
+          "Render",
+          "JSON"
+        ],
+        [
+          "Observe",
+          "Event",
+          "Render",
+          "JSON",
+          "DSL",
+          "Compile"
+        ],
+        [
+          "Observe",
+          "Event",
+          "Render",
+          "JSON",
+          "Handle"
         ]
       ],
       "re-exported-modules": [],
@@ -95,12 +126,12 @@
         "cxxSources": [],
         "jsSources": [],
         "hsSourceDirs": [
-          "."
+          "src"
         ],
         "otherModules": [],
         "virtualModules": [],
         "autogenModules": [],
-        "defaultLanguage": null,
+        "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [],
         "otherExtensions": [],
@@ -116,10 +147,7 @@
         "autogenIncludes": [],
         "installIncludes": [],
         "options": [
-          [
-            "-Wall",
-            "-O2"
-          ],
+          [],
           []
         ],
         "profOptions": [
@@ -138,91 +166,70 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4 && <5",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "HUnit",
-            "version-range": ">=1.2",
+            "version-range": "^>=4.14 || ^>=4.16",
             "library": [
               {}
             ]
           },
           {
             "package-name": "aeson",
-            "version-range": ">=0.8",
+            "version-range": "^>=2.0",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "data-default",
-            "version-range": ">=0.5",
+            "package-name": "bytestring",
+            "version-range": "^>=0.10 || ^>=0.11",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "hashable",
-            "version-range": ">=1.2",
+            "package-name": "eventuo11y",
+            "version-range": "^>=0.5.0.0",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "hspec-core",
-            "version-range": ">=2.0 && <2.5",
+            "package-name": "eventuo11y-dsl",
+            "version-range": "^>=0.1.0.0",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "hspec",
-            "version-range": ">=2.0",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "lifted-base",
-            "version-range": ">=0.2",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "stm",
-            "version-range": ">=2.4",
+            "package-name": "template-haskell",
+            "version-range": "^>=2.16 || ^>=2.18",
             "library": [
               {}
             ]
           },
           {
             "package-name": "text",
-            "version-range": ">=0.11",
+            "version-range": "^>=1.2",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "transformers",
-            "version-range": ">=0.3",
+            "package-name": "th-compat",
+            "version-range": "^>=0.1.4",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "unordered-containers",
-            "version-range": ">=0.2",
+            "package-name": "time",
+            "version-range": "^>=1.9 || ^>=1.11",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "webdriver",
-            "version-range": ">=0.6.1",
+            "package-name": "uuid",
+            "version-range": "^>=1.3",
             "library": [
               {}
             ]
@@ -234,91 +241,70 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4 && <5",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "HUnit",
-        "version-range": ">=1.2",
+        "version-range": "^>=4.14 || ^>=4.16",
         "library": [
           {}
         ]
       },
       {
         "package-name": "aeson",
-        "version-range": ">=0.8",
+        "version-range": "^>=2.0",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "data-default",
-        "version-range": ">=0.5",
+        "package-name": "bytestring",
+        "version-range": "^>=0.10 || ^>=0.11",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "hashable",
-        "version-range": ">=1.2",
+        "package-name": "eventuo11y",
+        "version-range": "^>=0.5.0.0",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "hspec-core",
-        "version-range": ">=2.0 && <2.5",
+        "package-name": "eventuo11y-dsl",
+        "version-range": "^>=0.1.0.0",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "hspec",
-        "version-range": ">=2.0",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "lifted-base",
-        "version-range": ">=0.2",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "stm",
-        "version-range": ">=2.4",
+        "package-name": "template-haskell",
+        "version-range": "^>=2.16 || ^>=2.18",
         "library": [
           {}
         ]
       },
       {
         "package-name": "text",
-        "version-range": ">=0.11",
+        "version-range": "^>=1.2",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "transformers",
-        "version-range": ">=0.3",
+        "package-name": "th-compat",
+        "version-range": "^>=0.1.4",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "unordered-containers",
-        "version-range": ">=0.2",
+        "package-name": "time",
+        "version-range": "^>=1.9 || ^>=1.11",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "webdriver",
-        "version-range": ">=0.6.1",
+        "package-name": "uuid",
+        "version-range": "^>=1.3",
         "library": [
           {}
         ]

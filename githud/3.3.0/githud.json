@@ -3,14 +3,15 @@
     "spec-version": {
       "Left": [
         2,
-        4
+        2
       ]
     },
     "package": {
-      "name": "package-version",
+      "name": "githud",
       "version": [
-        0,
-        2
+        3,
+        3,
+        0
       ]
     },
     "license": {
@@ -26,40 +27,30 @@
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "2021-2022 Thomas Bidne",
-    "maintainer": "tbidne@protonmail.com",
-    "author": "Thomas Bidne",
+    "copyright": "Grégory Bataille 2015-2020",
+    "maintainer": "gregory.bataille@gmail.com",
+    "author": "Grégory Bataille",
     "stability": "",
-    "tested-with": [
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.7 || ==9.0.2 || ==9.2.3"
-      }
-    ],
-    "homepage": "https://github.com/tbidne/package-version/",
+    "tested-with": [],
+    "homepage": "http://github.com/gbataille/gitHUD#readme",
     "pkg-url": "",
-    "bug-reports": "https://github.com/tbidne/package-version/issues",
+    "bug-reports": "",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/tbidne/package-version",
+        "location": "https://github.com/gbataille/gitHUD",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "A package for retrieving a package's version number.",
-    "description": "@package-version@ reads the package version number from a cabal file.\nThis version number can be retrieved at compile-time via @TemplateHaskell@\nor runtime via ordinary functions.",
+    "synopsis": "Heads up, and you see your GIT context",
+    "description": "GIT Heads Up Display for your terminal prompt. More efficient replacement to the great git-radar. Please see README.md for more info",
     "category": "Development",
-    "custom-fields": [
-      [
-        "x-revision",
-        "2"
-      ]
-    ],
-    "build-type-raw": null,
+    "custom-fields": [],
+    "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
     "sublibraries": [],
@@ -69,10 +60,7 @@
     "benchmarks": [],
     "data-files": [],
     "data-dir": ".",
-    "extra-source-files": [
-      "CHANGELOG.md",
-      "README.md"
-    ],
+    "extra-source-files": [],
     "extra-tmp-files": [],
     "extra-doc-files": []
   },
@@ -81,15 +69,93 @@
       "name": {},
       "exposed-modules": [
         [
-          "Data",
-          "Version",
-          "Package"
+          "GitHUD"
         ],
         [
-          "Data",
-          "Version",
-          "Package",
-          "Internal"
+          "GitHUD",
+          "Config",
+          "Parse"
+        ],
+        [
+          "GitHUD",
+          "Config",
+          "Types"
+        ],
+        [
+          "GitHUD",
+          "Daemon",
+          "Network"
+        ],
+        [
+          "GitHUD",
+          "Daemon",
+          "Runner"
+        ],
+        [
+          "GitHUD",
+          "Debug"
+        ],
+        [
+          "GitHUD",
+          "Git",
+          "Types"
+        ],
+        [
+          "GitHUD",
+          "Git",
+          "Common"
+        ],
+        [
+          "GitHUD",
+          "Git",
+          "Command"
+        ],
+        [
+          "GitHUD",
+          "Git",
+          "Parse",
+          "Base"
+        ],
+        [
+          "GitHUD",
+          "Git",
+          "Parse",
+          "Status"
+        ],
+        [
+          "GitHUD",
+          "Git",
+          "Parse",
+          "Branch"
+        ],
+        [
+          "GitHUD",
+          "Git",
+          "Parse",
+          "Count"
+        ],
+        [
+          "GitHUD",
+          "Process"
+        ],
+        [
+          "GitHUD",
+          "Terminal",
+          "Base"
+        ],
+        [
+          "GitHUD",
+          "Terminal",
+          "Prompt"
+        ],
+        [
+          "GitHUD",
+          "Terminal",
+          "Types"
+        ],
+        [
+          "GitHUD",
+          "Types"
         ]
       ],
       "re-exported-modules": [],
@@ -122,44 +188,7 @@
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
-        "defaultExtensions": [
-          {
-            "enable-extension": "BangPatterns"
-          },
-          {
-            "enable-extension": "DeriveGeneric"
-          },
-          {
-            "enable-extension": "DeriveLift"
-          },
-          {
-            "enable-extension": "DerivingStrategies"
-          },
-          {
-            "enable-extension": "DerivingVia"
-          },
-          {
-            "enable-extension": "ImportQualifiedPost"
-          },
-          {
-            "enable-extension": "LambdaCase"
-          },
-          {
-            "enable-extension": "NumericUnderscores"
-          },
-          {
-            "enable-extension": "OverloadedStrings"
-          },
-          {
-            "enable-extension": "PatternSynonyms"
-          },
-          {
-            "enable-extension": "ScopedTypeVariables"
-          },
-          {
-            "enable-extension": "TypeApplications"
-          }
-        ],
+        "defaultExtensions": [],
         "otherExtensions": [],
         "oldExtensions": [],
         "extraLibs": [],
@@ -192,49 +221,98 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.14.1.0 && <4.18",
+            "version-range": ">=4.11 && <5",
             "library": [
               {}
             ]
           },
           {
             "package-name": "bytestring",
-            "version-range": ">=0.10.10.0 && <0.12",
+            "version-range": ">=0.10 && <0.11",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "deepseq",
-            "version-range": "^>=1.4.4.0",
+            "package-name": "daemons",
+            "version-range": ">=0.3 && <0.4",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "prettyprinter",
-            "version-range": ">=1.4.0 && <1.8",
+            "package-name": "data-default",
+            "version-range": ">=0.7 && <0.8",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "safe-exceptions",
-            "version-range": "^>=0.1.7.0",
+            "package-name": "directory",
+            "version-range": ">=1.3 && <1.4",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "template-haskell",
-            "version-range": ">=2.16.0.0 && <2.20",
+            "package-name": "filelock",
+            "version-range": ">=0.1.1.4 && <0.1.2.0",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "mtl",
+            "version-range": ">=2.2.2 && <3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "network",
+            "version-range": ">=2.8 && <4.0",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "parsec",
+            "version-range": ">=3.1.13 && <4",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "process",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
             "package-name": "text",
-            "version-range": ">=1.2.3.2 && <2.1",
+            "version-range": ">=1.2 && <1.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "temporary",
+            "version-range": ">=1.3 && <2",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "unix",
+            "version-range": ">=2.7 && <3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "utf8-string",
+            "version-range": ">=1.0 && <1.1",
             "library": [
               {}
             ]
@@ -246,49 +324,98 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.14.1.0 && <4.18",
+        "version-range": ">=4.11 && <5",
         "library": [
           {}
         ]
       },
       {
         "package-name": "bytestring",
-        "version-range": ">=0.10.10.0 && <0.12",
+        "version-range": ">=0.10 && <0.11",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "deepseq",
-        "version-range": "^>=1.4.4.0",
+        "package-name": "daemons",
+        "version-range": ">=0.3 && <0.4",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "prettyprinter",
-        "version-range": ">=1.4.0 && <1.8",
+        "package-name": "data-default",
+        "version-range": ">=0.7 && <0.8",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "safe-exceptions",
-        "version-range": "^>=0.1.7.0",
+        "package-name": "directory",
+        "version-range": ">=1.3 && <1.4",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "template-haskell",
-        "version-range": ">=2.16.0.0 && <2.20",
+        "package-name": "filelock",
+        "version-range": ">=0.1.1.4 && <0.1.2.0",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "mtl",
+        "version-range": ">=2.2.2 && <3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "network",
+        "version-range": ">=2.8 && <4.0",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "parsec",
+        "version-range": ">=3.1.13 && <4",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "process",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
         "package-name": "text",
-        "version-range": ">=1.2.3.2 && <2.1",
+        "version-range": ">=1.2 && <1.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "temporary",
+        "version-range": ">=1.3 && <2",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "unix",
+        "version-range": ">=2.7 && <3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "utf8-string",
+        "version-range": ">=1.0 && <1.1",
         "library": [
           {}
         ]
@@ -296,17 +423,12 @@
     ],
     "condTreeComponents": []
   },
-  "test-suites": {
-    "props": {
+  "executables": {
+    "githud": {
       "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "Main.hs"
-        },
+        "name": "githud",
+        "module-path": "Main.hs",
+        "scope": "public",
         "build-info": {
           "buildable": true,
           "buildTools": [],
@@ -326,283 +448,14 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "test/props"
-          ],
-          "otherModules": [
-            [
-              "Gens"
-            ],
-            [
-              "MaxRuns"
-            ],
-            [
-              "Tests",
-              "ListInt"
-            ],
-            [
-              "Tests",
-              "Text"
-            ],
-            [
-              "Tests",
-              "Version"
-            ],
-            [
-              "Utils"
-            ]
-          ],
-          "virtualModules": [],
-          "autogenModules": [],
-          "defaultLanguage": "Haskell2010",
-          "otherLanguages": [],
-          "defaultExtensions": [
-            {
-              "enable-extension": "BangPatterns"
-            },
-            {
-              "enable-extension": "DeriveGeneric"
-            },
-            {
-              "enable-extension": "DeriveLift"
-            },
-            {
-              "enable-extension": "DerivingStrategies"
-            },
-            {
-              "enable-extension": "DerivingVia"
-            },
-            {
-              "enable-extension": "ImportQualifiedPost"
-            },
-            {
-              "enable-extension": "LambdaCase"
-            },
-            {
-              "enable-extension": "NumericUnderscores"
-            },
-            {
-              "enable-extension": "OverloadedStrings"
-            },
-            {
-              "enable-extension": "PatternSynonyms"
-            },
-            {
-              "enable-extension": "ScopedTypeVariables"
-            },
-            {
-              "enable-extension": "TypeApplications"
-            }
-          ],
-          "otherExtensions": [],
-          "oldExtensions": [],
-          "extraLibs": [],
-          "extraGHCiLibs": [],
-          "extraBundledLibs": [],
-          "extraLibFlavours": [],
-          "extraDynLibFlavours": [],
-          "extraLibDirs": [],
-          "includeDirs": [],
-          "includes": [],
-          "autogenIncludes": [],
-          "installIncludes": [],
-          "options": [
-            [],
-            []
-          ],
-          "profOptions": [
-            [],
-            []
-          ],
-          "sharedOptions": [
-            [],
-            []
-          ],
-          "staticOptions": [
-            [],
-            []
-          ],
-          "customFieldsBI": [],
-          "targetBuildDepends": [
-            {
-              "package-name": "base",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "hedgehog",
-              "version-range": ">=1.0.2 && <1.2",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "package-version",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "tagged",
-              "version-range": "^>=0.8.6",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "tasty",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "tasty-hedgehog",
-              "version-range": ">=1.0.0.2 && <1.4",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "text",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            }
-          ],
-          "mixins": []
-        }
-      },
-      "condTreeConstraints": [
-        {
-          "package-name": "base",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "hedgehog",
-          "version-range": ">=1.0.2 && <1.2",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "package-version",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "tagged",
-          "version-range": "^>=0.8.6",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "tasty",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "tasty-hedgehog",
-          "version-range": ">=1.0.0.2 && <1.4",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "text",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        }
-      ],
-      "condTreeComponents": []
-    },
-    "doctest": {
-      "condTreeData": {
-        "name": "",
-        "interface": {
-          "version": [
-            1,
-            0
-          ],
-          "filepath": "Main.hs"
-        },
-        "build-info": {
-          "buildable": true,
-          "buildTools": [],
-          "buildToolDepends": [],
-          "cppOptions": [],
-          "asmOptions": [],
-          "cmmOptions": [],
-          "ccOptions": [],
-          "cxxOptions": [],
-          "ldOptions": [],
-          "pkgconfigDepends": [],
-          "frameworks": [],
-          "extraFrameworkDirs": [],
-          "asmSources": [],
-          "cmmSources": [],
-          "cSources": [],
-          "cxxSources": [],
-          "jsSources": [],
-          "hsSourceDirs": [
-            "test/doctest"
+            "app/githud"
           ],
           "otherModules": [],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
           "otherLanguages": [],
-          "defaultExtensions": [
-            {
-              "enable-extension": "BangPatterns"
-            },
-            {
-              "enable-extension": "DeriveGeneric"
-            },
-            {
-              "enable-extension": "DeriveLift"
-            },
-            {
-              "enable-extension": "DerivingStrategies"
-            },
-            {
-              "enable-extension": "DerivingVia"
-            },
-            {
-              "enable-extension": "ImportQualifiedPost"
-            },
-            {
-              "enable-extension": "LambdaCase"
-            },
-            {
-              "enable-extension": "NumericUnderscores"
-            },
-            {
-              "enable-extension": "OverloadedStrings"
-            },
-            {
-              "enable-extension": "PatternSynonyms"
-            },
-            {
-              "enable-extension": "ScopedTypeVariables"
-            },
-            {
-              "enable-extension": "TypeApplications"
-            }
-          ],
+          "defaultExtensions": [],
           "otherExtensions": [],
           "oldExtensions": [],
           "extraLibs": [],
@@ -616,7 +469,12 @@
           "autogenIncludes": [],
           "installIncludes": [],
           "options": [
-            [],
+            [
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N",
+              "-Wall"
+            ],
             []
           ],
           "profOptions": [
@@ -641,15 +499,8 @@
               ]
             },
             {
-              "package-name": "doctest",
-              "version-range": ">=0.16.3 && <0.21",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "env-guard",
-              "version-range": "^>=0.2",
+              "package-name": "githud",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -667,15 +518,8 @@
           ]
         },
         {
-          "package-name": "doctest",
-          "version-range": ">=0.16.3 && <0.21",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "env-guard",
-          "version-range": "^>=0.2",
+          "package-name": "githud",
+          "version-range": "-any",
           "library": [
             {}
           ]
@@ -683,7 +527,112 @@
       ],
       "condTreeComponents": []
     },
-    "unit": {
+    "githudd": {
+      "condTreeData": {
+        "name": "githudd",
+        "module-path": "Main.hs",
+        "scope": "public",
+        "build-info": {
+          "buildable": true,
+          "buildTools": [],
+          "buildToolDepends": [],
+          "cppOptions": [],
+          "asmOptions": [],
+          "cmmOptions": [],
+          "ccOptions": [],
+          "cxxOptions": [],
+          "ldOptions": [],
+          "pkgconfigDepends": [],
+          "frameworks": [],
+          "extraFrameworkDirs": [],
+          "asmSources": [],
+          "cmmSources": [],
+          "cSources": [],
+          "cxxSources": [],
+          "jsSources": [],
+          "hsSourceDirs": [
+            "app/githudd"
+          ],
+          "otherModules": [],
+          "virtualModules": [],
+          "autogenModules": [],
+          "defaultLanguage": "Haskell2010",
+          "otherLanguages": [],
+          "defaultExtensions": [],
+          "otherExtensions": [],
+          "oldExtensions": [],
+          "extraLibs": [],
+          "extraGHCiLibs": [],
+          "extraBundledLibs": [],
+          "extraLibFlavours": [],
+          "extraDynLibFlavours": [],
+          "extraLibDirs": [],
+          "includeDirs": [],
+          "includes": [],
+          "autogenIncludes": [],
+          "installIncludes": [],
+          "options": [
+            [
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N",
+              "-Wall"
+            ],
+            []
+          ],
+          "profOptions": [
+            [],
+            []
+          ],
+          "sharedOptions": [
+            [],
+            []
+          ],
+          "staticOptions": [
+            [],
+            []
+          ],
+          "customFieldsBI": [],
+          "targetBuildDepends": [
+            {
+              "package-name": "base",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "githud",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            }
+          ],
+          "mixins": []
+        }
+      },
+      "condTreeConstraints": [
+        {
+          "package-name": "base",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "githud",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        }
+      ],
+      "condTreeComponents": []
+    }
+  },
+  "test-suites": {
+    "githud-test": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -691,7 +640,7 @@
             1,
             0
           ],
-          "filepath": "Main.hs"
+          "filepath": "Spec.hs"
         },
         "build-info": {
           "buildable": true,
@@ -712,60 +661,59 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "test/unit"
+            "test"
           ],
           "otherModules": [
             [
-              "Tests",
-              "IO"
+              "Test",
+              "GitHUD",
+              "Git",
+              "Parse",
+              "Status"
             ],
             [
-              "Tests",
-              "TH"
+              "Test",
+              "GitHUD",
+              "Git",
+              "Parse",
+              "Branch"
+            ],
+            [
+              "Test",
+              "GitHUD",
+              "Git",
+              "Common"
+            ],
+            [
+              "Test",
+              "GitHUD",
+              "Git",
+              "Types"
+            ],
+            [
+              "Test",
+              "GitHUD",
+              "Terminal",
+              "Base"
+            ],
+            [
+              "Test",
+              "GitHUD",
+              "Terminal",
+              "Prompt"
+            ],
+            [
+              "Test",
+              "GitHUD",
+              "Config",
+              "Parse"
             ]
           ],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
           "otherLanguages": [],
-          "defaultExtensions": [
-            {
-              "enable-extension": "BangPatterns"
-            },
-            {
-              "enable-extension": "DeriveGeneric"
-            },
-            {
-              "enable-extension": "DeriveLift"
-            },
-            {
-              "enable-extension": "DerivingStrategies"
-            },
-            {
-              "enable-extension": "DerivingVia"
-            },
-            {
-              "enable-extension": "ImportQualifiedPost"
-            },
-            {
-              "enable-extension": "LambdaCase"
-            },
-            {
-              "enable-extension": "NumericUnderscores"
-            },
-            {
-              "enable-extension": "OverloadedStrings"
-            },
-            {
-              "enable-extension": "PatternSynonyms"
-            },
-            {
-              "enable-extension": "ScopedTypeVariables"
-            },
-            {
-              "enable-extension": "TypeApplications"
-            }
-          ],
+          "defaultExtensions": [],
           "otherExtensions": [],
           "oldExtensions": [],
           "extraLibs": [],
@@ -779,7 +727,13 @@
           "autogenIncludes": [],
           "installIncludes": [],
           "options": [
-            [],
+            [
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N",
+              "-Wall",
+              "-fsimpl-tick-factor=120"
+            ],
             []
           ],
           "profOptions": [
@@ -804,29 +758,57 @@
               ]
             },
             {
-              "package-name": "package-version",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "safe-exceptions",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
               "package-name": "tasty",
-              "version-range": ">=1.1.0.3 && <1.5",
+              "version-range": ">=1.2 && <1.5",
               "library": [
                 {}
               ]
             },
             {
               "package-name": "tasty-hunit",
-              "version-range": ">=0.9 && <0.11",
+              "version-range": ">=0.10 && <0.11",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "tasty-smallcheck",
+              "version-range": ">=0.8 && <0.9",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "tasty-quickcheck",
+              "version-range": ">=0.10 && <0.11",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "daemons",
+              "version-range": ">=0.3 && <0.4",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "parsec",
+              "version-range": ">=3.1.13 && <4",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "mtl",
+              "version-range": ">=2.2.2 && <3",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "githud",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -844,29 +826,57 @@
           ]
         },
         {
-          "package-name": "package-version",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "safe-exceptions",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
           "package-name": "tasty",
-          "version-range": ">=1.1.0.3 && <1.5",
+          "version-range": ">=1.2 && <1.5",
           "library": [
             {}
           ]
         },
         {
           "package-name": "tasty-hunit",
-          "version-range": ">=0.9 && <0.11",
+          "version-range": ">=0.10 && <0.11",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "tasty-smallcheck",
+          "version-range": ">=0.8 && <0.9",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "tasty-quickcheck",
+          "version-range": ">=0.10 && <0.11",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "daemons",
+          "version-range": ">=0.3 && <0.4",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "parsec",
+          "version-range": ">=3.1.13 && <4",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "mtl",
+          "version-range": ">=2.2.2 && <3",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "githud",
+          "version-range": "-any",
           "library": [
             {}
           ]

@@ -1,70 +1,49 @@
 {
   "description": {
     "spec-version": {
-      "Right": ">=1.10"
+      "Left": [
+        1,
+        12
+      ]
     },
     "package": {
-      "name": "cborg-json",
+      "name": "githash",
       "version": [
         0,
-        2,
-        5,
-        0
+        1,
+        6,
+        3
       ]
     },
     "license": {
       "Right": "BSD3"
     },
     "license-files": [
-      "LICENSE.txt"
+      "LICENSE"
     ],
-    "copyright": "2015-2017 Duncan Coutts,\n2015-2017 Well-Typed LLP,\n2015 IRIS Connect Ltd",
-    "maintainer": "ben@smart-cactus.org",
-    "author": "Duncan Coutts",
+    "copyright": "",
+    "maintainer": "michael@snoyman.com",
+    "author": "Michael Snoyman, Adam C. Foltzer",
     "stability": "",
-    "tested-with": [
+    "tested-with": [],
+    "homepage": "https://github.com/snoyberg/githash#readme",
+    "pkg-url": "",
+    "bug-reports": "https://github.com/snoyberg/githash/issues",
+    "source-repos": [
       {
-        "compiler": "GHC",
-        "versionRange": "==8.4.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.3"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.7"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.0.1"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.4.2"
+        "kind": {},
+        "type": "Git",
+        "location": "https://github.com/snoyberg/githash",
+        "module": null,
+        "branch": null,
+        "tag": null,
+        "subdir": null
       }
     ],
-    "homepage": "https://github.com/well-typed/cborg",
-    "pkg-url": "",
-    "bug-reports": "https://github.com/well-typed/cborg/issues",
-    "source-repos": [],
-    "synopsis": "A library for encoding JSON as CBOR",
-    "description": "This package implements the bijection between JSON and\nCBOR defined in the CBOR specification, RFC 7049.",
-    "category": "Codec",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "synopsis": "Compile git revision info into Haskell projects",
+    "description": "Please see the README and documentation at <https://www.stackage.org/package/githash>",
+    "category": "Development",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -76,6 +55,7 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
+      "README.md",
       "ChangeLog.md"
     ],
     "extra-tmp-files": [],
@@ -86,9 +66,7 @@
       "name": {},
       "exposed-modules": [
         [
-          "Codec",
-          "CBOR",
-          "JSON"
+          "GitHash"
         ]
       ],
       "re-exported-modules": [],
@@ -116,7 +94,11 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [],
+        "otherModules": [
+          [
+            "Paths_githash"
+          ]
+        ],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
@@ -135,9 +117,7 @@
         "autogenIncludes": [],
         "installIncludes": [],
         "options": [
-          [
-            "-Wall"
-          ],
+          [],
           []
         ],
         "profOptions": [
@@ -156,56 +136,49 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.11 && <4.18",
+            "version-range": ">=4.9.1 && <5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "aeson",
-            "version-range": ">=0.7 && <2.2",
+            "package-name": "bytestring",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "aeson-pretty",
-            "version-range": ">=0.8 && <0.9",
+            "package-name": "directory",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "unordered-containers",
-            "version-range": ">=0.2 && <0.3",
+            "package-name": "filepath",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "scientific",
-            "version-range": ">=0.3 && <0.4",
+            "package-name": "process",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "text",
-            "version-range": ">=1.1 && <2.1",
+            "package-name": "template-haskell",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "vector",
-            "version-range": ">=0.10 && <0.14",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "cborg",
-            "version-range": "==0.2.*",
+            "package-name": "th-compat",
+            "version-range": "-any",
             "library": [
               {}
             ]
@@ -217,146 +190,58 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.11 && <4.18",
+        "version-range": ">=4.9.1 && <5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "aeson",
-        "version-range": ">=0.7 && <2.2",
+        "package-name": "bytestring",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "aeson-pretty",
-        "version-range": ">=0.8 && <0.9",
+        "package-name": "directory",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "unordered-containers",
-        "version-range": ">=0.2 && <0.3",
+        "package-name": "filepath",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "scientific",
-        "version-range": ">=0.3 && <0.4",
+        "package-name": "process",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "text",
-        "version-range": ">=1.1 && <2.1",
+        "package-name": "template-haskell",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "vector",
-        "version-range": ">=0.10 && <0.14",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "cborg",
-        "version-range": "==0.2.*",
+        "package-name": "th-compat",
+        "version-range": "-any",
         "library": [
           {}
         ]
       }
     ],
-    "condTreeComponents": [
-      {
-        "condBranchCondition": {
-          "v": {
-            "compiler": "GHC",
-            "version": ">=8.0"
-          }
-        },
-        "condBranchIfTrue": {
-          "condTreeData": {
-            "name": {},
-            "exposed-modules": [],
-            "re-exported-modules": [],
-            "signatures": [],
-            "exposed": true,
-            "visibility": "LibraryVisibilityPublic",
-            "build-info": {
-              "buildable": true,
-              "buildTools": [],
-              "buildToolDepends": [],
-              "cppOptions": [],
-              "asmOptions": [],
-              "cmmOptions": [],
-              "ccOptions": [],
-              "cxxOptions": [],
-              "ldOptions": [],
-              "pkgconfigDepends": [],
-              "frameworks": [],
-              "extraFrameworkDirs": [],
-              "asmSources": [],
-              "cmmSources": [],
-              "cSources": [],
-              "cxxSources": [],
-              "jsSources": [],
-              "hsSourceDirs": [],
-              "otherModules": [],
-              "virtualModules": [],
-              "autogenModules": [],
-              "defaultLanguage": null,
-              "otherLanguages": [],
-              "defaultExtensions": [],
-              "otherExtensions": [],
-              "oldExtensions": [],
-              "extraLibs": [],
-              "extraGHCiLibs": [],
-              "extraBundledLibs": [],
-              "extraLibFlavours": [],
-              "extraDynLibFlavours": [],
-              "extraLibDirs": [],
-              "includeDirs": [],
-              "includes": [],
-              "autogenIncludes": [],
-              "installIncludes": [],
-              "options": [
-                [
-                  "-Wcompat",
-                  "-Wnoncanonical-monad-instances"
-                ],
-                []
-              ],
-              "profOptions": [
-                [],
-                []
-              ],
-              "sharedOptions": [
-                [],
-                []
-              ],
-              "staticOptions": [
-                [],
-                []
-              ],
-              "customFieldsBI": [],
-              "targetBuildDepends": [],
-              "mixins": []
-            }
-          },
-          "condTreeConstraints": [],
-          "condTreeComponents": []
-        }
-      }
-    ]
+    "condTreeComponents": []
   },
-  "benchmarks": {
-    "bench": {
+  "test-suites": {
+    "githash-spec": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -364,7 +249,7 @@
             1,
             0
           ],
-          "filepath": "Main.hs"
+          "filepath": "Spec.hs"
         },
         "build-info": {
           "buildable": true,
@@ -385,9 +270,25 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
-            "bench"
+            "test"
           ],
-          "otherModules": [],
+          "otherModules": [
+            [
+              "GitHashSpec"
+            ],
+            [
+              "NormalRepoSpec"
+            ],
+            [
+              "RepoWithASubmoduleSpec"
+            ],
+            [
+              "WorktreeRepoSpec"
+            ],
+            [
+              "Paths_githash"
+            ]
+          ],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
@@ -406,14 +307,7 @@
           "autogenIncludes": [],
           "installIncludes": [],
           "options": [
-            [
-              "-Wall",
-              "-rtsopts",
-              "-fno-cse",
-              "-fno-ignore-asserts",
-              "-fno-warn-orphans",
-              "-O2"
-            ],
+            [],
             []
           ],
           "profOptions": [
@@ -432,41 +326,41 @@
           "targetBuildDepends": [
             {
               "package-name": "base",
-              "version-range": ">=4.11 && <4.18",
+              "version-range": ">=4.9.1 && <5",
               "library": [
                 {}
               ]
             },
             {
               "package-name": "bytestring",
-              "version-range": ">=0.10.4 && <0.12",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "criterion",
-              "version-range": ">=1.0 && <1.6",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "deepseq",
-              "version-range": ">=1.0 && <1.5",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "zlib",
-              "version-range": ">=0.5 && <0.7",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
               "package-name": "directory",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "filepath",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "githash",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "hspec",
               "version-range": "-any",
               "library": [
                 {}
@@ -480,21 +374,28 @@
               ]
             },
             {
-              "package-name": "aeson",
+              "package-name": "template-haskell",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "cborg",
+              "package-name": "temporary",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "cborg-json",
+              "package-name": "th-compat",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "unliftio",
               "version-range": "-any",
               "library": [
                 {}
@@ -507,41 +408,41 @@
       "condTreeConstraints": [
         {
           "package-name": "base",
-          "version-range": ">=4.11 && <4.18",
+          "version-range": ">=4.9.1 && <5",
           "library": [
             {}
           ]
         },
         {
           "package-name": "bytestring",
-          "version-range": ">=0.10.4 && <0.12",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "criterion",
-          "version-range": ">=1.0 && <1.6",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "deepseq",
-          "version-range": ">=1.0 && <1.5",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "zlib",
-          "version-range": ">=0.5 && <0.7",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
           "package-name": "directory",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "filepath",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "githash",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "hspec",
           "version-range": "-any",
           "library": [
             {}
@@ -555,21 +456,28 @@
           ]
         },
         {
-          "package-name": "aeson",
+          "package-name": "template-haskell",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "cborg",
+          "package-name": "temporary",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "cborg-json",
+          "package-name": "th-compat",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "unliftio",
           "version-range": "-any",
           "library": [
             {}
