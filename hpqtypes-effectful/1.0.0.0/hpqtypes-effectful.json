@@ -1,104 +1,61 @@
 {
   "description": {
     "spec-version": {
-      "Right": ">=1.10"
+      "Left": [
+        2,
+        4
+      ]
     },
     "package": {
-      "name": "deepseq-generics",
+      "name": "hpqtypes-effectful",
       "version": [
+        1,
         0,
-        2,
         0,
         0
       ]
     },
     "license": {
-      "Right": "BSD3"
+      "Left": {
+        "license-expression": {
+          "expression": {
+            "id": "BSD_3_Clause"
+          },
+          "exception-id": null
+        }
+      }
     },
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "2012, Herbert Valerio Riedel",
-    "maintainer": "https://github.com/haskell-hvr",
-    "author": "Herbert Valerio Riedel",
+    "copyright": "",
+    "maintainer": "andrzej@rybczak.net, jakub.waszczuk@scrive.com",
+    "author": "Scrive AB",
     "stability": "",
     "tested-with": [
       {
         "compiler": "GHC",
-        "versionRange": "==9.4.*"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.2.*"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.0.*"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.7"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.4.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.0.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.10.3"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.8.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.6.3"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==7.4.2"
+        "versionRange": "==8.8.4 || ==8.10.7 || ==9.0.2 || ==9.2.4 || ==9.4.2"
       }
     ],
-    "homepage": "https://github.com/haskell-hvr/deepseq-generics",
+    "homepage": "https://github.com/haskell-effectful/hpqtypes-effectful",
     "pkg-url": "",
-    "bug-reports": "https://github.com/haskell-hvr/deepseq-generics/issues",
+    "bug-reports": "https://github.com/haskell-effectful/hpqtypes-effectful/issues",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/haskell-hvr/deepseq-generics.git",
+        "location": "https://github.com/haskell-effectful/hpqtypes-effectful",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "GHC.Generics-based Control.DeepSeq.rnf implementation",
-    "description": "This package provides a \"GHC.Generics\"-based\n'Control.DeepSeq.Generics.genericRnf' function which can be used\nfor providing a 'rnf' implementation. See the documentation for\nthe 'genericRnf' function in the \"Control.DeepSeq.Generics\" module\nto get started.\n\nThe original idea was pioneered in the @generic-deepseq@ package\n(see <http://www.haskell.org/pipermail/haskell-cafe/2012-February/099551.html>\nfor more information).\n\nThis package differs from the @generic-deepseq@ package by working\nin combination with the existing @deepseq@ package as opposed to\ndefining a conflicting drop-in replacement for @deepseq@'s\n@Control.DeepSeq@ module.\n\n__Note__: The ability to auto-derive via \"GHC.Generics\" has been\nmerged into @deepseq-1.4.0.0@. This package is now still useful\nfor writing code that's also compatible with older @deepseq@\nversions not yet providing \"GHC.Generics\"-support.",
-    "category": "Control",
-    "custom-fields": [
-      [
-        "x-revision",
-        "8"
-      ]
-    ],
+    "synopsis": "Adaptation of the hpqtypes library for the effectful ecosystem.",
+    "description": "Adaptation of the @<https://hackage.haskell.org/package/hpqtypes hpqtypes>@ library for the @<https://hackage.haskell.org/package/effectful effectful>@ ecosystem.",
+    "category": "Database",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -110,7 +67,8 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
-      "changelog.md"
+      "CHANGELOG.md",
+      "README.md"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -120,9 +78,8 @@
       "name": {},
       "exposed-modules": [
         [
-          "Control",
-          "DeepSeq",
-          "Generics"
+          "Effectful",
+          "HPQTypes"
         ]
       ],
       "re-exported-modules": [],
@@ -147,24 +104,80 @@
         "cSources": [],
         "cxxSources": [],
         "jsSources": [],
-        "hsSourceDirs": [],
+        "hsSourceDirs": [
+          "src"
+        ],
         "otherModules": [],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
-        "defaultExtensions": [],
-        "otherExtensions": [
+        "defaultExtensions": [
           {
             "enable-extension": "BangPatterns"
+          },
+          {
+            "enable-extension": "ConstraintKinds"
+          },
+          {
+            "enable-extension": "DataKinds"
+          },
+          {
+            "enable-extension": "DeriveFunctor"
+          },
+          {
+            "enable-extension": "DeriveGeneric"
+          },
+          {
+            "enable-extension": "DerivingStrategies"
           },
           {
             "enable-extension": "FlexibleContexts"
           },
           {
+            "enable-extension": "FlexibleInstances"
+          },
+          {
+            "enable-extension": "GADTs"
+          },
+          {
+            "enable-extension": "GeneralizedNewtypeDeriving"
+          },
+          {
+            "enable-extension": "LambdaCase"
+          },
+          {
+            "enable-extension": "MultiParamTypeClasses"
+          },
+          {
+            "disable-extension": "StarIsType"
+          },
+          {
+            "enable-extension": "RankNTypes"
+          },
+          {
+            "enable-extension": "RoleAnnotations"
+          },
+          {
+            "enable-extension": "ScopedTypeVariables"
+          },
+          {
+            "enable-extension": "StandaloneDeriving"
+          },
+          {
+            "enable-extension": "TupleSections"
+          },
+          {
+            "enable-extension": "TypeApplications"
+          },
+          {
+            "enable-extension": "TypeFamilies"
+          },
+          {
             "enable-extension": "TypeOperators"
           }
         ],
+        "otherExtensions": [],
         "oldExtensions": [],
         "extraLibs": [],
         "extraGHCiLibs": [],
@@ -178,7 +191,10 @@
         "installIncludes": [],
         "options": [
           [
-            "-Wall"
+            "-Wall",
+            "-Wcompat",
+            "-Wredundant-constraints",
+            "-Wno-unticked-promoted-constructors"
           ],
           []
         ],
@@ -198,21 +214,28 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.5 && <4.18",
+            "version-range": ">=4.13 && <5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "ghc-prim",
-            "version-range": ">=0.2 && <0.10",
+            "package-name": "effectful-core",
+            "version-range": ">=1.2.0.0 && <3.0.0.0",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "deepseq",
-            "version-range": ">=1.2.0.1 && <1.5",
+            "package-name": "exceptions",
+            "version-range": "-any",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "hpqtypes",
+            "version-range": ">=1.9.4.0 && <1.11.0.0",
             "library": [
               {}
             ]
@@ -224,21 +247,28 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.5 && <4.18",
+        "version-range": ">=4.13 && <5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "ghc-prim",
-        "version-range": ">=0.2 && <0.10",
+        "package-name": "effectful-core",
+        "version-range": ">=1.2.0.0 && <3.0.0.0",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "deepseq",
-        "version-range": ">=1.2.0.1 && <1.5",
+        "package-name": "exceptions",
+        "version-range": "-any",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "hpqtypes",
+        "version-range": ">=1.9.4.0 && <1.11.0.0",
         "library": [
           {}
         ]
@@ -247,7 +277,7 @@
     "condTreeComponents": []
   },
   "test-suites": {
-    "deepseq-generics-tests": {
+    "test": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -255,7 +285,7 @@
             1,
             0
           ],
-          "filepath": "Suite.hs"
+          "filepath": "Main.hs"
         },
         "build-info": {
           "buildable": true,
@@ -276,28 +306,84 @@
           "cxxSources": [],
           "jsSources": [],
           "hsSourceDirs": [
+            "examples",
             "test"
           ],
-          "otherModules": [],
+          "otherModules": [
+            [
+              "OuterJoins"
+            ]
+          ],
           "virtualModules": [],
           "autogenModules": [],
           "defaultLanguage": "Haskell2010",
           "otherLanguages": [],
-          "defaultExtensions": [],
-          "otherExtensions": [
+          "defaultExtensions": [
             {
-              "enable-extension": "CPP"
+              "enable-extension": "BangPatterns"
             },
             {
-              "enable-extension": "DeriveDataTypeable"
+              "enable-extension": "ConstraintKinds"
+            },
+            {
+              "enable-extension": "DataKinds"
+            },
+            {
+              "enable-extension": "DeriveFunctor"
             },
             {
               "enable-extension": "DeriveGeneric"
             },
             {
+              "enable-extension": "DerivingStrategies"
+            },
+            {
+              "enable-extension": "FlexibleContexts"
+            },
+            {
+              "enable-extension": "FlexibleInstances"
+            },
+            {
+              "enable-extension": "GADTs"
+            },
+            {
+              "enable-extension": "GeneralizedNewtypeDeriving"
+            },
+            {
+              "enable-extension": "LambdaCase"
+            },
+            {
+              "enable-extension": "MultiParamTypeClasses"
+            },
+            {
+              "disable-extension": "StarIsType"
+            },
+            {
+              "enable-extension": "RankNTypes"
+            },
+            {
+              "enable-extension": "RoleAnnotations"
+            },
+            {
+              "enable-extension": "ScopedTypeVariables"
+            },
+            {
+              "enable-extension": "StandaloneDeriving"
+            },
+            {
               "enable-extension": "TupleSections"
+            },
+            {
+              "enable-extension": "TypeApplications"
+            },
+            {
+              "enable-extension": "TypeFamilies"
+            },
+            {
+              "enable-extension": "TypeOperators"
             }
           ],
+          "otherExtensions": [],
           "oldExtensions": [],
           "extraLibs": [],
           "extraGHCiLibs": [],
@@ -311,7 +397,11 @@
           "installIncludes": [],
           "options": [
             [
-              "-Wall"
+              "-Wall",
+              "-Wcompat",
+              "-Wredundant-constraints",
+              "-Wno-unticked-promoted-constructors",
+              "-threaded"
             ],
             []
           ],
@@ -337,43 +427,50 @@
               ]
             },
             {
-              "package-name": "deepseq",
+              "package-name": "effectful-core",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "deepseq-generics",
+              "package-name": "hpqtypes-effectful",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "ghc-prim",
+              "package-name": "exceptions",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "test-framework",
-              "version-range": ">=0.6.1 && <0.9",
+              "package-name": "hpqtypes",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "test-framework-hunit",
-              "version-range": ">=0.2.2 && <0.9",
+              "package-name": "tasty",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "HUnit",
-              "version-range": ">=1.2.5 && <1.7",
+              "package-name": "tasty-hunit",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "text",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -391,43 +488,50 @@
           ]
         },
         {
-          "package-name": "deepseq",
+          "package-name": "effectful-core",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "deepseq-generics",
+          "package-name": "hpqtypes-effectful",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "ghc-prim",
+          "package-name": "exceptions",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "test-framework",
-          "version-range": ">=0.6.1 && <0.9",
+          "package-name": "hpqtypes",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "test-framework-hunit",
-          "version-range": ">=0.2.2 && <0.9",
+          "package-name": "tasty",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "HUnit",
-          "version-range": ">=1.2.5 && <1.7",
+          "package-name": "tasty-hunit",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "text",
+          "version-range": "-any",
           "library": [
             {}
           ]
