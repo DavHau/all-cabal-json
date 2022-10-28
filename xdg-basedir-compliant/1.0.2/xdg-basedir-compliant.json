@@ -1,15 +1,17 @@
 {
   "description": {
     "spec-version": {
-      "Right": ">=1.10"
+      "Left": [
+        1,
+        12
+      ]
     },
     "package": {
-      "name": "servant-auth-swagger",
+      "name": "xdg-basedir-compliant",
       "version": [
+        1,
         0,
-        2,
-        10,
-        1
+        2
       ]
     },
     "license": {
@@ -18,55 +20,29 @@
     "license-files": [
       "LICENSE"
     ],
-    "copyright": "(c) Julian K. Arni",
-    "maintainer": "jkarni@gmail.com",
-    "author": "Julian K. Arni",
+    "copyright": "2022 Pierre Thierry",
+    "maintainer": "pierre@nothos.net",
+    "author": "Pierre Thierry",
     "stability": "",
-    "tested-with": [
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.4.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.1"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.2"
-      }
-    ],
-    "homepage": "http://github.com/haskell-servant/servant-auth#readme",
+    "tested-with": [],
+    "homepage": "https://github.com/kephas/xdg-basedir-compliant#readme",
     "pkg-url": "",
-    "bug-reports": "https://github.com/haskell-servant/servant-auth/issues",
+    "bug-reports": "https://github.com/kephas/xdg-basedir-compliant/issues",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/haskell-servant/servant-auth",
+        "location": "https://github.com/kephas/xdg-basedir-compliant",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "servant-swagger/servant-auth compatibility",
-    "description": "This package provides instances that allow generating swagger2 schemas from\n<https://hackage.haskell.org/package/servant servant>\nAPIs that use\n<https://hackage.haskell.org/package/servant-auth servant-auth's> @Auth@ combinator.\n\nFor a quick overview of the usage, see the <http://github.com/haskell-servant/servant-auth#readme README>.",
-    "category": "Web, Servant, Authentication",
-    "custom-fields": [
-      [
-        "x-revision",
-        "8"
-      ]
-    ],
+    "synopsis": "XDG Basedir",
+    "description": "See README.md",
+    "category": "System",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -78,7 +54,7 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
-      "CHANGELOG.md"
+      "README.md"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -88,9 +64,28 @@
       "name": {},
       "exposed-modules": [
         [
-          "Servant",
-          "Auth",
-          "Swagger"
+          "System",
+          "XDG"
+        ],
+        [
+          "System",
+          "XDG",
+          "Env"
+        ],
+        [
+          "System",
+          "XDG",
+          "Error"
+        ],
+        [
+          "System",
+          "XDG",
+          "FileSystem"
+        ],
+        [
+          "System",
+          "XDG",
+          "Internal"
         ]
       ],
       "re-exported-modules": [],
@@ -118,65 +113,36 @@
         "hsSourceDirs": [
           "src"
         ],
-        "otherModules": [],
+        "otherModules": [
+          [
+            "Paths_xdg_basedir_compliant"
+          ]
+        ],
         "virtualModules": [],
         "autogenModules": [],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [
           {
-            "enable-extension": "AutoDeriveTypeable"
-          },
-          {
-            "enable-extension": "ConstraintKinds"
-          },
-          {
-            "enable-extension": "DataKinds"
-          },
-          {
-            "enable-extension": "DefaultSignatures"
-          },
-          {
-            "enable-extension": "DeriveFoldable"
-          },
-          {
-            "enable-extension": "DeriveFunctor"
-          },
-          {
-            "enable-extension": "DeriveGeneric"
-          },
-          {
-            "enable-extension": "DeriveTraversable"
+            "enable-extension": "BlockArguments"
           },
           {
             "enable-extension": "FlexibleContexts"
           },
           {
-            "enable-extension": "FlexibleInstances"
-          },
-          {
-            "enable-extension": "FunctionalDependencies"
-          },
-          {
             "enable-extension": "GADTs"
           },
           {
-            "enable-extension": "KindSignatures"
+            "enable-extension": "LambdaCase"
           },
           {
-            "enable-extension": "MultiParamTypeClasses"
-          },
-          {
-            "enable-extension": "OverloadedStrings"
+            "enable-extension": "PolyKinds"
           },
           {
             "enable-extension": "RankNTypes"
           },
           {
             "enable-extension": "ScopedTypeVariables"
-          },
-          {
-            "enable-extension": "TypeFamilies"
           },
           {
             "enable-extension": "TypeOperators"
@@ -196,7 +162,7 @@
         "installIncludes": [],
         "options": [
           [
-            "-Wall"
+            "-fplugin=Polysemy.Plugin"
           ],
           []
         ],
@@ -216,49 +182,49 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.10 && <4.18",
+            "version-range": ">=4.7 && <5",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "text",
-            "version-range": ">=1.2.3.0 && <2.1",
+            "package-name": "bytestring",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "servant-swagger",
-            "version-range": ">=1.1.5 && <2",
+            "package-name": "filepath",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "swagger2",
-            "version-range": ">=2.2.2 && <3",
+            "package-name": "polysemy",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "servant",
-            "version-range": ">=0.13 && <0.20",
+            "package-name": "polysemy-plugin",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "servant-auth",
-            "version-range": "==0.4.*",
+            "package-name": "polysemy-zoo",
+            "version-range": "-any",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "lens",
-            "version-range": ">=4.16.1 && <5.2",
+            "package-name": "split",
+            "version-range": "-any",
             "library": [
               {}
             ]
@@ -270,49 +236,49 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.10 && <4.18",
+        "version-range": ">=4.7 && <5",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "text",
-        "version-range": ">=1.2.3.0 && <2.1",
+        "package-name": "bytestring",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "servant-swagger",
-        "version-range": ">=1.1.5 && <2",
+        "package-name": "filepath",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "swagger2",
-        "version-range": ">=2.2.2 && <3",
+        "package-name": "polysemy",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "servant",
-        "version-range": ">=0.13 && <0.20",
+        "package-name": "polysemy-plugin",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "servant-auth",
-        "version-range": "==0.4.*",
+        "package-name": "polysemy-zoo",
+        "version-range": "-any",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "lens",
-        "version-range": ">=4.16.1 && <5.2",
+        "package-name": "split",
+        "version-range": "-any",
         "library": [
           {}
         ]
@@ -321,7 +287,7 @@
     "condTreeComponents": []
   },
   "test-suites": {
-    "spec": {
+    "xdg-test": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -334,13 +300,7 @@
         "build-info": {
           "buildable": true,
           "buildTools": [],
-          "buildToolDepends": [
-            {
-              "package-name": "hspec-discover",
-              "executable-component-name": "hspec-discover",
-              "version-range": ">=2.5.5 && <2.10"
-            }
-          ],
+          "buildToolDepends": [],
           "cppOptions": [],
           "asmOptions": [],
           "cmmOptions": [],
@@ -360,9 +320,7 @@
           ],
           "otherModules": [
             [
-              "Servant",
-              "Auth",
-              "SwaggerSpec"
+              "Paths_xdg_basedir_compliant"
             ]
           ],
           "virtualModules": [],
@@ -371,58 +329,25 @@
           "otherLanguages": [],
           "defaultExtensions": [
             {
-              "enable-extension": "AutoDeriveTypeable"
-            },
-            {
-              "enable-extension": "ConstraintKinds"
-            },
-            {
-              "enable-extension": "DataKinds"
-            },
-            {
-              "enable-extension": "DefaultSignatures"
-            },
-            {
-              "enable-extension": "DeriveFoldable"
-            },
-            {
-              "enable-extension": "DeriveFunctor"
-            },
-            {
-              "enable-extension": "DeriveGeneric"
-            },
-            {
-              "enable-extension": "DeriveTraversable"
+              "enable-extension": "BlockArguments"
             },
             {
               "enable-extension": "FlexibleContexts"
             },
             {
-              "enable-extension": "FlexibleInstances"
-            },
-            {
-              "enable-extension": "FunctionalDependencies"
-            },
-            {
               "enable-extension": "GADTs"
             },
             {
-              "enable-extension": "KindSignatures"
+              "enable-extension": "LambdaCase"
             },
             {
-              "enable-extension": "MultiParamTypeClasses"
-            },
-            {
-              "enable-extension": "OverloadedStrings"
+              "enable-extension": "PolyKinds"
             },
             {
               "enable-extension": "RankNTypes"
             },
             {
               "enable-extension": "ScopedTypeVariables"
-            },
-            {
-              "enable-extension": "TypeFamilies"
             },
             {
               "enable-extension": "TypeOperators"
@@ -442,7 +367,11 @@
           "installIncludes": [],
           "options": [
             [
-              "-Wall"
+              "-threaded",
+              "-rtsopts",
+              "-with-rtsopts=-N",
+              "-Wall",
+              "-fplugin=Polysemy.Plugin"
             ],
             []
           ],
@@ -461,56 +390,35 @@
           "customFieldsBI": [],
           "targetBuildDepends": [
             {
+              "package-name": "QuickCheck",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "aeson",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
               "package-name": "base",
+              "version-range": ">=4.7 && <5",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "bytestring",
               "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "text",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "servant-swagger",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "swagger2",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "servant",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "servant-auth",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "lens",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "servant-auth-swagger",
+              "package-name": "filepath",
               "version-range": "-any",
               "library": [
                 {}
@@ -518,14 +426,42 @@
             },
             {
               "package-name": "hspec",
-              "version-range": ">=2.5.5 && <2.10",
+              "version-range": "-any",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "QuickCheck",
-              "version-range": ">=2.11.3 && <2.15",
+              "package-name": "polysemy",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "polysemy-plugin",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "polysemy-zoo",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "split",
+              "version-range": "-any",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "xdg-basedir-compliant",
+              "version-range": "-any",
               "library": [
                 {}
               ]
@@ -536,56 +472,35 @@
       },
       "condTreeConstraints": [
         {
+          "package-name": "QuickCheck",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "aeson",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
           "package-name": "base",
+          "version-range": ">=4.7 && <5",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "bytestring",
           "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "text",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "servant-swagger",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "swagger2",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "servant",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "servant-auth",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "lens",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "servant-auth-swagger",
+          "package-name": "filepath",
           "version-range": "-any",
           "library": [
             {}
@@ -593,14 +508,42 @@
         },
         {
           "package-name": "hspec",
-          "version-range": ">=2.5.5 && <2.10",
+          "version-range": "-any",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "QuickCheck",
-          "version-range": ">=2.11.3 && <2.15",
+          "package-name": "polysemy",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "polysemy-plugin",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "polysemy-zoo",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "split",
+          "version-range": "-any",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "xdg-basedir-compliant",
+          "version-range": "-any",
           "library": [
             {}
           ]
