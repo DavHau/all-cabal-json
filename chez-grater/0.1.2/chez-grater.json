@@ -2,53 +2,42 @@
   "description": {
     "spec-version": {
       "Left": [
-        1,
-        12
-      ]
-    },
-    "package": {
-      "name": "gltf-loader",
-      "version": [
-        0,
         3,
-        0,
         0
       ]
     },
-    "license": {
-      "Right": "MIT"
+    "package": {
+      "name": "chez-grater",
+      "version": [
+        0,
+        1,
+        2
+      ]
     },
-    "license-files": [
-      "LICENSE"
-    ],
-    "copyright": "2022 Sean Gillespie",
-    "maintainer": "sean@mistersg.net",
-    "author": "Sean D Gillespie",
+    "license": {
+      "Left": {
+        "license-expression": {
+          "expression": {
+            "id": "MIT"
+          },
+          "exception-id": null
+        }
+      }
+    },
+    "license-files": [],
+    "copyright": "2022 Dan Fithian",
+    "maintainer": "Dan Fithian",
+    "author": "Dan Fithian",
     "stability": "",
     "tested-with": [],
-    "homepage": "https://github.com/sgillespie/haskell-gltf-loader#readme",
+    "homepage": "https://github.com/dfithian/chez-grater",
     "pkg-url": "",
-    "bug-reports": "https://github.com/sgillespie/haskell-gltf-loader/issues",
-    "source-repos": [
-      {
-        "kind": {},
-        "type": "Git",
-        "location": "https://github.com/sgillespiep/haskell-gltf-loader",
-        "module": null,
-        "branch": null,
-        "tag": null,
-        "subdir": null
-      }
-    ],
-    "synopsis": "High level GlTF loader",
-    "description": "Please see the README on Github at <https://github.com/sgillespie/haskell-gltf-loader#readme>",
-    "category": "Graphics",
-    "custom-fields": [
-      [
-        "x-revision",
-        "1"
-      ]
-    ],
+    "bug-reports": "https://github.com/dfithian/chez-grater/issues",
+    "source-repos": [],
+    "synopsis": "Parse and scrape recipe blogs",
+    "description": "Remove the life story! Parse and scrape recipe blogs. Powers https://app.mo-nomz.com/.",
+    "category": "Web",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -60,14 +49,11 @@
     "data-files": [],
     "data-dir": ".",
     "extra-source-files": [
-      "README.md",
-      "data/big-cube.gltf",
-      "data/cube-separate.bin",
-      "data/cube-separate.gltf",
-      "data/cube.glb",
-      "data/cube.gltf",
-      "data/invalid.gltf",
-      "data/Untitled.png"
+      "test/fixtures/banana-bread-rachelmansfield.txt",
+      "test/fixtures/chicken-pot-pie-allrecipes.txt",
+      "test/fixtures/chicken-pot-pie-pillsbury.txt",
+      "test/fixtures/chicken-pot-pie-tasteofhome.txt",
+      "test/fixtures/roast-chicken-food-network.txt"
     ],
     "extra-tmp-files": [],
     "extra-doc-files": []
@@ -77,55 +63,83 @@
       "name": {},
       "exposed-modules": [
         [
-          "Text",
-          "GLTF",
-          "Loader"
+          "Chez",
+          "Grater"
         ],
         [
-          "Text",
-          "GLTF",
-          "Loader",
-          "Errors"
-        ],
-        [
-          "Text",
-          "GLTF",
-          "Loader",
-          "Glb"
-        ],
-        [
-          "Text",
-          "GLTF",
-          "Loader",
-          "Gltf"
-        ],
-        [
-          "Text",
-          "GLTF",
-          "Loader",
+          "Chez",
+          "Grater",
           "Internal",
-          "Adapter"
+          "CI",
+          "Orphans"
         ],
         [
-          "Text",
-          "GLTF",
-          "Loader",
+          "Chez",
+          "Grater",
           "Internal",
-          "BufferAccessor"
+          "Json"
         ],
         [
-          "Text",
-          "GLTF",
-          "Loader",
+          "Chez",
+          "Grater",
           "Internal",
-          "Decoders"
+          "Prelude"
         ],
         [
-          "Text",
-          "GLTF",
-          "Loader",
-          "Internal",
-          "MonadAdapter"
+          "Chez",
+          "Grater",
+          "Manager"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Parser"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Parser",
+          "Types"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Readable",
+          "Types"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Scraper"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Scraper",
+          "Site"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Scraper",
+          "Types"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Test",
+          "Gen"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Test",
+          "ParsedIngredients"
+        ],
+        [
+          "Chez",
+          "Grater",
+          "Types"
         ]
       ],
       "re-exported-modules": [],
@@ -155,20 +169,18 @@
         ],
         "otherModules": [
           [
-            "Paths_gltf_loader"
+            "Paths_chez_grater"
           ]
         ],
         "virtualModules": [],
-        "autogenModules": [],
+        "autogenModules": [
+          [
+            "Paths_chez_grater"
+          ]
+        ],
         "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [
-          {
-            "enable-extension": "BangPatterns"
-          },
-          {
-            "enable-extension": "BinaryLiterals"
-          },
           {
             "enable-extension": "ConstraintKinds"
           },
@@ -182,25 +194,16 @@
             "enable-extension": "DeriveDataTypeable"
           },
           {
-            "enable-extension": "DeriveFoldable"
-          },
-          {
-            "enable-extension": "DeriveFunctor"
-          },
-          {
             "enable-extension": "DeriveGeneric"
           },
           {
-            "enable-extension": "DeriveTraversable"
+            "enable-extension": "DerivingStrategies"
           },
           {
-            "enable-extension": "DoAndIfThenElse"
+            "enable-extension": "DerivingVia"
           },
           {
             "enable-extension": "EmptyDataDecls"
-          },
-          {
-            "enable-extension": "ExistentialQuantification"
           },
           {
             "enable-extension": "FlexibleContexts"
@@ -209,19 +212,10 @@
             "enable-extension": "FlexibleInstances"
           },
           {
-            "enable-extension": "FunctionalDependencies"
-          },
-          {
             "enable-extension": "GADTs"
           },
           {
             "enable-extension": "GeneralizedNewtypeDeriving"
-          },
-          {
-            "enable-extension": "InstanceSigs"
-          },
-          {
-            "enable-extension": "KindSignatures"
           },
           {
             "enable-extension": "LambdaCase"
@@ -239,19 +233,13 @@
             "disable-extension": "ImplicitPrelude"
           },
           {
+            "disable-extension": "MonomorphismRestriction"
+          },
+          {
             "enable-extension": "OverloadedStrings"
           },
           {
-            "enable-extension": "OverloadedLists"
-          },
-          {
-            "enable-extension": "PartialTypeSignatures"
-          },
-          {
-            "enable-extension": "PatternGuards"
-          },
-          {
-            "enable-extension": "PolyKinds"
+            "enable-extension": "QuasiQuotes"
           },
           {
             "enable-extension": "RankNTypes"
@@ -266,13 +254,19 @@
             "enable-extension": "StandaloneDeriving"
           },
           {
+            "enable-extension": "TemplateHaskell"
+          },
+          {
             "enable-extension": "TupleSections"
+          },
+          {
+            "enable-extension": "TypeApplications"
           },
           {
             "enable-extension": "TypeFamilies"
           },
           {
-            "enable-extension": "TypeSynonymInstances"
+            "enable-extension": "TypeOperators"
           },
           {
             "enable-extension": "ViewPatterns"
@@ -293,12 +287,11 @@
         "options": [
           [
             "-Wall",
-            "-Wcompat",
-            "-Widentities",
-            "-Wincomplete-record-updates",
+            "-Wunused-packages",
+            "-fwarn-tabs",
+            "-fwarn-redundant-constraints",
             "-Wincomplete-uni-patterns",
-            "-Wpartial-fields",
-            "-Wredundant-constraints"
+            "-eventlog"
           ],
           []
         ],
@@ -317,64 +310,99 @@
         "customFieldsBI": [],
         "targetBuildDepends": [
           {
+            "package-name": "aeson",
+            "version-range": "<1.6",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "attoparsec",
+            "version-range": "<0.14",
+            "library": [
+              {}
+            ]
+          },
+          {
             "package-name": "base",
-            "version-range": ">=4.11 && <10",
+            "version-range": "<5.0",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "binary",
-            "version-range": "-any",
+            "package-name": "case-insensitive",
+            "version-range": "<1.3",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "bytestring",
-            "version-range": "-any",
+            "package-name": "containers",
+            "version-range": "<0.7",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "gltf-codec",
-            "version-range": "-any",
+            "package-name": "hashable",
+            "version-range": "<1.4",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "linear",
-            "version-range": "-any",
+            "package-name": "http-client",
+            "version-range": "<0.7",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "microlens",
-            "version-range": "-any",
+            "package-name": "http-client-tls",
+            "version-range": "<0.4",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "microlens-platform",
-            "version-range": "-any",
+            "package-name": "http-types",
+            "version-range": "<0.13",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "rio",
-            "version-range": ">=0.1.12.0",
+            "package-name": "network-uri",
+            "version-range": "<2.7",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "QuickCheck",
+            "version-range": "<2.15",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "scalpel",
+            "version-range": "<0.7",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "text",
+            "version-range": "<1.3",
             "library": [
               {}
             ]
           },
           {
             "package-name": "unordered-containers",
-            "version-range": "-any",
+            "version-range": "<0.3",
             "library": [
               {}
             ]
@@ -385,64 +413,99 @@
     },
     "condTreeConstraints": [
       {
+        "package-name": "aeson",
+        "version-range": "<1.6",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "attoparsec",
+        "version-range": "<0.14",
+        "library": [
+          {}
+        ]
+      },
+      {
         "package-name": "base",
-        "version-range": ">=4.11 && <10",
+        "version-range": "<5.0",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "binary",
-        "version-range": "-any",
+        "package-name": "case-insensitive",
+        "version-range": "<1.3",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "bytestring",
-        "version-range": "-any",
+        "package-name": "containers",
+        "version-range": "<0.7",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "gltf-codec",
-        "version-range": "-any",
+        "package-name": "hashable",
+        "version-range": "<1.4",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "linear",
-        "version-range": "-any",
+        "package-name": "http-client",
+        "version-range": "<0.7",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "microlens",
-        "version-range": "-any",
+        "package-name": "http-client-tls",
+        "version-range": "<0.4",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "microlens-platform",
-        "version-range": "-any",
+        "package-name": "http-types",
+        "version-range": "<0.13",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "rio",
-        "version-range": ">=0.1.12.0",
+        "package-name": "network-uri",
+        "version-range": "<2.7",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "QuickCheck",
+        "version-range": "<2.15",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "scalpel",
+        "version-range": "<0.7",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "text",
+        "version-range": "<1.3",
         "library": [
           {}
         ]
       },
       {
         "package-name": "unordered-containers",
-        "version-range": "-any",
+        "version-range": "<0.3",
         "library": [
           {}
         ]
@@ -451,10 +514,10 @@
     "condTreeComponents": []
   },
   "executables": {
-    "gltf-loader": {
+    "chez-grater": {
       "condTreeData": {
-        "name": "gltf-loader",
-        "module-path": "Main.hs",
+        "name": "chez-grater",
+        "module-path": "main.hs",
         "scope": "public",
         "build-info": {
           "buildable": true,
@@ -479,24 +542,7 @@
           ],
           "otherModules": [
             [
-              "Command",
-              "GLTF",
-              "Loader"
-            ],
-            [
-              "Command",
-              "GLTF",
-              "Loader",
-              "App"
-            ],
-            [
-              "Command",
-              "GLTF",
-              "Loader",
-              "Run"
-            ],
-            [
-              "Paths_gltf_loader"
+              "Paths_chez_grater"
             ]
           ],
           "virtualModules": [],
@@ -504,12 +550,6 @@
           "defaultLanguage": "Haskell2010",
           "otherLanguages": [],
           "defaultExtensions": [
-            {
-              "enable-extension": "BangPatterns"
-            },
-            {
-              "enable-extension": "BinaryLiterals"
-            },
             {
               "enable-extension": "ConstraintKinds"
             },
@@ -523,25 +563,16 @@
               "enable-extension": "DeriveDataTypeable"
             },
             {
-              "enable-extension": "DeriveFoldable"
-            },
-            {
-              "enable-extension": "DeriveFunctor"
-            },
-            {
               "enable-extension": "DeriveGeneric"
             },
             {
-              "enable-extension": "DeriveTraversable"
+              "enable-extension": "DerivingStrategies"
             },
             {
-              "enable-extension": "DoAndIfThenElse"
+              "enable-extension": "DerivingVia"
             },
             {
               "enable-extension": "EmptyDataDecls"
-            },
-            {
-              "enable-extension": "ExistentialQuantification"
             },
             {
               "enable-extension": "FlexibleContexts"
@@ -550,19 +581,10 @@
               "enable-extension": "FlexibleInstances"
             },
             {
-              "enable-extension": "FunctionalDependencies"
-            },
-            {
               "enable-extension": "GADTs"
             },
             {
               "enable-extension": "GeneralizedNewtypeDeriving"
-            },
-            {
-              "enable-extension": "InstanceSigs"
-            },
-            {
-              "enable-extension": "KindSignatures"
             },
             {
               "enable-extension": "LambdaCase"
@@ -580,19 +602,13 @@
               "disable-extension": "ImplicitPrelude"
             },
             {
+              "disable-extension": "MonomorphismRestriction"
+            },
+            {
               "enable-extension": "OverloadedStrings"
             },
             {
-              "enable-extension": "OverloadedLists"
-            },
-            {
-              "enable-extension": "PartialTypeSignatures"
-            },
-            {
-              "enable-extension": "PatternGuards"
-            },
-            {
-              "enable-extension": "PolyKinds"
+              "enable-extension": "QuasiQuotes"
             },
             {
               "enable-extension": "RankNTypes"
@@ -607,13 +623,19 @@
               "enable-extension": "StandaloneDeriving"
             },
             {
+              "enable-extension": "TemplateHaskell"
+            },
+            {
               "enable-extension": "TupleSections"
+            },
+            {
+              "enable-extension": "TypeApplications"
             },
             {
               "enable-extension": "TypeFamilies"
             },
             {
-              "enable-extension": "TypeSynonymInstances"
+              "enable-extension": "TypeOperators"
             },
             {
               "enable-extension": "ViewPatterns"
@@ -634,15 +656,12 @@
           "options": [
             [
               "-Wall",
-              "-Wcompat",
-              "-Widentities",
-              "-Wincomplete-record-updates",
+              "-Wunused-packages",
+              "-fwarn-tabs",
+              "-fwarn-redundant-constraints",
               "-Wincomplete-uni-patterns",
-              "-Wpartial-fields",
-              "-Wredundant-constraints",
-              "-threaded",
-              "-rtsopts",
-              "-with-rtsopts=-N"
+              "-eventlog",
+              "-O2"
             ],
             []
           ],
@@ -661,50 +680,64 @@
           "customFieldsBI": [],
           "targetBuildDepends": [
             {
+              "package-name": "aeson",
+              "version-range": "<1.6",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "aeson-pretty",
+              "version-range": "<0.9",
+              "library": [
+                {}
+              ]
+            },
+            {
               "package-name": "base",
-              "version-range": ">=4.11 && <10",
+              "version-range": "<5.0",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "gltf-loader",
+              "package-name": "bytestring",
+              "version-range": "<0.12",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "case-insensitive",
+              "version-range": "<1.3",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "network-uri",
+              "version-range": "<2.7",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "optparse-applicative",
+              "version-range": "<0.18",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "text",
+              "version-range": "<1.3",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "chez-grater",
               "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "linear",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "microlens",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "microlens-platform",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "optparse-simple",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "rio",
-              "version-range": ">=0.1.12.0",
               "library": [
                 {}
               ]
@@ -715,50 +748,64 @@
       },
       "condTreeConstraints": [
         {
+          "package-name": "aeson",
+          "version-range": "<1.6",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "aeson-pretty",
+          "version-range": "<0.9",
+          "library": [
+            {}
+          ]
+        },
+        {
           "package-name": "base",
-          "version-range": ">=4.11 && <10",
+          "version-range": "<5.0",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "gltf-loader",
+          "package-name": "bytestring",
+          "version-range": "<0.12",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "case-insensitive",
+          "version-range": "<1.3",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "network-uri",
+          "version-range": "<2.7",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "optparse-applicative",
+          "version-range": "<0.18",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "text",
+          "version-range": "<1.3",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "chez-grater",
           "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "linear",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "microlens",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "microlens-platform",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "optparse-simple",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "rio",
-          "version-range": ">=0.1.12.0",
           "library": [
             {}
           ]
@@ -768,7 +815,7 @@
     }
   },
   "test-suites": {
-    "gltf-loader-test": {
+    "tests": {
       "condTreeData": {
         "name": "",
         "interface": {
@@ -776,7 +823,7 @@
             1,
             0
           ],
-          "filepath": "Spec.hs"
+          "filepath": "main.hs"
         },
         "build-info": {
           "buildable": true,
@@ -801,33 +848,26 @@
           ],
           "otherModules": [
             [
-              "Text",
-              "GLTF",
-              "Loader",
-              "Internal",
-              "AdapterSpec"
+              "Chez",
+              "Grater",
+              "ParserSpec"
             ],
             [
-              "Text",
-              "GLTF",
-              "Loader",
-              "Internal",
-              "BufferAccessorSpec"
+              "Chez",
+              "Grater",
+              "ReadableSpec"
             ],
             [
-              "Text",
-              "GLTF",
-              "Loader",
-              "Test",
-              "MkGltf"
+              "Chez",
+              "Grater",
+              "TestEnv"
             ],
             [
-              "Text",
-              "GLTF",
-              "LoaderSpec"
+              "Chez",
+              "GraterSpec"
             ],
             [
-              "Paths_gltf_loader"
+              "Paths_chez_grater"
             ]
           ],
           "virtualModules": [],
@@ -835,12 +875,6 @@
           "defaultLanguage": "Haskell2010",
           "otherLanguages": [],
           "defaultExtensions": [
-            {
-              "enable-extension": "BangPatterns"
-            },
-            {
-              "enable-extension": "BinaryLiterals"
-            },
             {
               "enable-extension": "ConstraintKinds"
             },
@@ -854,25 +888,16 @@
               "enable-extension": "DeriveDataTypeable"
             },
             {
-              "enable-extension": "DeriveFoldable"
-            },
-            {
-              "enable-extension": "DeriveFunctor"
-            },
-            {
               "enable-extension": "DeriveGeneric"
             },
             {
-              "enable-extension": "DeriveTraversable"
+              "enable-extension": "DerivingStrategies"
             },
             {
-              "enable-extension": "DoAndIfThenElse"
+              "enable-extension": "DerivingVia"
             },
             {
               "enable-extension": "EmptyDataDecls"
-            },
-            {
-              "enable-extension": "ExistentialQuantification"
             },
             {
               "enable-extension": "FlexibleContexts"
@@ -881,19 +906,10 @@
               "enable-extension": "FlexibleInstances"
             },
             {
-              "enable-extension": "FunctionalDependencies"
-            },
-            {
               "enable-extension": "GADTs"
             },
             {
               "enable-extension": "GeneralizedNewtypeDeriving"
-            },
-            {
-              "enable-extension": "InstanceSigs"
-            },
-            {
-              "enable-extension": "KindSignatures"
             },
             {
               "enable-extension": "LambdaCase"
@@ -911,19 +927,13 @@
               "disable-extension": "ImplicitPrelude"
             },
             {
+              "disable-extension": "MonomorphismRestriction"
+            },
+            {
               "enable-extension": "OverloadedStrings"
             },
             {
-              "enable-extension": "OverloadedLists"
-            },
-            {
-              "enable-extension": "PartialTypeSignatures"
-            },
-            {
-              "enable-extension": "PatternGuards"
-            },
-            {
-              "enable-extension": "PolyKinds"
+              "enable-extension": "QuasiQuotes"
             },
             {
               "enable-extension": "RankNTypes"
@@ -938,13 +948,19 @@
               "enable-extension": "StandaloneDeriving"
             },
             {
+              "enable-extension": "TemplateHaskell"
+            },
+            {
               "enable-extension": "TupleSections"
+            },
+            {
+              "enable-extension": "TypeApplications"
             },
             {
               "enable-extension": "TypeFamilies"
             },
             {
-              "enable-extension": "TypeSynonymInstances"
+              "enable-extension": "TypeOperators"
             },
             {
               "enable-extension": "ViewPatterns"
@@ -965,15 +981,11 @@
           "options": [
             [
               "-Wall",
-              "-Wcompat",
-              "-Widentities",
-              "-Wincomplete-record-updates",
+              "-Wunused-packages",
+              "-fwarn-tabs",
+              "-fwarn-redundant-constraints",
               "-Wincomplete-uni-patterns",
-              "-Wpartial-fields",
-              "-Wredundant-constraints",
-              "-threaded",
-              "-rtsopts",
-              "-with-rtsopts=-N"
+              "-eventlog"
             ],
             []
           ],
@@ -992,84 +1004,84 @@
           "customFieldsBI": [],
           "targetBuildDepends": [
             {
+              "package-name": "attoparsec",
+              "version-range": "<0.14",
+              "library": [
+                {}
+              ]
+            },
+            {
               "package-name": "base",
-              "version-range": ">=4.11 && <10",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "base64",
-              "version-range": "-any",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "binary",
-              "version-range": "-any",
+              "version-range": "<5.0",
               "library": [
                 {}
               ]
             },
             {
               "package-name": "bytestring",
-              "version-range": "-any",
+              "version-range": "<0.12",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "gltf-codec",
-              "version-range": "-any",
+              "package-name": "case-insensitive",
+              "version-range": "<1.3",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "gltf-loader",
-              "version-range": "-any",
+              "package-name": "containers",
+              "version-range": "<0.7",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "file-embed",
+              "version-range": "<0.1",
+              "library": [
+                {}
+              ]
+            },
+            {
+              "package-name": "file-path-th",
+              "version-range": "<0.2",
               "library": [
                 {}
               ]
             },
             {
               "package-name": "hspec",
-              "version-range": "-any",
+              "version-range": "<2.8",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "linear",
-              "version-range": "-any",
+              "package-name": "http-client",
+              "version-range": "<0.7",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "microlens",
-              "version-range": "-any",
+              "package-name": "network-uri",
+              "version-range": "<2.7",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "microlens-platform",
-              "version-range": "-any",
+              "package-name": "text",
+              "version-range": "<1.3",
               "library": [
                 {}
               ]
             },
             {
-              "package-name": "rio",
-              "version-range": ">=0.1.12.0",
-              "library": [
-                {}
-              ]
-            },
-            {
-              "package-name": "unordered-containers",
+              "package-name": "chez-grater",
               "version-range": "-any",
               "library": [
                 {}
@@ -1081,84 +1093,84 @@
       },
       "condTreeConstraints": [
         {
+          "package-name": "attoparsec",
+          "version-range": "<0.14",
+          "library": [
+            {}
+          ]
+        },
+        {
           "package-name": "base",
-          "version-range": ">=4.11 && <10",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "base64",
-          "version-range": "-any",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "binary",
-          "version-range": "-any",
+          "version-range": "<5.0",
           "library": [
             {}
           ]
         },
         {
           "package-name": "bytestring",
-          "version-range": "-any",
+          "version-range": "<0.12",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "gltf-codec",
-          "version-range": "-any",
+          "package-name": "case-insensitive",
+          "version-range": "<1.3",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "gltf-loader",
-          "version-range": "-any",
+          "package-name": "containers",
+          "version-range": "<0.7",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "file-embed",
+          "version-range": "<0.1",
+          "library": [
+            {}
+          ]
+        },
+        {
+          "package-name": "file-path-th",
+          "version-range": "<0.2",
           "library": [
             {}
           ]
         },
         {
           "package-name": "hspec",
-          "version-range": "-any",
+          "version-range": "<2.8",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "linear",
-          "version-range": "-any",
+          "package-name": "http-client",
+          "version-range": "<0.7",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "microlens",
-          "version-range": "-any",
+          "package-name": "network-uri",
+          "version-range": "<2.7",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "microlens-platform",
-          "version-range": "-any",
+          "package-name": "text",
+          "version-range": "<1.3",
           "library": [
             {}
           ]
         },
         {
-          "package-name": "rio",
-          "version-range": ">=0.1.12.0",
-          "library": [
-            {}
-          ]
-        },
-        {
-          "package-name": "unordered-containers",
+          "package-name": "chez-grater",
           "version-range": "-any",
           "library": [
             {}
