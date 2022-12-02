@@ -4,76 +4,43 @@
       "Right": ">=1.10"
     },
     "package": {
-      "name": "lambdabot-irc-plugins",
+      "name": "exploring-interpreters",
       "version": [
-        5,
-        3,
-        1
+        1,
+        4,
+        0,
+        0
       ]
     },
     "license": {
-      "Right": "OtherLicense"
+      "Right": "BSD3"
     },
     "license-files": [
       "LICENSE"
     ],
     "copyright": "",
-    "maintainer": "Naïm Favier <n@monade.li>",
-    "author": "Don Stewart",
+    "maintainer": "leegbestand@gmail.com",
+    "author": "Damian Frolich",
     "stability": "",
-    "tested-with": [
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.2.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.4.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.6.5"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.8.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==8.10.4"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.0.2"
-      },
-      {
-        "compiler": "GHC",
-        "versionRange": "==9.2.4"
-      }
-    ],
-    "homepage": "https://wiki.haskell.org/Lambdabot",
+    "tested-with": [],
+    "homepage": "",
     "pkg-url": "",
     "bug-reports": "",
     "source-repos": [
       {
         "kind": {},
         "type": "Git",
-        "location": "https://github.com/lambdabot/lambdabot.git",
+        "location": "https://github.com/leegbestand/exploring_interpreters",
         "module": null,
         "branch": null,
         "tag": null,
         "subdir": null
       }
     ],
-    "synopsis": "IRC plugins for lambdabot.",
-    "description": "Lambdabot is an IRC bot written over several years by\nthose on the #haskell IRC channel.\n\nProvided plugins:\n\n[irc] Lets lambdabot connect to IRC.\n\n[localtime] Check user's local time.\n\n[log] Log IRC channels.\n\n[topic] Modify channel topics.",
-    "category": "Development, Web",
-    "custom-fields": [
-      [
-        "x-revision",
-        "2"
-      ]
-    ],
+    "synopsis": "A generic exploring interpreter for exploratory programming",
+    "description": "",
+    "category": "Compilers/Interpreters",
+    "custom-fields": [],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -84,7 +51,10 @@
     "benchmarks": [],
     "data-files": [],
     "data-dir": ".",
-    "extra-source-files": [],
+    "extra-source-files": [
+      "CHANGELOG.md",
+      "examples/Whilelang.hs"
+    ],
     "extra-tmp-files": [],
     "extra-doc-files": []
   },
@@ -93,9 +63,26 @@
       "name": {},
       "exposed-modules": [
         [
-          "Lambdabot",
-          "Plugin",
-          "IRC"
+          "Language",
+          "Explorer",
+          "Monadic"
+        ],
+        [
+          "Language",
+          "Explorer",
+          "Pure"
+        ],
+        [
+          "Language",
+          "Explorer",
+          "Tools",
+          "REPL"
+        ],
+        [
+          "Language",
+          "Explorer",
+          "Tools",
+          "Protocol"
         ]
       ],
       "re-exported-modules": [],
@@ -120,43 +107,17 @@
         "cSources": [],
         "cxxSources": [],
         "jsSources": [],
-        "hsSourceDirs": [
-          "src"
-        ],
+        "hsSourceDirs": [],
         "otherModules": [
           [
-            "Lambdabot",
-            "Config",
-            "IRC"
-          ],
-          [
-            "Lambdabot",
-            "Plugin",
-            "IRC",
-            "IRC"
-          ],
-          [
-            "Lambdabot",
-            "Plugin",
-            "IRC",
-            "Localtime"
-          ],
-          [
-            "Lambdabot",
-            "Plugin",
-            "IRC",
-            "Log"
-          ],
-          [
-            "Lambdabot",
-            "Plugin",
-            "IRC",
-            "Topic"
+            "Language",
+            "Explorer",
+            "Basic"
           ]
         ],
         "virtualModules": [],
         "autogenModules": [],
-        "defaultLanguage": "Haskell98",
+        "defaultLanguage": "Haskell2010",
         "otherLanguages": [],
         "defaultExtensions": [],
         "otherExtensions": [],
@@ -172,10 +133,7 @@
         "autogenIncludes": [],
         "installIncludes": [],
         "options": [
-          [
-            "-Wall",
-            "-funbox-strict-fields"
-          ],
+          [],
           []
         ],
         "profOptions": [
@@ -194,84 +152,98 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.4 && <5",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "bytestring",
-            "version-range": ">=0.9",
+            "version-range": ">=4.9 && <5",
             "library": [
               {}
             ]
           },
           {
             "package-name": "containers",
-            "version-range": ">=0.4",
+            "version-range": ">=0.5 && <0.7",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "directory",
-            "version-range": ">=1.1",
+            "package-name": "fgl",
+            "version-range": ">=5.7.0 && <5.8",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "filepath",
-            "version-range": ">=1.3",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "lambdabot-core",
-            "version-range": ">=5.3 && <5.4",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "lifted-base",
-            "version-range": ">=0.2",
+            "package-name": "transformers",
+            "version-range": ">=0.5.2 && <0.6",
             "library": [
               {}
             ]
           },
           {
             "package-name": "mtl",
-            "version-range": ">=2",
+            "version-range": ">=2.2.1 && <2.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "aeson",
+            "version-range": ">=1.5.6",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "attoparsec",
+            "version-range": ">=0.14.1 && <0.15",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "bytestring",
+            "version-range": ">=0.10.10 && <0.12",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "scientific",
+            "version-range": ">=0.3.7 && <0.4",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "text",
+            "version-range": ">=1.2.4 && <1.3",
+            "library": [
+              {}
+            ]
+          },
+          {
+            "package-name": "http-types",
+            "version-range": ">=0.12.3 && <0.13",
             "library": [
               {}
             ]
           },
           {
             "package-name": "network",
-            "version-range": ">=2.7 && <3.2",
+            "version-range": ">=3.1.2 && <3.2",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "SafeSemaphore",
-            "version-range": ">=0.9",
+            "package-name": "haskeline",
+            "version-range": "==0.8.2",
             "library": [
               {}
             ]
           },
           {
-            "package-name": "split",
-            "version-range": ">=0.2",
-            "library": [
-              {}
-            ]
-          },
-          {
-            "package-name": "time",
-            "version-range": ">=1.4",
+            "package-name": "exceptions",
+            "version-range": "==0.10.4",
             "library": [
               {}
             ]
@@ -283,84 +255,98 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.4 && <5",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "bytestring",
-        "version-range": ">=0.9",
+        "version-range": ">=4.9 && <5",
         "library": [
           {}
         ]
       },
       {
         "package-name": "containers",
-        "version-range": ">=0.4",
+        "version-range": ">=0.5 && <0.7",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "directory",
-        "version-range": ">=1.1",
+        "package-name": "fgl",
+        "version-range": ">=5.7.0 && <5.8",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "filepath",
-        "version-range": ">=1.3",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "lambdabot-core",
-        "version-range": ">=5.3 && <5.4",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "lifted-base",
-        "version-range": ">=0.2",
+        "package-name": "transformers",
+        "version-range": ">=0.5.2 && <0.6",
         "library": [
           {}
         ]
       },
       {
         "package-name": "mtl",
-        "version-range": ">=2",
+        "version-range": ">=2.2.1 && <2.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "aeson",
+        "version-range": ">=1.5.6",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "attoparsec",
+        "version-range": ">=0.14.1 && <0.15",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "bytestring",
+        "version-range": ">=0.10.10 && <0.12",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "scientific",
+        "version-range": ">=0.3.7 && <0.4",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "text",
+        "version-range": ">=1.2.4 && <1.3",
+        "library": [
+          {}
+        ]
+      },
+      {
+        "package-name": "http-types",
+        "version-range": ">=0.12.3 && <0.13",
         "library": [
           {}
         ]
       },
       {
         "package-name": "network",
-        "version-range": ">=2.7 && <3.2",
+        "version-range": ">=3.1.2 && <3.2",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "SafeSemaphore",
-        "version-range": ">=0.9",
+        "package-name": "haskeline",
+        "version-range": "==0.8.2",
         "library": [
           {}
         ]
       },
       {
-        "package-name": "split",
-        "version-range": ">=0.2",
-        "library": [
-          {}
-        ]
-      },
-      {
-        "package-name": "time",
-        "version-range": ">=1.4",
+        "package-name": "exceptions",
+        "version-range": "==0.10.4",
         "library": [
           {}
         ]
