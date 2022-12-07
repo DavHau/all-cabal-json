@@ -55,7 +55,7 @@
     "custom-fields": [
       [
         "x-revision",
-        "2"
+        "3"
       ]
     ],
     "build-type-raw": "Simple",
@@ -213,7 +213,7 @@
           },
           {
             "package-name": "hledger-lib",
-            "version-range": ">=1.23 && <1.28",
+            "version-range": ">=1.23 && <1.29",
             "library": [
               {}
             ]
@@ -344,7 +344,7 @@
       },
       {
         "package-name": "hledger-lib",
-        "version-range": ">=1.23 && <1.28",
+        "version-range": ">=1.23 && <1.29",
         "library": [
           {}
         ]
@@ -552,7 +552,7 @@
             },
             {
               "package-name": "hledger-lib",
-              "version-range": ">=1.23 && <1.28",
+              "version-range": ">=1.23 && <1.29",
               "library": [
                 {}
               ]
@@ -676,7 +676,7 @@
         },
         {
           "package-name": "hledger-lib",
-          "version-range": ">=1.23 && <1.28",
+          "version-range": ">=1.23 && <1.29",
           "library": [
             {}
           ]
@@ -891,7 +891,7 @@
             },
             {
               "package-name": "hledger-lib",
-              "version-range": ">=1.23 && <1.28",
+              "version-range": ">=1.23 && <1.29",
               "library": [
                 {}
               ]
@@ -980,7 +980,7 @@
         },
         {
           "package-name": "hledger-lib",
-          "version-range": ">=1.23 && <1.28",
+          "version-range": ">=1.23 && <1.29",
           "library": [
             {}
           ]

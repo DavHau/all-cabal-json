@@ -42,7 +42,12 @@
     "synopsis": "Rendering to pseudo-Haskell syntax",
     "description": "This provides a single place to describe how a type should be formatted as\npseudo-Haskell syntax, independently of the actual pretty-printing library\n(e.g. \"pretty\", \"ansi-wl-pprint\", or \"prettyprinter\") that will ultimately be\nused to render it.  This means packages can cheaply provide integration with\nall pretty-printers by providing an instance of this class, without needing\nto depend on any of them (or their layout algorithms).\n\nOf course, this comes at the cost of targeting a predeclared set of\nformatting choices.  If there are any egregious omissions, we can always add\nmore constructors.\n\nThis library is explicitly not intended to provide a way to express\n/all documents/; only a particular flavor of pseudo-Haskell syntax\nrepresenting values and types.",
     "category": "Text",
-    "custom-fields": [],
+    "custom-fields": [
+      [
+        "x-revision",
+        "1"
+      ]
+    ],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -131,7 +136,7 @@
         "targetBuildDepends": [
           {
             "package-name": "base",
-            "version-range": ">=4.12 && <4.17",
+            "version-range": ">=4.12 && <4.18",
             "library": [
               {}
             ]
@@ -171,7 +176,7 @@
     "condTreeConstraints": [
       {
         "package-name": "base",
-        "version-range": ">=4.12 && <4.17",
+        "version-range": ">=4.12 && <4.18",
         "library": [
           {}
         ]
@@ -284,7 +289,7 @@
             },
             {
               "package-name": "base",
-              "version-range": ">=4.12 && <4.17",
+              "version-range": ">=4.12 && <4.18",
               "library": [
                 {}
               ]
@@ -352,7 +357,7 @@
         },
         {
           "package-name": "base",
-          "version-range": ">=4.12 && <4.17",
+          "version-range": ">=4.12 && <4.18",
           "library": [
             {}
           ]
