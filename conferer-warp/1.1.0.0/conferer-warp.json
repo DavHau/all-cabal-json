@@ -33,7 +33,12 @@
     "synopsis": "conferer's FromConfig instances for warp settings",
     "description": "Library to abstract the parsing of many haskell config values from different config sources",
     "category": "Configuration",
-    "custom-fields": [],
+    "custom-fields": [
+      [
+        "x-revision",
+        "1"
+      ]
+    ],
     "build-type-raw": "Simple",
     "custom-setup": null,
     "library": null,
@@ -189,7 +194,7 @@
           },
           {
             "package-name": "warp",
-            "version-range": ">=3.0 && <4.0",
+            "version-range": ">=3.0 && <3.3.22",
             "library": [
               {}
             ]
@@ -236,7 +241,7 @@
       },
       {
         "package-name": "warp",
-        "version-range": ">=3.0 && <4.0",
+        "version-range": ">=3.0 && <3.3.22",
         "library": [
           {}
         ]
@@ -477,7 +482,7 @@
             },
             {
               "package-name": "warp",
-              "version-range": ">=3.0 && <4.0",
+              "version-range": ">=3.0 && <3.3.22",
               "library": [
                 {}
               ]
@@ -538,7 +543,7 @@
         },
         {
           "package-name": "warp",
-          "version-range": ">=3.0 && <4.0",
+          "version-range": ">=3.0 && <3.3.22",
           "library": [
             {}
           ]
